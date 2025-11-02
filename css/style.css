@@ -1,247 +1,311 @@
-/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
-
-/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
-html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Customize the background color to match your design.
- */
-
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F2F4F8;
+    color: #000;
+    line-height: 1.6;
 }
 
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
+/* Encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid #DDE1E6;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
 }
 
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
+header .logo img {
+    height: 45px;
+    margin-left: 2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.1rem;
 }
 
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
+header nav a {
+    color: #0868A8;
+    margin-right: 70rem;
+    font-weight: bold;
 }
 
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-  resize: vertical;
+.header-buttons button {
+    margin-left: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden,
-[hidden] {
-  display: none !important;
+.header-buttons button:hover {
+    transform: scale(1.05);
 }
 
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
+.btn-signin {
+    background: #FFFFFF;
+    color: #0868A8;
+    border: 2px solid #0868A8;
+    font-weight: bold;
 }
 
-/*
- * Extends the .visually-hidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.visually-hidden.focusable:active,
-.visually-hidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
+.btn-login {
+    background: #F29723;
+    color: #FFFFFF;
+    font-weight: bold;
 }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
+/* Cards */
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding: 2rem;
+    align-items: start;
 }
 
-/*
- * Clearfix: contain floats
- *
- * The use of `table` rather than `block` is only necessary if using
- * `::before` to contain the top-margins of child elements.
- */
-
-.clearfix::before,
-.clearfix::after {
-  content: "";
-  display: table;
+.card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 2.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.clearfix::after {
-  clear: both;
+.intro h1 {
+    color: #F29723;
+    margin-bottom: 0.8rem;
+    font-size: 1.8rem;
 }
 
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
+.intro p {
+    color: #000000;
+    font-size: 1.3rem;
+    margin-bottom: 0.1rem;
 }
 
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
+.btn-start {
+    background: #F22323;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    padding: 0.8rem 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 1rem;
+    font-size: 1rem;
 }
 
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-  *,
-  *::before,
-  *::after {
-    background: #fff !important;
-    color: #000 !important;
-    /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
-
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
-
-  pre {
-    white-space: pre-wrap !important;
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
+.btn-start:hover {
+    opacity: 0.8;
 }
 
+.icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.icons img {
+    width: 900px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.features {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    /* Span full width under the first row of cards */
+    grid-column: 1 / -1;
+}
+
+.features-left, .features-right {
+    flex: 1;
+}
+
+.features-left h2, .features-right h2 {
+    color: #F29723;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.features-right ul {
+    font-size: 1.2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.feature-item img {
+    width: 40px;
+    margin-right: 1rem;
+}
+
+.student-img {
+    margin-top: 2rem;
+    width: 90%;
+    margin-bottom: 3rem;
+    margin-left: 1rem;
+}
+
+/* Pie de página */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    padding: 0.7rem 2rem;
+    color: #A6A6A6;
+    font-size: 0.8rem;
+}
+
+footer img {
+    height: 25px;
+    margin-left: 0.5rem;
+    margin-top: 0.1rem;
+}
+
+/* 404 */
+.error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.error-container {
+    text-align: center;
+}
+
+.error-container h1 {
+    font-size: 6rem;
+    color: #F22323;
+}
+
+.btn-return {
+    display: inline-block;
+    margin-top: 1rem;
+    background: #0868A8;
+    color: #FFF;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+}
+/* UI */
+.ui-container {
+    padding: 2rem;
+}
+
+.color-sample {
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 4px;
+    color: #FFF;
+    text-align: center;
+    line-height: 40px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    main {
+        grid-template-columns: 1fr;
+    }
+    .features {
+        flex-direction: column;
+    }
+    .icons img {
+        width: 200px;
+        max-width: 100%;
+    }
+}
+
+
+/* Features: three items in a row with icon left, title right, description below */
+.features-left {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem 1.5rem; /* row gap / column gap */
+    align-items: start;
+}
+
+.features-left h2 {
+    grid-column: 1 / -1; /* make the section title span all columns */
+}
+
+.features-left .student-img {
+    grid-column: 1 / -1; /* image spans full width under the items */
+}
+
+/* Individual feature items layout */
+.feature-item-1,
+.feature-item-2,
+.feature-item-3 {
+    display: grid;
+    grid-template-columns: 44px 1fr; /* icon and text */
+    grid-auto-rows: auto;
+    column-gap: 0.75rem;
+    row-gap: 0.25rem;
+    align-items: start;
+}
+
+.feature-item-1 > img,
+.feature-item-2 > img,
+.feature-item-3 > img {
+    grid-row: 1 / span 2; /* icon spans title and description */
+    width: 40px;
+    height: auto;
+}
+
+/* Ensure the text wrapper sits to the right of the icon */
+.feature-item-1 > div,
+.feature-item-2 > div,
+.feature-item-3 > div {
+    grid-column: 2;
+}
+
+/* Tighten default spacing for headings and paragraphs inside items */
+.feature-item-1 h3,
+.feature-item-2 h3,
+.feature-item-3 h3 {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.feature-item-1 p,
+.feature-item-2 p,
+.feature-item-3 p {
+    margin: 0.25rem 0 0 0;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 1024px) {
+    /* fallback to two columns on medium screens */
+    .features-left { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    /* stack features vertically on small screens */
+    .features-left { grid-template-columns: 1fr; }
+}
