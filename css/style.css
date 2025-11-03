@@ -38,21 +38,47 @@ header .logo img {
 
 header nav a {
     color: #0868A8;
-    margin-right: 70rem;
     font-weight: bold;
+    letter-spacing: 0.03em;
+    font-family: 'Roboto', sans-serif;
+
+    /* Make the whole pill clickable like a normal button */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 1rem 0.05rem;
+    border-radius: 1px; /* pill shape; change to 6px if you prefer squared corners */
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 0.5rem;
+
+    /* 2px stroke under the button in the same color as the label */
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 3px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+
+    /* Preserve existing spacing to the right */
+    margin-right: 70rem;
+}
+
+/* Hover and focus styles for the header nav button */
+header nav a:focus-visible {
+    outline: 3px solid rgba(8, 104, 168, 0.35);
+    outline-offset: 2px;
 }
 
 .header-buttons button {
     margin-left: 0.5rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 2px;
     padding: 0.6rem 1rem;
     cursor: pointer;
     transition: transform 0.2s;
 }
 
 .header-buttons button:hover {
-    transform: scale(1.05);
+    transform: scale(1.07);
 }
 
 .btn-signin {
@@ -74,20 +100,29 @@ main {
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     padding: 2rem;
-    align-items: start;
+    align-items: stretch;
+    /* Typography: use Roboto Condensed Regular across main */
+    font-family: 'Roboto Condensed', 'Roboto', sans-serif;
+    font-weight: 400; /* regular */
 }
 
 .card {
     background: #FFFFFF;
-    border-radius: 8px;
+    border-radius: 3px;
     padding: 2.2rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.intro {
+    width: 33rem
 }
 
 .intro h1 {
     color: #F29723;
     margin-bottom: 0.8rem;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
+    font-weight: 400; /* Regular as requested */
+    line-height: 1.2;
 }
 
 .intro p {
@@ -102,11 +137,13 @@ main {
     border: none;
     border-radius: 4px;
     padding: 0.8rem 1.2rem;
+    font-family: 'Roboto', sans-serif; /* Roboto Bold for the button */
     font-weight: 700;
     cursor: pointer;
     transition: 0.3s;
     margin-top: 1rem;
     font-size: 1rem;
+    margin-right: 1rem;
 }
 
 .btn-start:hover {
@@ -120,9 +157,9 @@ main {
 }
 
 .icons img {
-    width: 900px;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    width: 1100px;
+    margin-left: 4rem;
+    margin-right: 4rem;
 }
 
 .features {
@@ -140,11 +177,22 @@ main {
 .features-left h2, .features-right h2 {
     color: #F29723;
     margin-bottom: 1rem;
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-weight: 400;
+}
+
+.features-right {
+    flex: 0.5; /* Reducimos el crecimiento relativo, estrechándola */
+    padding-left: 4rem; /* Empuja el contenido 2rem hacia la derecha */
+    padding-right: 4rem;
+    text-align: center
 }
 
 .features-right ul {
     font-size: 1.2rem;
+    text-align: center;
+    padding-left: 0;
+    list-style-position: inside; /* Mueve las viñetas dentro del contenedor si se ajustó padding */
 }
 
 .feature-item {
@@ -153,14 +201,9 @@ main {
     margin-bottom: 1rem;
 }
 
-.feature-item img {
-    width: 40px;
-    margin-right: 1rem;
-}
-
 .student-img {
     margin-top: 2rem;
-    width: 90%;
+    width: 100%;
     margin-bottom: 3rem;
     margin-left: 1rem;
 }
@@ -174,6 +217,7 @@ footer {
     padding: 0.7rem 2rem;
     color: #A6A6A6;
     font-size: 0.8rem;
+    font-weight: 600;
 }
 
 footer img {
@@ -256,6 +300,7 @@ footer img {
 
 .features-left .student-img {
     grid-column: 1 / -1; /* image spans full width under the items */
+    margin-top: 50px;
 }
 
 /* Individual feature items layout */
@@ -268,36 +313,40 @@ footer img {
     column-gap: 0.75rem;
     row-gap: 0.25rem;
     align-items: start;
+    margin-top: 0.5rem;
 }
 
 .feature-item-1 > img,
 .feature-item-2 > img,
 .feature-item-3 > img {
     grid-row: 1 / span 2; /* icon spans title and description */
-    width: 40px;
+    width: 55px;
     height: auto;
+    margin-left: 1rem;
 }
 
 /* Ensure the text wrapper sits to the right of the icon */
 .feature-item-1 > div,
 .feature-item-2 > div,
 .feature-item-3 > div {
-    grid-column: 2;
+    grid-column: 5;
 }
 
 /* Tighten default spacing for headings and paragraphs inside items */
 .feature-item-1 h3,
 .feature-item-2 h3,
 .feature-item-3 h3 {
-    margin: 0;
-    font-size: 1.05rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
 }
 
 .feature-item-1 p,
 .feature-item-2 p,
 .feature-item-3 p {
     margin: 0.25rem 0 0 0;
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
 @media (max-width: 1024px) {
@@ -308,4 +357,22 @@ footer img {
 @media (max-width: 768px) {
     /* stack features vertically on small screens */
     .features-left { grid-template-columns: 1fr; }
+}
+
+
+/* Position "Empieza Aquí" button at the bottom-right of the intro card */
+.intro {
+    display: flex; /* allow the inner wrapper to stretch to full card height */
+}
+
+.intro .intro-text {
+    display: flex;
+    flex-direction: column; /* stack title, paragraph, and button vertically */
+    flex: 1; /* fill the card's height */
+}
+
+/* Push the button to the bottom and right */
+.btn-start {
+    align-self: flex-end; /* right */
+    margin-top: auto;     /* bottom */
 }
