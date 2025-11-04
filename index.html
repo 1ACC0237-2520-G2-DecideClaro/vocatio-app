@@ -1,85 +1,178 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vocatio | Encuentra tu carrera ideal</title>
-    <link rel="stylesheet" href="css/style.css" crossorigin="anonymous" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-      <!-- Encabezado -->
-    <header>
-        <div class="logo">
-            <a href="#"><img src="assets/img/logo.png" alt="Vocatio logo"></a>
-        </div>
-        <nav>
-            <a href="#">Bienvenido</a>
-        </nav>
-        <div class="header-buttons">
-            <a class="btn-signin" href="pages/sign-in.html">SIGN IN</a>
-            <a class="btn-login" href="pages/log-in.html">LOG IN</a>
-        </div>
-    </header>
-    <!-- Cuerpo -->
-    <main>
-        <!-- Encuentra tu carrera -->
-        <section class="card intro">
-            <div class="intro-text">
-                <h1>Encuentra tu<br>carrera ideal</h1>
-                <p>Descubre la carrera que mejor se adapta a tus intereses<br>y habilidades con nuestro test vocacional en línea.</p>
-                <a class="btn-start" href="pages/sign-in.html">Empieza Aquí</a>
-            </div>
-        </section>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vocatio | Explorar Carreras</title>
+  <link rel="stylesheet" href="css/style.css" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- ===== ENCABEZADO ===== -->
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="assets/img/logo.png" alt="Vocatio logo" /></a>
+    </div>
 
-        <!-- Iconos -->
-        <section class="card icons">
-            <img src="assets/img/values.png" alt="Iconos">
-        </section>
-        <!-- Características y testimonios -->
-        <section class="card features">
-            <div class="features-left">
-                <h2>Características</h2>
-                <div class="feature-item-1">
-                    <img src="assets/img/piechart.png" alt="Recomendaciones Personalizadas">
-                    <div>
-                        <h3>Recomendaciones Personalizadas</h3>
-                        <p>Obtén sugerencias únicas según tus resultados, diseñadas para guiarte en tu futuro académico y profesional.</p>
-                    </div>
-                </div>
-                <div class="feature-item-2">
-                    <img src="assets/img/barchart.png" alt="Evaluación Precisa">
-                    <div>
-                        <h3>Evaluación<br>Precisa</h3>
-                        <p>Nuestro test combina análisis psicológico y académico para brindarte un perfil confiable y completo.</p>
-                    </div>
-                </div>
-                <div class="feature-item-3">
-                    <img src="assets/img/book.png" alt="Guía paso a paso">
-                    <div>
-                        <h3>Guía<br>paso a paso</h3>
-                        <p>Recibe orientación clara con consejos prácticos para tomar decisiones sobre tu carrera universitaria o técnica.</p>
-                    </div>
-                </div>
-                <img class="student-img" src="assets/img/student.png" alt="Student chart">
-            </div>
+    <nav>
+      <a href="index.html">Vista General</a>
+      <a href="#">Iniciar Test</a>
+      <a href="#">Ruta de Aprendizaje</a>
+      <a class="active" href="#">Explorar</a>
+      <a href="#">Informes</a>
+    </nav>
 
-            <div class="features-right">
-                <h2>Testimonios</h2>
-                <ul>
-                    <li>“Gracias a este test descubrí que mi vocación estaba en la ingeniería, y hoy estudio lo que realmente me apasiona.” – Luna</li>
-                    <li>“Nunca había tenido tanta claridad sobre mis fortalezas. Ahora sé qué carrera elegir.” – Diego</li>
-                    <li>“Lo que más me gustó es que los resultados son fáciles de entender y muy acertados.” – María</li>
-                    <li>“Gracias al test entendí qué áreas me motivan más y pude elegir una carrera alineada a mis intereses.” – Valeria</li>
-                    <li>“Me sorprendió lo acertado de los resultados. Ahora tengo un plan más claro para mi futuro.” – Andrés</li>
-                    <li>“El test me ayudó a identificar habilidades que ni yo conocía y que hoy aplico en mi carrera universitaria.” – Sofía</li>
-                </ul>
-            </div>
-        </section>
-    </main>
-  <!-- Pie de página -->
+    <div class="header-right">
+      <div class="profile">
+        <img src="assets/img/user-icon.png" alt="Perfil" />
+        <div class="dropdown" role="menu" aria-hidden="true">
+          <a href="#" id="user-name">Fernan</a>
+          <a href="#" id="favorites-link">Favoritos</a>
+          <a href="#" id="history-link">Historial</a>
+          <a href="#" id="settings-link">Configuración</a>
+          <a href="#" class="logout" id="logout-link">Cerrar sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== TÍTULO + BUSCADOR ===== -->
+  <div class="header-search">
+    <h1>Carreras disponibles</h1>
+    <div class="search-wrap">
+      <input class="search-bar" id="search-input" type="text" placeholder="Buscar carrera..." />
+    </div>
+  </div>
+
+  <!-- ===== FILTROS ===== -->
+  <div class="filters-row">
+    <button id="filter-btn" class="btn-filter">🔍 Filtrar</button>
+
+    <div class="sort-box">
+      <label for="sort-select">Ordenar por</label>
+      <select id="sort-select">
+        <option value="popular">Más populares</option>
+        <option value="valorados">Mejor valorados</option>
+        <option value="recientes">Más recientes</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- PANEL LATERAL DE FILTROS -->
+  <aside id="filter-panel" class="filter-panel">
+    <div class="filter-header">
+      <h2>Filtros</h2>
+      <span id="close-filter">&times;</span>
+    </div>
+
+    <div class="filter-section">
+      <h3>Valoraciones</h3>
+      <ul>
+        <li><input type="radio" name="rating"> ⭐⭐⭐⭐⭐ 4.5 o más (1,000)</li>
+        <li><input type="radio" name="rating"> ⭐⭐⭐⭐ 4.0 o más (1,000)</li>
+        <li><input type="radio" name="rating"> ⭐⭐⭐½ 3.5 o más (1,000)</li>
+        <li><input type="radio" name="rating"> ⭐⭐⭐ 3.0 o más (1,000)</li>
+      </ul>
+    </div>
+
+    <div class="filter-section">
+      <h3>Tema</h3>
+      <ul>
+        <li><input type="radio" name="tema"> Medicina</li>
+        <li><input type="radio" name="tema"> Psicología</li>
+        <li><input type="radio" name="tema"> Informática</li>
+        <li><input type="radio" name="tema"> Leyes</li>
+        <li><input type="radio" name="tema"> Comunicaciones</li>
+        <li><input type="radio" name="tema"> Ingeniería</li>
+        <li><input type="radio" name="tema"> Ciencias</li>
+        <li><input type="radio" name="tema"> Artes</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ===== GRID DE CARRERAS ===== -->
+  <main>
+    <section class="career-grid" id="career-grid">
+
+      <!-- Tarjetas -->
+      <article class="career-card" data-id="computacion">
+        <img src="assets/img/computacion.jpg" alt="Ciencias de la Computación" />
+        <div class="career-info">
+          <h2>Ciencias de la Computación</h2>
+          <p>Vive tu pasión por crear mundos digitales y ser el arquitecto del futuro tecnológico.</p>
+        </div>
+        <div class="card-actions">
+          <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+          <button class="btn-start">Empieza Aquí</button>
+        </div>
+      </article>
+
+      <article class="career-card" data-id="medicina">
+        <img src="assets/img/medicina.jpg" alt="Medicina" />
+        <div class="career-info">
+          <h2>Medicina</h2>
+          <p>Aprende a cuidar la vida con ciencia, vocación y compromiso humano.</p>
+        </div>
+        <div class="card-actions">
+          <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+          <button class="btn-start">Empieza Aquí</button>
+        </div>
+      </article>
+
+      <article class="career-card" data-id="traduccion">
+        <img src="assets/img/traduccion.jpg" alt="Traducción e Interpretación Profesional" />
+        <div class="career-info">
+          <h2>Traducción e Interpretación Profesional</h2>
+          <p>Vive tu pasión por los idiomas a través de un permanente intercambio de experiencias culturales.</p>
+        </div>
+        <div class="card-actions">
+          <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+          <button class="btn-start">Empieza Aquí</button>
+        </div>
+      </article>
+
+      <article class="career-card" data-id="musica">
+        <img src="assets/img/musica.jpg" alt="Música" />
+        <div class="career-info">
+          <h2>Música</h2>
+          <p>¡Atrévete a potenciar tu mejor talento y vive tu pasión!</p>
+        </div>
+        <div class="card-actions">
+          <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+          <button class="btn-start">Empieza Aquí</button>
+        </div>
+      </article>
+
+      <article class="career-card" data-id="derecho">
+        <img src="assets/img/derecho.jpg" alt="Derecho" />
+        <div class="career-info">
+          <h2>Derecho</h2>
+          <p>Defiende la justicia y el orden social con ética, conocimiento y liderazgo.</p>
+        </div>
+        <div class="card-actions">
+          <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+          <button class="btn-start">Empieza Aquí</button>
+        </div>
+      </article>
+
+      <article class="career-card" data-id="mecatronica">
+        <img src="assets/img/mecatronica.jpg" alt="Ingeniería Mecatrónica" />
+        <div class="career-info">
+          <h2>Ingeniería Mecatrónica</h2>
+          <p>Atrévete a cambiar el mundo con proyectos de ingeniería que mejoran la calidad de vida.</p>
+        </div>
+        <div class="card-actions">
+          <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+          <button class="btn-start">Empieza Aquí</button>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- ===== PIE DE PÁGINA ===== -->
   <footer>
     <div class="footer-left">
       <a href="#"><img src="assets/img/logo-footer.png" alt="Vocatio logo"></a>
@@ -93,6 +186,96 @@
       <a href="https://www.instagram.com/cristiano/"><img src="assets/img/instagram.png" alt="Instagram"></a>
     </div>
   </footer>
-  <script src="js/app.js"></script>
+
+  <!-- ===== JS PRINCIPAL (Favoritos y buscador) ===== -->
+  <script>
+    (function () {
+      const STORAGE_KEY = 'vocatio_favorites_v1';
+      const getFavorites = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      const saveFavorites = (arr) => localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+
+      function initFavorites() {
+        const favs = getFavorites();
+        document.querySelectorAll('.career-card').forEach(card => {
+          const id = card.dataset.id;
+          const btn = card.querySelector('.favorite-btn');
+          if (favs.includes(id)) {
+            btn.classList.add('active');
+            btn.innerHTML = '<img src="assets/img/heart-filled.png" alt="Favorito">';
+          } else {
+            btn.classList.remove('active');
+            btn.innerHTML = '<img src="assets/img/heart-empty.png" alt="No favorito">';
+          }
+
+          btn.addEventListener('click', () => {
+            const current = getFavorites();
+            if (current.includes(id)) {
+              const idx = current.indexOf(id);
+              current.splice(idx, 1);
+              btn.classList.remove('active');
+              btn.innerHTML = '<img src="assets/img/heart-filled.png" alt="Favorito">';
+            } else {
+              current.push(id);
+              btn.classList.add('active');
+              btn.innerHTML = '<img src="assets/img/heart-empty.png" alt="No favorito">';
+            }
+            saveFavorites(current);
+          });
+        });
+      }
+
+      const searchInput = document.getElementById('search-input');
+      function initSearch() {
+        if (!searchInput) return;
+        searchInput.addEventListener('input', (e) => {
+          const q = e.target.value.trim().toLowerCase();
+          document.querySelectorAll('.career-card').forEach(card => {
+            const title = card.querySelector('h2').textContent.toLowerCase();
+            const desc = card.querySelector('p').textContent.toLowerCase();
+            const match = title.includes(q) || desc.includes(q);
+            card.style.display = match ? '' : 'none';
+          });
+        });
+      }
+
+      function initDropdownClose() {
+        const profile = document.querySelector('.profile');
+        if (!profile) return;
+        const dropdown = profile.querySelector('.dropdown');
+        document.addEventListener('click', (e) => {
+          if (!profile.contains(e.target)) {
+            dropdown.style.display = 'none';
+          } else if (e.target.closest('.profile')) {
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+          }
+        });
+      }
+
+      initFavorites();
+      initSearch();
+      initDropdownClose();
+    })();
+  </script>
+
+  <!-- ===== SCRIPT FILTRO LATERAL ===== -->
+  <script>
+    const filterBtn = document.getElementById('filter-btn');
+    const filterPanel = document.getElementById('filter-panel');
+    const closeFilter = document.getElementById('close-filter');
+
+    filterBtn.addEventListener('click', () => {
+      filterPanel.classList.toggle('active');
+    });
+
+    closeFilter.addEventListener('click', () => {
+      filterPanel.classList.remove('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!filterPanel.contains(e.target) && !filterBtn.contains(e.target)) {
+        filterPanel.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
