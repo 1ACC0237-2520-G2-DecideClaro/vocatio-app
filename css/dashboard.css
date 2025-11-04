@@ -14,40 +14,58 @@ body {
 /* ====== Encabezado ====== */
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* align items from the left like landing */
     align-items: center;
+    gap: 1.5rem;
     background: #FFF;
     padding: 0.5rem 2rem;
-    border-bottom: 1px solid #DDE1E6;
-    margin: 1rem 2rem;
-    border-radius: 8px;
+    border-bottom: 1px solid #DDE1E6; /* same thickness as landing */
+    margin: 1rem 2rem; /* same outer margins as landing */
+    border-radius: 0; /* match landing: no rounded corners */
 }
 
 .logo img {
     height: 45px;
+    margin-left: 2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.1rem;
 }
 
 /* Navegación */
 nav {
+    margin-left: 65px;
     display: flex;
     gap: 2rem;
+    margin-right: auto; /* keep nav near the left, push profile menu to the right */
 }
 
 nav a {
     font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 0.03em;
     color: #0868A8;
     text-decoration: none;
     position: relative;
+    padding: 1rem 0.1rem; /* vertical rhythm similar to landing */
 }
 
+/* underline stroke only for the active section */
 nav a.active {
-    color: #FF5F57;
+    /* keep the text color, show stroke */
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 3px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
 }
 
-nav a:first-child {
-    border-bottom: 2px solid #0868A8;
+/* remove forced underline from first item; hover keeps color only */
+nav a:hover {
+    opacity: 0.85;
+}
+
+/* Special color for "Iniciar Test" link */
+nav a.test-link {
+    color: #FF5F57;
 }
 
 /* ====== Menú contextual ====== */
@@ -140,20 +158,35 @@ main h1 {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr; /* left, center, right */
+    grid-template-rows: 1fr 1fr; /* left column: two equal rows */
     gap: 1.5rem;
 }
+
+/* Place cards into the 3-column, 2-row layout */
+.card.intro { grid-column: 1; grid-row: 1; }
+.card.results { grid-column: 1; grid-row: 2; }
+.card.steps { grid-column: 2; grid-row: 1 / span 2; }
+.card.materials { grid-column: 3; grid-row: 1 / span 2; display: flex; flex-direction: column; }
+
+/* ensure rows split evenly when a middle/right card spans both */
+.grid-container { grid-auto-rows: 1fr; }
 
 /* ====== Tarjetas ====== */
 .card {
     background: #FFF;
-    border-radius: 10px;
+    border-radius: 3px; /* match landing cards */
     padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* match landing shadow */
     height: 100%;
 }
 
 /* Tarjeta 1 */
+.card.intro {
+    position: relative;
+    padding-bottom: 4.5rem; /* leave room for bottom-left buttons */
+}
+
 .intro h2 {
     color: #F29723;
     font-family: 'Roboto Condensed', sans-serif;
@@ -165,13 +198,16 @@ main h1 {
 }
 
 .buttons {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 1.2rem;
     display: flex;
     gap: 0.8rem;
 }
 
 a.btn-start, a.btn-explore {
     padding: 0.6rem 1rem;
-    border-radius: 8px;
+    border-radius: 4px;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     transition: 0.2s;
@@ -202,11 +238,17 @@ a.btn-explore:hover {
     margin-bottom: 0.8rem;
 }
 
+.results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .results img {
     width: 100%;
-    max-width: 250px;
+    max-width: 380px; /* larger image as requested */
     display: block;
-    margin: 0 auto;
 }
 
 .results p {
@@ -217,30 +259,17 @@ a.btn-explore:hover {
 
 /* Tarjeta 3 */
 .steps {
-    text-align: center;
-}
-
-.steps-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
-    margin-top: 1rem;
-}
-
-.step {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
 }
 
-.step img {
-    width: 45px;
-}
-
+/* Decorative image fills card height with tiny top/bottom margins */
 .decorative {
-    width: 60%;
-    margin: 0 auto;
+    height: calc(100% - 8px);
+    width: 100%;
+    object-fit: cover;
+    margin: 4px 0; /* tiny gap top/bottom */
     display: block;
 }
 
@@ -250,57 +279,75 @@ a.btn-explore:hover {
     margin-bottom: 1rem;
 }
 
+.materials { display: flex; flex-direction: column; }
 .materials-scroll {
-    max-height: 500px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    /* No scroll: keep content compact and avoid growing beyond card */
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
 }
 
 .material {
     position: relative;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
-    cursor: pointer;
     transition: 0.3s;
 }
 
-.material:hover img {
-    filter: brightness(0.8);
-}
-
+/* square thumbnail area */
 .material img {
     width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     display: block;
     transition: filter 0.3s;
 }
 
-/* Icono play */
-.play-icon {
+.material:hover img { filter: brightness(0.9); }
+
+/* Play icon (CSS only): circle with triangle */
+.play-link {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    background: url('../assets/img/play.png') center/cover no-repeat;
-    transition: 0.3s;
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.55);
+    display: grid; place-items: center;
+}
+.play-link:focus-visible { outline: 3px solid rgba(8,104,168,0.35); outline-offset: 2px; }
+
+.play-icon {
+    width: 0; height: 0;
+    border-left: 18px solid #FFFFFF;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    transition: border-left-color 0.2s;
 }
 
-.material.video:hover .play-icon {
-    transform: translate(-50%, -50%) scale(1.1);
-}
+.material.video .play-link:hover { background: rgba(242,151,35,0.9); }
+.material.video .play-link:hover .play-icon { border-left-color: #000; }
+
+/* Ensure only play icon is clickable for videos */
+.material.video { cursor: default; }
 
 /* Favoritos */
 .fav-icon {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 25px;
+    top: 6px;
+    right: 6px;
+    width: 18px; /* smaller heart */
+    height: auto;
     transition: 0.2s;
     cursor: pointer;
+    z-index: 2;
+    user-select: none;
+    -webkit-user-drag: none;
 }
+
+/* ensure play overlay sits above image */
+.play-link { z-index: 1; }
 
 /* Scroll personalizado */
 .materials-scroll::-webkit-scrollbar {
@@ -310,4 +357,54 @@ a.btn-explore:hover {
 .materials-scroll::-webkit-scrollbar-thumb {
     background-color: #A6A6A6;
     border-radius: 4px;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 1rem;
+    }
+    .card.intro { grid-column: 1; grid-row: 1; }
+    .card.results { grid-column: 1; grid-row: 2; }
+    .card.steps { grid-column: 2; grid-row: 1 / span 2; }
+    .card.materials { grid-column: 1 / -1; grid-row: 3; min-height: 420px; }
+    .decorative { height: auto; margin: 0; }
+}
+
+@media (max-width: 768px) {
+    header { margin: 0.5rem 1rem; padding: 0.5rem 1rem; display: flex; flex-wrap: wrap; align-items: center; }
+    .logo { order: 1; }
+    .logo img { margin-left: 0; height: 40px; }
+    .profile-menu { order: 2; margin-left: auto; }
+    nav { order: 3; width: 100%; gap: 0.75rem; flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; margin-left: 0; margin-right: 0; }
+    nav a { padding: 0.6rem 0.5rem; display: inline-block; }
+
+    main { padding: 0 1rem; }
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    .card.intro, .card.results, .card.steps, .card.materials {
+        grid-column: 1; grid-row: auto; min-height: auto;
+    }
+    .decorative { height: auto; object-fit: contain; }
+    .materials-scroll { overflow: visible; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+    .buttons { position: static; margin-top: 1rem; }
+}
+
+@media (max-width: 480px) {
+    nav a { padding: 0.5rem 0.4rem; }
+    .materials-scroll { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+
+
+/* Fine-tune favorite icon size on mobile */
+@media (max-width: 768px) {
+    .fav-icon {
+        width: 16px;
+        top: 5px;
+        right: 5px;
+    }
 }

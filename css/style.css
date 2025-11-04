@@ -1,247 +1,475 @@
-/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
-
-/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
-html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Customize the background color to match your design.
- */
-
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F2F4F8;
+    color: #000;
+    line-height: 1.6;
 }
 
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
+/* Global media-safe image defaults */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
+/* Encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid #DDE1E6;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
 }
 
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
+header .logo img {
+    height: 45px;
+    margin-left: 2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.1rem;
 }
 
-/*
- * Allow only vertical resizing of textareas.
- */
+header nav a {
+    color: #0868A8;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    font-family: 'Roboto', sans-serif;
 
-textarea {
-  resize: vertical;
+    /* Make the whole pill clickable like a normal button */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 1rem 0.05rem;
+    border-radius: 1px; /* pill shape; change to 6px if you prefer squared corners */
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 0.5rem;
+
+    /* 2px stroke under the button in the same color as the label */
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 3px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+
+    /* Preserve existing spacing to the right */
+    margin-right: 70rem;
 }
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden,
-[hidden] {
-  display: none !important;
+/* Hover and focus styles for the header nav button */
+header nav a:focus-visible {
+    outline: 3px solid rgba(8, 104, 168, 0.35);
+    outline-offset: 2px;
 }
 
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
+.header-buttons a {
+    display: inline-block;
+    margin-left: 0.5rem;
+    border: none;
+    border-radius: 2px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
-/*
- * Extends the .visually-hidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.visually-hidden.focusable:active,
-.visually-hidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
+.header-buttons a:hover {
+    transform: scale(1.07);
 }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
+.btn-signin {
+    background: #FFFFFF;
+    color: #0868A8;
+    border: 2px solid #0868A8;
+    font-weight: bold;
 }
 
-/*
- * Clearfix: contain floats
- *
- * The use of `table` rather than `block` is only necessary if using
- * `::before` to contain the top-margins of child elements.
- */
-
-.clearfix::before,
-.clearfix::after {
-  content: "";
-  display: table;
+.btn-login {
+    background: #F29723;
+    color: #FFFFFF;
+    font-weight: bold;
 }
 
-.clearfix::after {
-  clear: both;
+/* Cards */
+main {
+    display: grid;
+    grid-template-columns: auto 1fr; /* first column fits its content (intro), second column expands */
+    gap: 1.5rem;
+    padding: 2rem;
+    align-items: stretch;
+    /* Typography: use Roboto Condensed Regular across main */
+    font-family: 'Roboto Condensed', 'Roboto', sans-serif;
+    font-weight: 400; /* regular */
 }
 
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
+.card {
+    background: #FFFFFF;
+    border-radius: 3px;
+    padding: 2.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
+.intro {
+    width: 33rem
 }
 
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-  *,
-  *::before,
-  *::after {
-    background: #fff !important;
-    color: #000 !important;
-    /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
-
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
-
-  pre {
-    white-space: pre-wrap !important;
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
+.intro h1 {
+    color: #F29723;
+    margin-bottom: 0.8rem;
+    font-size: 2.2rem;
+    font-weight: 400; /* Regular as requested */
+    line-height: 1.2;
 }
 
+.intro p {
+    color: #000000;
+    font-size: 1.3rem;
+    margin-bottom: 0.1rem;
+}
+
+.btn-start {
+    background: #F22323;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    padding: 0.8rem 1.2rem;
+    font-family: 'Roboto', sans-serif; /* Roboto Bold for the button */
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 1rem;
+    font-size: 1rem;
+    margin-right: 1rem;
+}
+
+.btn-start:hover {
+    opacity: 0.8;
+}
+
+.icons {
+    display: flex;
+    justify-content: center; /* center image inside the card */
+    align-items: center;
+    /* occupy the second column in the first row by default flow */
+}
+
+.icons img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; /* center horizontally */
+}
+
+.features {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    /* Span full width under the first row of cards */
+    grid-column: 1 / -1;
+}
+
+.features-left, .features-right {
+    flex: 1;
+}
+
+.features-left h2, .features-right h2 {
+    color: #F29723;
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    font-weight: 400;
+}
+
+.features-right {
+    flex: 0.5; /* Reducimos el crecimiento relativo, estrechándola */
+    padding-left: 4rem; /* Empuja el contenido 2rem hacia la derecha */
+    padding-right: 4rem;
+    text-align: center
+}
+
+.features-right ul {
+    font-size: 1.2rem;
+    text-align: center;
+    padding-left: 0;
+    list-style-position: inside; /* Mueve las viñetas dentro del contenedor si se ajustó padding */
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.student-img {
+    margin-top: 2rem;
+    width: 100%;
+    margin-bottom: 3rem;
+    margin-left: 1rem;
+}
+
+/* Pie de página */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    padding: 0.7rem 2rem;
+    color: #A6A6A6;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Keep social icons aligned horizontally at bottom-right on desktop */
+.footer-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+.footer-right a {
+    display: inline-flex; /* prevent block-level images from forcing a new line */
+}
+
+footer img {
+    height: 25px;
+    margin-left: 0.5rem;
+    margin-top: 0.1rem;
+}
+
+/* 404 */
+.error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.error-container {
+    text-align: center;
+}
+
+.error-container h1 {
+    font-size: 6rem;
+    color: #F22323;
+}
+
+.btn-return {
+    display: inline-block;
+    margin-top: 1rem;
+    background: #0868A8;
+    color: #FFF;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+}
+/* UI */
+.ui-container {
+    padding: 2rem;
+}
+
+.color-sample {
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 4px;
+    color: #FFF;
+    text-align: center;
+    line-height: 40px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    /* Header: stack and tighten spacing */
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        margin: 0.5rem 0.75rem;
+    }
+    header .logo img {
+        height: 40px;
+        margin: 0;
+    }
+    header nav a {
+        margin-right: 0; /* remove huge desktop spacing */
+        padding: 0.5rem 0;
+    }
+    .header-buttons {
+        width: 100%;
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+    .header-buttons a {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 0.7rem 0.9rem;
+    }
+
+    /* Layout */
+    main { grid-template-columns: 1fr; }
+    .features { flex-direction: column; }
+
+    /* Cards: reduce inner padding for small screens */
+    .card { padding: 1.25rem; }
+
+    /* Intro/Hero */
+    .intro { width: auto; }
+    .intro h1 { font-size: 1.8rem; line-height: 1.2; }
+    .intro p { font-size: 1rem; }
+    .btn-start {
+        align-self: stretch; /* full width button on mobile */
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    /* Icons strip */
+    .icons img {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Features */
+    .features-left { grid-template-columns: 1fr; }
+    .student-img { margin-left: 0; }
+    .features-right {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        text-align: left;
+    }
+    .features-right ul { font-size: 1rem; line-height: 1.5; text-align: left; }
+
+    /* Footer: stack */
+    footer {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+    .footer-right a { margin: 0 0.25rem; }
+}
+
+
+/* Features: three items in a row with icon left, title right, description below */
+.features-left {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem 1.5rem; /* row gap / column gap */
+    align-items: start;
+}
+
+.features-left h2 {
+    grid-column: 1 / -1; /* make the section title span all columns */
+}
+
+.features-left .student-img {
+    grid-column: 1 / -1; /* image spans full width under the items */
+    margin-top: 50px;
+}
+
+/* Individual feature items layout */
+.feature-item-1,
+.feature-item-2,
+.feature-item-3 {
+    display: grid;
+    grid-template-columns: 44px 1fr; /* icon and text */
+    grid-auto-rows: auto;
+    column-gap: 0.75rem;
+    row-gap: 0.25rem;
+    align-items: start;
+    margin-top: 0.5rem;
+}
+
+.feature-item-1 > img,
+.feature-item-2 > img,
+.feature-item-3 > img {
+    grid-row: 1 / span 2; /* icon spans title and description */
+    width: 55px;
+    height: auto;
+    margin-left: 1rem;
+}
+
+/* Ensure the text wrapper sits to the right of the icon */
+.feature-item-1 > div,
+.feature-item-2 > div,
+.feature-item-3 > div {
+    grid-column: 5;
+}
+
+/* Tighten default spacing for headings and paragraphs inside items */
+.feature-item-1 h3,
+.feature-item-2 h3,
+.feature-item-3 h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+}
+
+.feature-item-1 p,
+.feature-item-2 p,
+.feature-item-3 p {
+    margin: 0.25rem 0 0 0;
+    font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+    /* fallback to two columns on medium screens */
+    .features-left { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    /* stack features vertically on small screens */
+    .features-left { grid-template-columns: 1fr; }
+}
+
+
+/* Position "Empieza Aquí" button at the bottom-right of the intro card */
+.intro {
+    display: flex; /* allow the inner wrapper to stretch to full card height */
+}
+
+.intro .intro-text {
+    display: flex;
+    flex-direction: column; /* stack title, paragraph, and button vertically */
+    flex: 1; /* fill the card's height */
+}
+
+/* Push the button to the bottom and right */
+.btn-start {
+    align-self: flex-end; /* right */
+    margin-top: auto;     /* bottom */
+}
+
+
+@media (max-width: 480px) {
+    header { padding: 0.5rem 0.75rem; margin: 0.5rem; }
+    .card { padding: 1rem; }
+    .intro h1 { font-size: 1.6rem; }
+    .intro p { font-size: 0.95rem; }
+    .btn-start { padding: 0.75rem 1rem; }
+    .features-right ul { font-size: 0.95rem; }
+}
+
+
+/* Desktop explicit grid placement for first-row cards */
+@media (min-width: 769px) {
+    .intro { grid-column: 1; }
+    .icons {
+        grid-column: 2;
+        justify-self: stretch; /* fill the grid track horizontally */
+        align-self: stretch;   /* fill the grid track vertically if heights differ */
+        width: 100%;
+    }
+}
