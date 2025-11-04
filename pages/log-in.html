@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/log-in.css" />
+    <title>Iniciar sesión</title>
+</head>
+<body>
+    <main class="login" role="main">
+        <section class="login_left">
+            <img class="login_logo" src="../assets/img/vocatiologo-signin.png" alt="Vocatio" />
+
+            <h1 class="login_title">¡Bienvenido a Vocatio!</h1>
+
+            <form class="login_form" action="#" method="post" novalidate>
+                <div class="form-field">
+                    <label class="form-label" for="email">Correo electrónico</label>
+                    <input class="form-input" type="email" id="email" name="email" placeholder="tu@correo.com" autocomplete="email" required />
+                </div>
+
+                <div class="form-field">
+                    <label class="form-label" for="password">Contraseña</label>
+                    <input class="form-input" type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required />
+                </div>
+
+                <button class="button button-primary" type="submit">Iniciar sesión</button>
+            </form>
+
+            <p class="login_signup">¿Aún no tienes una cuenta? <a class="link" href="#">Regístrate</a></p>
+        </section>
+
+        <aside class="login_right" aria-hidden="true">
+            <img class="login_illustration" src="../assets/img/caminos.png" alt="" />
+        </aside>
+    </main>
+</body>
+</html>
