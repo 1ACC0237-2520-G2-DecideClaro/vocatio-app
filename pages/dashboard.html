@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Vocatio</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Encabezado -->
+<header>
+    <div class="logo">
+        <a href="dashboard.html">
+            <img src="../assets/img/logo.png" alt="Vocatio logo">
+        </a>
+    </div>
+
+    <nav>
+        <a href="dashboard.html" class="active">Vista General</a>
+        <a href="../pages/test.html" class="test-link">Iniciar Test</a>
+        <a href="../pages/path.html">Ruta de Aprendizaje</a>
+        <a href="../pages/explore.html">Explorar</a>
+        <a href="../pages/reports.html">Informes</a>
+    </nav>
+
+    <!-- Menú contextual -->
+    <div class="profile-menu">
+        <button id="profileButton">
+            <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+            <span class="arrow-down"></span>
+        </button>
+
+        <ul class="dropdown" id="dropdownMenu">
+            <li class="user-section">
+                <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+                <a href="../pages/profile.html">German Garmendia</a>
+            </li>
+            <hr>
+            <li><img src="../assets/img/favorites.png" alt="Favoritos"><a href="../pages/favorites.html">Favoritos</a></li>
+            <li><img src="../assets/img/history.png" alt="Historial"><a href="../pages/history.html">Historial</a></li>
+            <li><img src="../assets/img/settings-alt.png" alt="Configuración"><a href="../pages/settings.html">Configuración</a></li>
+            <hr>
+            <li class="logout"><img src="../assets/img/logout.png" alt="Cerrar sesión"><a href="../index.html">Cerrar sesión</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- Cuerpo principal -->
+<main>
+    <h1>Mi espacio vocacional</h1>
+
+    <div class="grid-container">
+        <!-- Tarjeta 1 -->
+        <section class="card intro">
+            <h2>Encuentra tu carrera ideal</h2>
+            <p>Descubre la carrera que mejor se adapta a tus intereses y habilidades con nuestro test vocacional en línea. También puedes explorar todas las carreras disponibles.</p>
+            <div class="buttons">
+                <a href="../pages/test.html" class="btn-start">Empieza Aquí</a>
+                <a href="../pages/explore.html" class="btn-explore">Explora</a>
+            </div>
+        </section>
+
+        <!-- Tarjeta 2 -->
+        <section class="card results">
+            <h2>Resultados del último test</h2>
+            <img src="../assets/img/realiza-un-test.png" alt="Realiza un test">
+            <p>Realiza un test para mostrar tus resultados</p>
+        </section>
+
+        <!-- Tarjeta 3 -->
+        <section class="card steps">
+            <img src="../assets/img/espacio.png" alt="Decorativo" class="decorative">
+        </section>
+
+        <!-- Tarjeta 4 -->
+        <section class="card materials">
+            <h2>Explora el material que tenemos disponible para ti</h2>
+            <div class="materials-scroll">
+                <!-- Material 1 (video) -->
+                <div class="material video">
+                    <img src="../assets/img/video1.png" alt="Carrera Marketing Digital">
+                    <a class="play-link" href="https://www.youtube.com/watch?v=3eQyOAqOLKE" target="_blank" rel="noopener noreferrer">
+                        <div class="play-icon" aria-label="Reproducir video"></div>
+                    </a>
+                    <img class="fav-icon" src="../assets/img/nofav.png" alt="Favorito">
+                </div>
+
+                <!-- Material 2 (video) -->
+                <div class="material video">
+                    <img src="../assets/img/video2.png" alt="Cómo es estudiar Medicina">
+                    <a class="play-link" href="https://www.youtube.com/watch?v=tAJqC4MrdaQ" target="_blank" rel="noopener noreferrer">
+                        <div class="play-icon" aria-label="Reproducir video"></div>
+                    </a>
+                    <img class="fav-icon" src="../assets/img/nofav.png" alt="Favorito">
+                </div>
+
+                <!-- Material 3 (artículo/guía) -->
+                <div class="material article">
+                    <a class="material-link" href="#">
+                        <img src="../assets/img/guia1.png" alt="Guía profesional">
+                    </a>
+                    <img class="fav-icon" src="../assets/img/nofav.png" alt="Favorito">
+                </div>
+
+                <!-- Material 4 (artículo/guía) -->
+                <div class="material article">
+                    <a class="material-link" href="#">
+                        <img src="../assets/img/guia2.png" alt="Tips vocacionales">
+                    </a>
+                    <img class="fav-icon" src="../assets/img/nofav.png" alt="Favorito">
+                </div>
+
+                <!-- Material 5 (video) -->
+                <div class="material video">
+                    <img src="../assets/img/todo-sobre-cc.png" alt="Todo sobre Ciencias de la Computación">
+                    <a class="play-link" href="#" target="_blank" rel="noopener noreferrer">
+                        <div class="play-icon" aria-label="Reproducir video"></div>
+                    </a>
+                    <img class="fav-icon" src="../assets/img/nofav.png" alt="Favorito">
+                </div>
+
+                <!-- Material 6 (artículo/guía) -->
+                <div class="material article">
+                    <a class="material-link" href="#">
+                        <img src="../assets/img/los-5-lenguajes.png" alt="Los 5 lenguajes">
+                    </a>
+                    <img class="fav-icon" src="../assets/img/nofav.png" alt="Favorito">
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script>
+    // Menú contextual interactivo
+    const profileButton = document.getElementById('profileButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const arrow = document.querySelector('.arrow-down');
+
+    profileButton.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('show');
+        arrow.classList.toggle('rotate');
+    });
+
+    // Favoritos (rellenar corazón)
+    document.querySelectorAll('.fav-icon').forEach(icon => {
+        icon.addEventListener('click', () => {
+            if (icon.src.includes('nofav')) {
+                icon.src = '../assets/img/fav.png';
+            } else {
+                icon.src = '../assets/img/nofav.png';
+            }
+        });
+    });
+</script>
+</body>
+</html>
