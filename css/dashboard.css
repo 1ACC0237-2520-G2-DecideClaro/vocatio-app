@@ -212,11 +212,13 @@ a.btn-start, a.btn-explore {
     font-weight: 700;
     transition: 0.2s;
     text-decoration: none;
+
 }
 
 a.btn-start {
     background: #F22323;
     color: #FFF;
+    padding: 0.8rem 1.2rem;
 }
 
 a.btn-start:hover {
