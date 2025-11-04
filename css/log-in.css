@@ -26,28 +26,43 @@ body {
 }
 
 .login_left {
+  position: relative;
   flex: 1 1 520px;
   max-width: 680px;
-  padding: 48px 32px;
+  padding: 96px 32px 48px 32px; /* extra top space for the logo */
   display: flex;
   flex-direction: column;
   gap: 24px;
-  justify-content: center;
+  justify-content: center; /* center content vertically in the left side */
+  align-items: center; /* center the content block horizontally within the left side */
 }
 
 .login_right {
   flex: 1 1 560px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   background: #faf7f3;
-  padding: 24px;
+  padding: 0;
 }
 
 .login_logo {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.login_logo img {
+  width: 104px;
+  height: auto;
+  display: block;
+}
+
+.login_logo:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-primary) 60%, transparent);
+  outline-offset: 2px;
 }
 
 .login_title {
@@ -109,12 +124,15 @@ body {
 .link { color: var(--color-primary); text-decoration: none; }
 .link:hover { text-decoration: underline; }
 
+.login_right { min-height: 100vh; }
+
 .login_illustration {
-  width: 100%;
-  max-width: 560px;
-  height: auto;
-  max-height: 90vh;
-  object-fit: contain;
+  height: 100vh; /* ajustada solo al alto de la ventana */
+  width: auto;   /* no forzar al ancho */
+  max-height: 100vh;
+  object-fit: contain; /* mantener proporción, sin recortes */
+  display: block;
+  margin: 0 auto; /* centrar horizontalmente en su columna */
 }
 
 @media (max-width: 900px) {

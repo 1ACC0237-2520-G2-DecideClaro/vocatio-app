@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/log-in.css" />
     <title>Iniciar sesión</title>
 </head>
 <body>
     <main class="login" role="main">
         <section class="login_left">
-            <img class="login_logo" src="../assets/img/vocatiologo-signin.png" alt="Vocatio" />
+            <a href="../index.html" class="login_logo" aria-label="Ir al inicio">
+                <img src="../assets/img/vocatiologo-signin.png" alt="Vocatio" />
+            </a>
 
             <h1 class="login_title">¡Bienvenido a Vocatio!</h1>
 
@@ -24,10 +29,10 @@
                     <input class="form-input" type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required />
                 </div>
 
-                <button class="button button-primary" type="submit">Iniciar sesión</button>
+                <a class="button button-primary" href="../dashboard.html" role="button">Iniciar sesión</a>
             </form>
 
-            <p class="login_signup">¿Aún no tienes una cuenta? <a class="link" href="#">Regístrate</a></p>
+            <p class="login_signup">¿Aún no tienes una cuenta? <a class="link" href="../sign-in.html">Regístrate</a></p>
         </section>
 
         <aside class="login_right" aria-hidden="true">
