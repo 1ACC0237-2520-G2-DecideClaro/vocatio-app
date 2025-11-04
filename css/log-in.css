@@ -32,7 +32,7 @@ body {
   padding: 96px 32px 48px 32px; /* extra top space for the logo */
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 40px;
   justify-content: center; /* center content vertically in the left side */
   align-items: center; /* center the content block horizontally within the left side */
 }
@@ -55,7 +55,7 @@ body {
 }
 
 .login_logo img {
-  width: 104px;
+  width: 140px;
   height: auto;
   display: block;
 }
@@ -117,11 +117,12 @@ body {
 .button-primary {
   background: var(--color-primary);
   color: #fff;
+  margin-top: 16px;
 }
 
 .login_signup { font-size: 14px; }
 
-.link { color: var(--color-primary); text-decoration: none; }
+.link { color: var(--color-primary); text-decoration: none; font-weight: 600}
 .link:hover { text-decoration: underline; }
 
 .login_right { min-height: 100vh; }
