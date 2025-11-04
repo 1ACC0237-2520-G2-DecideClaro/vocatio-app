@@ -16,6 +16,13 @@ a {
     color: inherit;
 }
 
+/* Global media-safe image defaults */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Encabezado */
 header {
     display: flex;
@@ -98,7 +105,7 @@ header nav a:focus-visible {
 /* Cards */
 main {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 1fr; /* first column fits its content (intro), second column expands */
     gap: 1.5rem;
     padding: 2rem;
     align-items: stretch;
@@ -153,14 +160,15 @@ main {
 
 .icons {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; /* center image inside the card */
     align-items: center;
+    /* occupy the second column in the first row by default flow */
 }
 
 .icons img {
-    width: 1100px;
-    margin-left: 4rem;
-    margin-right: 4rem;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; /* center horizontally */
 }
 
 .features {
@@ -221,6 +229,17 @@ footer {
     font-weight: 600;
 }
 
+/* Keep social icons aligned horizontally at bottom-right on desktop */
+.footer-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+.footer-right a {
+    display: inline-flex; /* prevent block-level images from forcing a new line */
+}
+
 footer img {
     height: 25px;
     margin-left: 0.5rem;
@@ -270,20 +289,75 @@ footer img {
 
 /* Responsividad */
 @media (max-width: 768px) {
+    /* Header: stack and tighten spacing */
     header {
         flex-direction: column;
-        gap: 1rem;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        margin: 0.5rem 0.75rem;
     }
-    main {
-        grid-template-columns: 1fr;
+    header .logo img {
+        height: 40px;
+        margin: 0;
     }
-    .features {
-        flex-direction: column;
+    header nav a {
+        margin-right: 0; /* remove huge desktop spacing */
+        padding: 0.5rem 0;
     }
+    .header-buttons {
+        width: 100%;
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+    .header-buttons a {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 0.7rem 0.9rem;
+    }
+
+    /* Layout */
+    main { grid-template-columns: 1fr; }
+    .features { flex-direction: column; }
+
+    /* Cards: reduce inner padding for small screens */
+    .card { padding: 1.25rem; }
+
+    /* Intro/Hero */
+    .intro { width: auto; }
+    .intro h1 { font-size: 1.8rem; line-height: 1.2; }
+    .intro p { font-size: 1rem; }
+    .btn-start {
+        align-self: stretch; /* full width button on mobile */
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    /* Icons strip */
     .icons img {
-        width: 200px;
+        width: 100%;
         max-width: 100%;
+        margin: 0 auto;
     }
+
+    /* Features */
+    .features-left { grid-template-columns: 1fr; }
+    .student-img { margin-left: 0; }
+    .features-right {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        text-align: left;
+    }
+    .features-right ul { font-size: 1rem; line-height: 1.5; text-align: left; }
+
+    /* Footer: stack */
+    footer {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+    .footer-right a { margin: 0 0.25rem; }
 }
 
 
@@ -376,4 +450,26 @@ footer img {
 .btn-start {
     align-self: flex-end; /* right */
     margin-top: auto;     /* bottom */
+}
+
+
+@media (max-width: 480px) {
+  header { padding: 0.5rem 0.75rem; margin: 0.5rem; }
+  .card { padding: 1rem; }
+  .intro h1 { font-size: 1.6rem; }
+  .intro p { font-size: 0.95rem; }
+  .btn-start { padding: 0.75rem 1rem; }
+  .features-right ul { font-size: 0.95rem; }
+}
+
+
+/* Desktop explicit grid placement for first-row cards */
+@media (min-width: 769px) {
+  .intro { grid-column: 1; }
+  .icons {
+    grid-column: 2;
+    justify-self: stretch; /* fill the grid track horizontally */
+    align-self: stretch;   /* fill the grid track vertically if heights differ */
+    width: 100%;
+  }
 }
