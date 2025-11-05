@@ -409,5 +409,15 @@
       }
     });
   </script>
+
+  <!-- ===== REDIRECCIÓN DE "EMPIEZA AQUÍ" ===== -->
+<script>
+  document.querySelectorAll('.btn-start').forEach(button => {
+    button.addEventListener('click', () => {
+      window.location.href = '../pages/path.html';
+    });
+  });
+</script>
+
 </body>
 </html>
