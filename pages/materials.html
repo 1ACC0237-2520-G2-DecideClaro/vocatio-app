@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vocatio | Materiales de Aprendizaje</title>
+  <link rel="stylesheet" href="../css/materials.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== ENCABEZADO ===== -->
+  <header>
+    <div class="logo">
+      <a href="../pages/dashboard.html"><img src="../assets/img/logo.png" alt="Vocatio logo" /></a>
+    </div>
+
+    <nav>
+      <a href="../pages/dashboard.html">Vista General</a>
+      <a href="../pages/test.html">Iniciar Test</a>
+      <a class="active" href="../pages/materials.html">Ruta de Aprendizaje</a>
+      <a href="../pages/explore.html">Explorar</a>
+      <a href="../pages/reports.html">Informes</a>
+    </nav>
+
+    <div class="header-right">
+      <div class="profile">
+        <img src="../assets/img/user-icon.png" alt="Perfil" />
+        <div class="dropdown" role="menu" aria-hidden="true">
+          <a href="../pages/profile.html" id="user-name">Fernan</a>
+          <a href="../pages/favorites.html" id="favorites-link">Favoritos</a>
+          <a href="../pages/history.html" id="history-link">Historial</a>
+          <a href="../pages/settings.html" id="settings-link">Configuración</a>
+          <a href="../index.html" class="logout" id="logout-link">Cerrar sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== TÍTULO + BUSCADOR ===== -->
+  <div class="header-search">
+    <h1>Materiales sugeridos</h1>
+    <div class="search-wrap">
+      <input class="search-bar" id="search-input" type="text" placeholder="Buscar material..." />
+    </div>
+  </div>
+
+  <!-- ===== GRID DE MATERIALES ===== -->
+  <main>
+
+  <!-- ===== FILTRO POR CARRERA O ÁREA ===== -->
+  <div class="filters-row">
+    <div class="sort-box">
+      <label for="career-filter">Filtrar por carrera o área:</label>
+      <select id="career-filter">
+        <option value="todos">Todas las áreas</option>
+        <option value="computacion">Ciencias de la Computación</option>
+        <option value="robotica">Robótica</option>
+        <option value="marketing">Marketing</option>
+        <option value="etica">Ética y Humanidades</option>
+        <option value="idiomas">Idiomas</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ===== SECCIÓN: DOCUMENTOS ===== -->
+  <section class="material-section">
+    <h2 class="section-title">📘 Documentos recomendados</h2>
+    <div class="career-grid">
+
+      <article class="career-card" data-id="robotica" data-area="robotica">
+        <a href="#modal-robotica" class="card-link">
+          <img src="../assets/img/material-robotica.png" alt="Robótica Educativa" />
+          <div class="career-info">
+            <h2>Guía de Robótica Educativa</h2>
+            <p>Manual descargable sobre automatización, sensores y robótica básica.</p>
+          </div>
+        </a>
+        <div class="card-actions">
+          <button class="favorite-btn"><img src="../assets/img/heart-empty.png" alt="Favorito"></button>
+          <button class="btn-start">Descargar PDF</button>
+        </div>
+      </article>
+
+      <article class="career-card" data-id="etica" data-area="etica">
+        <a href="#modal-etica" class="card-link">
+          <img src="../assets/img/material-etica.jpg" alt="Ética Profesional" />
+          <div class="career-info">
+            <h2>Manual de Ética Profesional</h2>
+            <p>Principios y valores éticos aplicados en entornos laborales modernos.</p>
+          </div>
+        </a>
+        <div class="card-actions">
+          <button class="favorite-btn"><img src="../assets/img/heart-empty.png" alt="Favorito"></button>
+          <button class="btn-start">Descargar PDF</button>
+        </div>
+      </article>
+
+      <article class="career-card" data-id="proyectos" data-area="computacion">
+        <a href="#modal-proyectos" class="card-link">
+          <img src="../assets/img/material-proyectos.jpeg" alt="Gestión de Proyectos" />
+          <div class="career-info">
+            <h2>Gestión de Proyectos Tecnológicos</h2>
+            <p>Guía para estructurar proyectos de innovación en tecnología e ingeniería.</p>
+          </div>
+        </a>
+        <div class="card-actions">
+          <button class="favorite-btn"><img src="../assets/img/heart-empty.png" alt="Favorito"></button>
+          <button class="btn-start">Descargar PDF</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN: VIDEOS ===== -->
+  <section class="material-section">
+    <h2 class="section-title">🎥 Videos sugeridos</h2>
+    <div class="career-grid">
+
+      <article class="career-card" data-id="ia" data-area="computacion">
+        <a href="#modal-ia" class="card-link">
+          <img src="../assets/img/material-ia.png" alt="Introducción a la IA" />
+          <div class="career-info">
+            <h2>Introducción a la Inteligencia Artificial</h2>
+            <p>Video educativo sobre los fundamentos de la IA y su impacto profesional.</p>
+          </div>
+        </a>
+        <div class="card-actions">
+          <button class="favorite-btn"><img src="../assets/img/heart-empty.png" alt="Favorito"></button>
+          <button class="btn-start">Ver Video</button>
+        </div>
+      </article>
+
+      <article class="career-card" data-id="marketing" data-area="marketing">
+        <a href="#modal-marketing" class="card-link">
+          <img src="../assets/img/material-marketing.jpg" alt="Marketing Digital" />
+          <div class="career-info">
+            <h2>Marketing Digital para Principiantes</h2>
+            <p>Conceptos básicos del marketing moderno y cómo aplicarlos en redes sociales.</p>
+          </div>
+        </a>
+        <div class="card-actions">
+          <button class="favorite-btn"><img src="../assets/img/heart-empty.png" alt="Favorito"></button>
+          <button class="btn-start">Ver Video</button>
+        </div>
+      </article>
+
+      <article class="career-card" data-id="innovacion" data-area="robotica">
+        <a href="#modal-innovacion" class="card-link">
+          <img src="../assets/img/material-innovacion.jpg" alt="Innovación y Creatividad" />
+          <div class="career-info">
+            <h2>Innovación y Creatividad Aplicada</h2>
+            <p>Video que enseña cómo fomentar la creatividad en proyectos tecnológicos.</p>
+          </div>
+        </a>
+        <div class="card-actions">
+          <button class="favorite-btn"><img src="../assets/img/heart-empty.png" alt="Favorito"></button>
+          <button class="btn-start">Ver Video</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN: CURSOS ===== -->
+  <section class="material-section">
+    <h2 class="section-title">💻 Cursos por carrera</h2>
+    <div class="career-grid">
+
+      <article class="career-card" data-id="programacion" data-area="computacion">
+        <a href="#modal-programacion" class="card-link">
+          <img src="../assets/img/material-programacion.jpg" alt="Programación desde cero" />
+          <div class="career-info">
+            <h2>Curso: Programación desde Cero</h2>
+            <p>Aprende los fundamentos de la programación con ejemplos en Python.</p>
+          </div>
+        </a>
+        <div class="card-actions">
+          <button class="favorite-btn"><img src="../assets/img/heart-empty.png" alt="Favorito"></button>
+          <button class="btn-start">Ir al Curso</button>
+        </div>
+      </article>
+
+      <article class="career-card" data-id="ingles" data-area="idiomas">
+        <a href="#modal-ingles" class="card-link">
+          <img src="../assets/img/material-ingles.jpg" alt="Inglés Técnico" />
+          <div class="career-info">
+            <h2>Curso: Inglés Técnico</h2>
+            <p>Fortalece tu comprensión del inglés aplicado al mundo profesional y tecnológico.</p>
+          </div>
+        </a>
+        <div class="card-actions">
+          <button class="favorite-btn"><img src="../assets/img/heart-empty.png" alt="Favorito"></button>
+          <button class="btn-start">Ir al Curso</button>
+        </div>
+      </article>
+
+      <article class="career-card" data-id="gestion" data-area="marketing">
+        <a href="#modal-gestion" class="card-link">
+          <img src="../assets/img/material-gestion.jpg" alt="Gestión de Empresas" />
+          <div class="career-info">
+            <h2>Curso: Gestión de Empresas</h2>
+            <p>Aprende sobre liderazgo, productividad y estrategias empresariales modernas.</p>
+          </div>
+        </a>
+        <div class="card-actions">
+          <button class="favorite-btn"><img src="../assets/img/heart-empty.png" alt="Favorito"></button>
+          <button class="btn-start">Ir al Curso</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+
+  <!-- ===== MODALES ===== -->
+  <div id="modal-ia" class="modal">
+    <div class="modal-content">
+      <a href="#" class="close">&times;</a>
+      <img src="../assets/img/material-ia.png" alt="IA" />
+      <h2>Introducción a la Inteligencia Artificial</h2>
+      <div class="career-details">
+        <p><strong>Tipo:</strong> Video</p>
+        <p><strong>Duración:</strong> 15 min</p>
+        <p><strong>Descripción:</strong> Aprende los principios básicos de la IA, sus aplicaciones y retos éticos.</p>
+      </div>
+      <div class="card-actions modal-buttons">
+        <button class="favorite-btn">♡</button>
+        <button class="btn-start">Ver Material</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-robotica" class="modal">
+    <div class="modal-content">
+      <a href="#" class="close">&times;</a>
+      <img src="../assets/img/material-robotica.png" alt="Robótica" />
+      <h2>Guía de Robótica Educativa</h2>
+      <div class="career-details">
+        <p><strong>Tipo:</strong> Documento PDF</p>
+        <p><strong>Tamaño:</strong> 4 MB</p>
+        <p><strong>Descripción:</strong> Aprende sobre robótica moderna, automatización y sensores básicos.</p>
+      </div>
+      <div class="card-actions modal-buttons">
+        <button class="favorite-btn">♡</button>
+        <button class="btn-start">Descargar PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-programacion" class="modal">
+    <div class="modal-content">
+      <a href="#" class="close">&times;</a>
+      <img src="../assets/img/material-programacion.jpg" alt="Programación" />
+      <h2>Curso: Programación desde Cero</h2>
+      <div class="career-details">
+        <p><strong>Tipo:</strong> Curso online</p>
+        <p><strong>Duración:</strong> 6 semanas</p>
+        <p><strong>Descripción:</strong> Aprende desde los fundamentos hasta la creación de tus primeros programas.</p>
+      </div>
+      <div class="card-actions modal-buttons">
+        <button class="favorite-btn">♡</button>
+        <button class="btn-start">Ir al Curso</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPT (misma lógica de explore) ===== -->
+  <script>
+  (function () {
+    const STORAGE_KEY = 'vocatio_materials_v1';
+    const getFavorites = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    const saveFavorites = (arr) => localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+
+    function initFavorites() {
+      const favs = getFavorites();
+      document.querySelectorAll('.career-card').forEach(card => {
+        const id = card.dataset.id;
+        const btn = card.querySelector('.favorite-btn img');
+        btn.src = favs.includes(id)
+          ? "../assets/img/heart-filled.png"
+          : "../assets/img/heart-empty.png";
+
+        card.querySelector('.favorite-btn').addEventListener('click', (e) => {
+          e.preventDefault();
+          let current = getFavorites();
+          if (current.includes(id)) {
+            current = current.filter(f => f !== id);
+            btn.src = "../assets/img/heart-empty.png";
+          } else {
+            current.push(id);
+            btn.src = "../assets/img/heart-filled.png";
+          }
+          saveFavorites(current);
+        });
+      });
+    }
+
+    // Buscador
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', e => {
+      const q = e.target.value.trim().toLowerCase();
+      document.querySelectorAll('.career-card').forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        const desc = card.querySelector('p').textContent.toLowerCase();
+        card.style.display = title.includes(q) || desc.includes(q) ? '' : 'none';
+      });
+    });
+
+    // Filtro por carrera o área
+const careerFilter = document.getElementById('career-filter');
+careerFilter.addEventListener('change', e => {
+  const selected = e.target.value;
+  document.querySelectorAll('.career-card').forEach(card => {
+    const area = card.dataset.area;
+    card.style.display = (selected === 'todos' || area === selected) ? '' : 'none';
+  });
+});
+
+    // Dropdown
+    const profile = document.querySelector('.profile');
+    const dropdown = profile.querySelector('.dropdown');
+    document.addEventListener('click', (e) => {
+      if (!profile.contains(e.target)) {
+        dropdown.style.display = 'none';
+      } else if (e.target.closest('.profile')) {
+        dropdown.style.display =
+          dropdown.style.display === 'block' ? 'none' : 'block';
+      }
+    });
+
+    initFavorites();
+  })();
+  </script>
+
+</body>
+</html>
