@@ -100,21 +100,18 @@
 
        <!-- CIENCIAS DE LA COMPUTACIÓN -->
        <article class="career-card" data-id="computacion">
-  <a href="#modal-computacion" class="card-link">
-    <img src="../assets/img/computacion.jpg" alt="Ciencias de la Computación" />
-    <div class="career-info">
-      <h2>Ciencias de la Computación</h2>
-      <p>Vive tu pasión por crear mundos digitales y ser el arquitecto del futuro tecnológico.</p>
-    </div>
-  </a>
-  <div class="card-actions">
-    <button class="favorite-btn" aria-label="Agregar a favoritos">
-      <img src="../assets/img/heart-empty.png" alt="No favorito">
-    </button>
-    <button class="btn-start">Empieza Aquí</button>
-  </div>
-</article>
-
+           <a href="#modal-computacion" class="card-link">
+               <img src="../assets/img/computacion.jpg" alt="Ciencias de la Computación" />
+               <div class="career-info">
+                   <h2>Ciencias de la Computación</h2>
+                   <p>Vive tu pasión por crear mundos digitales y ser el arquitecto del futuro tecnológico.</p>
+               </div>
+           </a>
+           <div class="card-actions">
+               <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+               <button class="btn-start">Empieza Aquí</button>
+           </div>
+       </article>
 
        <!-- MEDICINA -->
        <article class="career-card" data-id="medicina">
@@ -322,6 +319,76 @@
 -->
 
 
+  <!-- ===== JS PRINCIPAL (Favoritos y buscador) ===== -->
+  <script>
+    (function () {
+      const STORAGE_KEY = 'vocatio_favorites_v1';
+      const getFavorites = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      const saveFavorites = (arr) => localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+
+      function initFavorites() {
+        const favs = getFavorites();
+        document.querySelectorAll('.career-card').forEach(card => {
+          const id = card.dataset.id;
+          const btn = card.querySelector('.favorite-btn');
+          if (favs.includes(id)) {
+            btn.classList.add('active');
+            btn.innerHTML = '<img src="../assets/img/heart-filled.png" alt="Favorito">';
+          } else {
+            btn.classList.remove('active');
+            btn.innerHTML = '<img src="../assets/img/heart-empty.png" alt="No favorito">';
+          }
+
+          btn.addEventListener('click', () => {
+            const current = getFavorites();
+            if (current.includes(id)) {
+              const idx = current.indexOf(id);
+              current.splice(idx, 1);
+              btn.classList.remove('active');
+              btn.innerHTML = '<img src="../assets/img/heart-filled.png" alt="Favorito">';
+            } else {
+              current.push(id);
+              btn.classList.add('active');
+              btn.innerHTML = '<img src="../assets/img/heart-empty.png" alt="No favorito">';
+            }
+            saveFavorites(current);
+          });
+        });
+      }
+
+      const searchInput = document.getElementById('search-input');
+      function initSearch() {
+        if (!searchInput) return;
+        searchInput.addEventListener('input', (e) => {
+          const q = e.target.value.trim().toLowerCase();
+          document.querySelectorAll('.career-card').forEach(card => {
+            const title = card.querySelector('h2').textContent.toLowerCase();
+            const desc = card.querySelector('p').textContent.toLowerCase();
+            const match = title.includes(q) || desc.includes(q);
+            card.style.display = match ? '' : 'none';
+          });
+        });
+      }
+
+      function initDropdownClose() {
+        const profile = document.querySelector('.profile');
+        if (!profile) return;
+        const dropdown = profile.querySelector('.dropdown');
+        document.addEventListener('click', (e) => {
+          if (!profile.contains(e.target)) {
+            dropdown.style.display = 'none';
+          } else if (e.target.closest('.profile')) {
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+          }
+        });
+      }
+
+      initFavorites();
+      initSearch();
+      initDropdownClose();
+    })();
+  </script>
+
   <!-- ===== SCRIPT FILTRO LATERAL ===== -->
   <script>
     const filterBtn = document.getElementById('filter-btn');
@@ -342,83 +409,14 @@
       }
     });
   </script>
-  <!-- ===== JS PRINCIPAL (Favoritos, buscador y menú perfil) ===== -->
+
+  <!-- ===== REDIRECCIÓN DE "EMPIEZA AQUÍ" ===== -->
 <script>
-(function () {
-  const STORAGE_KEY = 'vocatio_favorites_v1';
-  const getFavorites = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  const saveFavorites = (arr) => localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-
-  // ===== FAVORITOS =====
-  function initFavorites() {
-    const favs = getFavorites();
-    document.querySelectorAll('.career-card').forEach(card => {
-      const id = card.dataset.id;
-      const btn = card.querySelector('.favorite-btn');
-      let img = btn.querySelector('img');
-
-      // Si no hay img, la creamos (por las tarjetas con "♡")
-      if (!img) {
-        img = document.createElement('img');
-        btn.textContent = '';
-        btn.appendChild(img);
-      }
-
-      // Estado inicial
-      img.src = favs.includes(id)
-        ? "../assets/img/heart-filled.png"
-        : "../assets/img/heart-empty.png";
-
-      // Evento clic para agregar/eliminar de favoritos
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        let current = getFavorites();
-        if (current.includes(id)) {
-          current = current.filter(f => f !== id);
-          img.src = "../assets/img/heart-empty.png";
-        } else {
-          current.push(id);
-          img.src = "../assets/img/heart-filled.png";
-        }
-        saveFavorites(current);
-      });
+  document.querySelectorAll('.btn-start').forEach(button => {
+    button.addEventListener('click', () => {
+      window.location.href = '../pages/path.html';
     });
-  }
-
-  // ===== BUSCADOR =====
-  function initSearch() {
-    const searchInput = document.getElementById('search-input');
-    if (!searchInput) return;
-    searchInput.addEventListener('input', (e) => {
-      const q = e.target.value.trim().toLowerCase();
-      document.querySelectorAll('.career-card').forEach(card => {
-        const title = card.querySelector('h2').textContent.toLowerCase();
-        const desc = card.querySelector('p').textContent.toLowerCase();
-        const match = title.includes(q) || desc.includes(q);
-        card.style.display = match ? '' : 'none';
-      });
-    });
-  }
-
-  // ===== PERFIL (abrir/cerrar menú) =====
-  function initDropdownClose() {
-    const profile = document.querySelector('.profile');
-    if (!profile) return;
-    const dropdown = profile.querySelector('.dropdown');
-    document.addEventListener('click', (e) => {
-      if (!profile.contains(e.target)) {
-        dropdown.style.display = 'none';
-      } else if (e.target.closest('.profile')) {
-        dropdown.style.display =
-          dropdown.style.display === 'block' ? 'none' : 'block';
-      }
-    });
-  }
-
-  initFavorites();
-  initSearch();
-  initDropdownClose();
-})();
+  });
 </script>
 
 </body>
