@@ -3,89 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial de Tests</title>
+    <title>Historial de Evaluaciones | Vocatio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/history.css">
 </head>
 <body>
-<header class="header">
+<!-- Encabezado igual al del dashboard -->
+<header>
     <div class="logo">
-        <img src="../assets/logo.png" alt="Vocatio Logo">
+        <a href="dashboard.html">
+            <img src="../assets/img/logo.png" alt="Vocatio logo">
+        </a>
     </div>
+
     <nav>
-        <ul>
-            <li><a href="../index.html">Vista General</a></li>
-            <li><a href="./test.html">Iniciar Test</a></li>
-            <li><a href="./learning.html">Ruta de Aprendizaje</a></li>
-            <li><a href="./explore.html">Explorar</a></li>
-            <li><a href="./history.html" class="active">Historial</a></li>
-            <li><a href="./profile.html"><img src="../assets/user.png" alt="Perfil"></a></li>
-        </ul>
+        <a href="dashboard.html">Vista General</a>
+        <a href="../pages/test.html" class="test-link">Iniciar Test</a>
+        <a href="../pages/path.html">Ruta de Aprendizaje</a>
+        <a href="../pages/explore.html">Explorar</a>
+        <a href="../pages/reports.html" class="active">Informes</a>
     </nav>
+
+    <!-- Menú contextual -->
+    <div class="profile-menu">
+        <button id="profileButton">
+            <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+            <span class="arrow-down"></span>
+        </button>
+
+        <ul class="dropdown" id="dropdownMenu">
+            <li class="user-section">
+                <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+                <a href="../pages/profile.html">German Garmendia</a>
+            </li>
+            <hr>
+            <li><img src="../assets/img/favorites.png" alt="Favoritos"><a href="../pages/favorites.html">Favoritos</a></li>
+            <li><img src="../assets/img/history.png" alt="Historial"><a href="../pages/history.html">Historial</a></li>
+            <li><img src="../assets/img/settings-alt.png" alt="Configuración"><a href="../pages/settings.html">Configuración</a></li>
+            <hr>
+            <li class="logout"><img src="../assets/img/logout.png" alt="Cerrar sesión"><a href="../index.html">Cerrar sesión</a></li>
+        </ul>
+    </div>
 </header>
 
 <main class="history-container">
-    <h1>Historial de Evaluaciones</h1>
-
-    <div class="test-card">
-        <div class="left">
-            <h2>Test #1</h2>
-            <p>Fecha: 04/11/2025</p>
-            <p><strong>Carrera más afín:</strong> Ingeniería de Software</p>
-        </div>
-        <div class="middle">
-            <p><strong>Otras afinidades:</strong></p>
-            <ul>
-                <li>- Ingeniería Industrial</li>
-                <li>- Ciencias de la Computación</li>
-                <li>- Diseño de Experiencia de Usuario</li>
-            </ul>
-        </div>
-        <div class="right">
-            <img src="../assets/descargar.png" class="icon-btn">
-            <img src="../assets/nofav.png" class="icon-btn fav-toggle">
-            <img src="../assets/papelera.png" class="icon-btn delete-btn">
-        </div>
+    <div class="history-header">
+        <h1>Historial de evaluaciones</h1>
+        <form id="filterForm" class="filter">
+            <label>
+                <span>Desde</span>
+                <input type="date" id="dateFrom">
+            </label>
+            <label>
+                <span>Hasta</span>
+                <input type="date" id="dateTo">
+            </label>
+            <button type="submit" class="btn-apply">Filtrar</button>
+            <button type="button" id="clearFilter" class="btn-clear">Limpiar</button>
+        </form>
     </div>
+
+    <!-- Tarjetas de test -->
+    <section id="cards">
+        <article class="test-card" data-date="2025-11-04" tabindex="0" role="link" aria-label="Abrir test vocacional">
+            <div class="left">
+                <h2>Test #1</h2>
+                <p class="test-date">Fecha: 04/11/2025</p>
+                <p><strong>Carrera más afín:</strong> Ingeniería de Software</p>
+            </div>
+            <div class="middle">
+                <p><strong>Otras afinidades:</strong></p>
+                <ul>
+                    <li>Ingeniería Industrial</li>
+                    <li>Ciencias de la Computación</li>
+                    <li>Diseño de Experiencia de Usuario</li>
+                </ul>
+            </div>
+            <div class="right">
+                <img src="../assets/img/descargar.png" class="icon-btn" alt="Descargar">
+                <img src="../assets/img/nofav.png" class="icon-btn fav-toggle" alt="Favorito">
+                <img src="../assets/img/papelera.png" class="icon-btn delete-btn" alt="Eliminar">
+            </div>
+        </article>
+        <!-- Más artículos podrán generarse dinámicamente en el futuro -->
+    </section>
+
+    <p id="emptyState" class="empty" hidden>No hay resultados que mostrar.</p>
 </main>
 
-<!-- Modal -->
-<div class="modal" id="deleteModal">
+<!-- Modal eliminar -->
+<div id="deleteModal" class="modal" hidden>
     <div class="modal-content">
-        <p>¿Deseas eliminar esta evaluación?</p>
-        <button id="confirmDelete">Confirmar</button>
+        <p id="modalText">¿Deseas eliminar esta evaluación?</p>
+        <div class="modal-actions">
+            <button id="modalCancel" class="btn-cancel" type="button">Cancelar</button>
+            <button id="confirmDelete" class="btn-confirm" type="button">Confirmar</button>
+        </div>
     </div>
 </div>
 
 <script>
-    const favIcons = document.querySelectorAll('.fav-toggle');
-    const deleteBtns = document.querySelectorAll('.delete-btn');
-    const modal = document.getElementById('deleteModal');
-    const confirmDelete = document.getElementById('confirmDelete');
+    // Menú contextual
+    const profileButton = document.getElementById('profileButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const arrow = document.querySelector('.arrow-down');
+    profileButton.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('show');
+        arrow.classList.toggle('rotate');
+    });
 
-    favIcons.forEach(icon => {
+    // Favoritos hover y toggle
+    document.querySelectorAll('.fav-toggle').forEach(icon => {
         let fav = false;
-        icon.addEventListener('mouseover', () => {
-            if (!fav) icon.src = '../assets/fav.png';
-        });
-        icon.addEventListener('mouseout', () => {
-            if (!fav) icon.src = '../assets/nofav.png';
-        });
+        icon.addEventListener('mouseover', () => { if (!fav) icon.src = '../assets/img/fav.png'; });
+        icon.addEventListener('mouseout', () => { if (!fav) icon.src = '../assets/img/nofav.png'; });
         icon.addEventListener('click', () => {
             fav = !fav;
-            icon.src = fav ? '../assets/fav.png' : '../assets/nofav.png';
+            icon.src = fav ? '../assets/img/fav.png' : '../assets/img/nofav.png';
         });
     });
 
-    deleteBtns.forEach(btn => {
-        btn.addEventListener('mouseover', () => btn.src = '../assets/borrar.png');
-        btn.addEventListener('mouseout', () => btn.src = '../assets/papelera.png');
-        btn.addEventListener('click', () => modal.style.display = 'flex');
+    // Eliminar tarjetas con modal
+    const modal = document.getElementById('deleteModal');
+    const btnCancel = document.getElementById('modalCancel');
+    const btnConfirm = document.getElementById('confirmDelete');
+    const cardsContainer = document.getElementById('cards');
+    const emptyState = document.getElementById('emptyState');
+    let targetCard = null;
+
+    function updateEmptyState() {
+        const anyVisible = [...cardsContainer.querySelectorAll('.test-card')]
+            .some(card => card.style.display !== 'none');
+        emptyState.hidden = anyVisible;
+    }
+
+    cardsContainer.addEventListener('click', (e) => {
+        const del = e.target.closest('.delete-btn');
+        if (del) {
+            targetCard = e.target.closest('.test-card');
+            modal.style.display = 'flex';
+            modal.removeAttribute('hidden');
+        }
     });
 
-    confirmDelete.addEventListener('click', () => {
+    btnCancel.addEventListener('click', () => {
         modal.style.display = 'none';
-        alert('Evaluación eliminada del historial.');
+        modal.setAttribute('hidden', '');
+        targetCard = null;
     });
+
+    btnConfirm.addEventListener('click', () => {
+        if (targetCard) {
+            targetCard.remove();
+            targetCard = null;
+            updateEmptyState();
+        }
+        modal.style.display = 'none';
+        modal.setAttribute('hidden', '');
+    });
+
+    // Navegación al hacer click en cualquier parte de la tarjeta (excepto iconos de acción)
+    cardsContainer.addEventListener('click', (e) => {
+        const card = e.target.closest('.test-card');
+        if (!card) return;
+        // No navegar si clickea en un control/icono (descargar, favorito, eliminar)
+        if (e.target.closest('.icon-btn')) return;
+        window.location.href = '../pages/test.html';
+    });
+
+    // Permitir navegación con teclado (Enter o Espacio) cuando la tarjeta tiene foco
+    document.addEventListener('keydown', (e) => {
+        const active = document.activeElement;
+        if (!active) return;
+        if (active.classList && active.classList.contains('test-card') && (e.key === 'Enter' || e.key === ' ')) {
+            e.preventDefault();
+            window.location.href = '../pages/test.html';
+        }
+    });
+
+    // Filtro por fecha
+    const form = document.getElementById('filterForm');
+    const dateFrom = document.getElementById('dateFrom');
+    const dateTo = document.getElementById('dateTo');
+
+    function applyFilter() {
+        const fromVal = dateFrom.value ? new Date(dateFrom.value) : null;
+        const toVal = dateTo.value ? new Date(dateTo.value) : null;
+        cardsContainer.querySelectorAll('.test-card').forEach(card => {
+            const d = new Date(card.getAttribute('data-date'));
+            let visible = true;
+            if (fromVal && d < fromVal) visible = false;
+            if (toVal) {
+                const toEnd = new Date(toVal);
+                toEnd.setHours(23,59,59,999);
+                if (d > toEnd) visible = false;
+            }
+            card.style.display = visible ? '' : 'none';
+        });
+        updateEmptyState();
+    }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        applyFilter();
+    });
+
+    document.getElementById('clearFilter').addEventListener('click', () => {
+        dateFrom.value = '';
+        dateTo.value = '';
+        applyFilter();
+    });
+
+    // Inicializar estado vacío si aplica
+    updateEmptyState();
 </script>
 </body>
 </html>

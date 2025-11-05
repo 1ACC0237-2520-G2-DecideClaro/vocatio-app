@@ -1,75 +1,127 @@
+/* ====== Historia (estilos específicos de la página) ====== */
+:root {
+    --primary: #0868A8;
+    --secondary: #F29723;
+    --bg: #F2F4F8;
+    --card-bg: #FFFFFF;
+    --text: #000000;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f9f9fb;
+    background-color: var(--bg);
     margin: 0;
-    color: #1a1a1a;
+    color: var(--text);
 }
 
-.header {
+/* Quitar cualquier "stroke"/subrayado activo del nav solo en esta página */
+header nav a.active { background-image: none !important; }
+
+/* Contenedor principal alineado con dashboard */
+.history-container {
+    padding: 0 3rem;
+    margin-top: 1.5rem;
+}
+
+/* Cabecera de la sección + filtro a la derecha */
+.history-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 12px 40px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #dcdcdc;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
-.header ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-}
-
-.header a {
-    text-decoration: none;
-    color: #0A3D66;
-    font-weight: 600;
-}
-
-.header a.active {
-    text-decoration: underline;
-    text-underline-offset: 5px;
+.history-header h1 {
+    color: var(--secondary);
+    font-family: 'Roboto', sans-serif;
     font-weight: 700;
 }
 
-.history-container {
-    width: 85%;
-    margin: 50px auto;
+/* Filtro de fecha */
+.filter {
+    display: flex;
+    align-items: end;
+    gap: 0.5rem;
 }
+.filter label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+.filter input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid #DDE1E6;
+    background: #FFF;
+    color: #000;
+    padding: 0.45rem 0.6rem;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+}
+.btn-apply {
+    background: var(--primary);
+    color: #FFF;
+    border: none;
+    padding: 0.55rem 0.9rem;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.btn-apply:hover { filter: brightness(0.95); }
+
+.btn-clear {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 0.5rem 0.85rem;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.btn-clear:hover { background: rgba(8,104,168,0.06); }
+
+/* Tarjetas */
+#cards { display: grid; gap: 1rem; }
 
 .test-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    background: white;
-    border-radius: 10px;
-    padding: 20px 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr auto;
+    align-items: start;
+    gap: 1rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 16px 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.test-card .left h2 {
-    margin: 0;
-    color: #1F80C1;
-}
+.test-card .left h2 { margin-bottom: 10px; color: var(--primary); font-family: 'Roboto', sans-serif; font-weight: Bold }
+.test-card .left .test-date { color: #444; font-size: 1.05rem; margin-bottom: 0.3rem; }
 
-.middle ul {
-    list-style: none;
-    padding-left: 0;
-}
+.middle ul { list-style: none; padding-left: 0; margin: 0; }
+.middle li { margin: 0.25rem 0; }
 
+.right { display: flex; align-items: center; }
 .right img {
     width: 28px;
     height: 28px;
     margin-left: 12px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.2s;
+}
+.right img:hover { transform: scale(1.07); }
+
+/* Estado vacío */
+.empty {
+    text-align: center;
+    margin: 3rem 0;
+    color: #525252;
 }
 
-.right img:hover {
-    transform: scale(1.1);
-}
-
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -77,21 +129,53 @@ body {
     background: rgba(0,0,0,0.4);
     justify-content: center;
     align-items: center;
+    z-index: 40;
 }
-
 .modal-content {
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
+    background: #FFF;
+    padding: 22px;
+    border-radius: 10px;
     text-align: center;
+    width: min(92vw, 300px);
+}
+.modal-actions { display: flex; gap: 0.6rem; justify-content: center; margin-top: 0.8rem; }
+
+.modal-content .btn-confirm {
+    background: #FF383C;
+    color: #000;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 700;
 }
 
-.modal-content button {
-    background: #F22323;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+.modal-content .btn-cancel {
+    background: #FFFFFF;
+    color: #000;
+    border: 1px solid #000;
+    padding: 10px 16px;
     cursor: pointer;
+    border-radius: 8px;
     font-weight: 600;
 }
+
+.modal-content .btn-confirm:hover, .modal-content .btn-cancel:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(8,20,40,0.12);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .test-card { grid-template-columns: 1fr; }
+    .right { justify-content: flex-end; }
+}
+@media (max-width: 768px) {
+    .history-container { padding: 0 1rem; }
+    .filter { flex-wrap: wrap; justify-content: flex-end; }
+}
+
+
+/* Interacción de tarjeta clicable */
+.test-card { cursor: pointer; }
+.test-card:focus { outline: 3px solid rgba(8,104,168,0.35); outline-offset: 2px; }
