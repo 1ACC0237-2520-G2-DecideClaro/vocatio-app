@@ -1,0 +1,124 @@
+/**** Resultados del test — estilos específicos de la página ****/
+:root {
+    --orange: #F29723;
+    --green:  #80BA23;
+    --indigo: #0A3D66;
+    --ink:    #081428;
+    --bg:     #F2F4F8;
+    --card:   #FFFFFF;
+    --border: #DDE1E6;
+    --muted:  #5f6b7a;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg);
+    margin: 0;
+    color: var(--ink);
+}
+
+/* En esta página NO se muestra stroke en la navegación aunque algún link tuviera .active */
+nav a.active { background-image: none !important; }
+
+/* Contenedor principal */
+.suggest-container {
+    max-width: 1180px;
+    padding: 0 24px;
+    margin: 28px auto 48px;
+}
+
+/* Header del resultado */
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.result-header h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--orange);
+}
+
+/* Acciones */
+.icons { display:flex; align-items:center; gap: 12px; }
+.icons img {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    transition: transform .15s ease, filter .15s ease;
+    filter: saturate(0.9);
+}
+.icons img:hover { transform: translateY(-2px) scale(1.07); filter: saturate(1.1); }
+
+/* Sección principal: gráfico + info */
+.main-result {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    align-items: start;
+    gap: 40px;
+    margin-top: 28px;
+}
+
+.chart-container { width: 100%; max-width: 420px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+
+/* Info de carrera */
+.career-info { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.career-info h2 { color: var(--indigo); font-size: 1rem; letter-spacing: .02em; margin-bottom: 6px; }
+
+/* Carrera más afín destacada */
+#mainCareer {
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 800;
+    color: var(--indigo);
+    margin: 2px 0 14px;
+}
+
+/* Insignia/badge de afinidad */
+.career-badge { display:inline-flex; align-items:center; gap:8px; background: rgba(242,151,35,0.12); color: var(--orange); border: 1px solid rgba(242,151,35,0.35); border-radius: 999px; padding: 6px 12px; font-weight:700; font-size:.85rem; }
+.career-badge .dot { width:8px; height:8px; border-radius:50%; background: var(--orange); box-shadow: 0 0 0 3px rgba(242,151,35,0.18) inset; }
+
+.other-careers { margin-top: 16px; }
+.other-careers h3 { color: var(--muted); font-size: .95rem; margin-bottom: 8px; }
+.other-careers ul { list-style: none; padding: 0; margin: 0; }
+.other-careers li { margin-bottom: 6px; padding-left: 12px; position: relative; }
+.other-careers li::before { content:''; position:absolute; left:0; top:.55em; width:6px; height:6px; border-radius:50%; background: var(--green); }
+
+/* Resumen */
+.summary {
+    margin-top: 28px;
+    background: var(--card);
+    padding: 20px 22px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.summary h3 { color: var(--indigo); margin-bottom: 6px; }
+.summary p { color: var(--ink); opacity: .9; }
+
+/* Modal accesible */
+.modal { display: flex; position: fixed; inset: 0; background: rgba(0,0,0,0.4); justify-content: center; align-items: center; padding: 20px; }
+.modal[hidden] { display: none; }
+.modal-content { background: #fff; padding: 24px; border-radius: 10px; text-align: center; border:1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,.15); max-width: 300px; width: 100%; }
+.modal-actions { display:flex; justify-content:flex-end; gap: 10px; margin-top: 14px; }
+
+.modal-content .btn-confirm { background: #FF383C; color: #000; border: none; padding: 10px 16px; cursor: pointer; border-radius: 8px; font-weight: 700; }
+.modal-content .btn-cancel { background: #FFFFFF; color: #000; border: 1px solid var(--border); padding: 10px 16px; cursor: pointer; border-radius: 8px; font-weight: 600; }
+.modal-content .btn-confirm:hover, .modal-content .btn-cancel:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(8,20,40,0.12); }
+
+/* Responsivo */
+@media (max-width: 1024px){
+  .main-result { grid-template-columns: 360px 1fr; gap: 28px; }
+}
+@media (max-width: 820px){
+  .result-header { align-items: flex-start; }
+  .main-result { grid-template-columns: 1fr; }
+  .chart-container { max-width: 520px; }
+}
+@media (max-width: 520px){
+  .result-header h1 { font-size: 1.6rem; }
+  #mainCareer { font-size: 1.6rem; }
+  .icons img { width: 26px; height: 26px; }
+}
