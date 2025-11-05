@@ -1,0 +1,150 @@
+header {
+    background-color: white;
+    height: 60px;            
+    width: 100%;
+    top: 0;                  
+    left: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#logo{
+
+width: 110px;
+height: 40px;
+float: left;
+
+position: absolute; 
+top: 9px; 
+left: 10px;
+
+}
+
+#perfilMini{
+
+width: 50px;
+height: 45px;
+float: Right;
+
+position: absolute; 
+top: 7px; 
+left: 1415px;
+
+}
+
+h5{
+
+color: #0868A8;
+font-family: "Inter", sans-serif;
+
+}
+
+#VistaGeneral{position: absolute; top: 0px; left: 210px;}
+#IniciarTest{position: absolute; top: 0px; left: 350px;}
+#RutaDeAprendizaje{position: absolute; top: 0px; left: 480px;}
+#Explorar{position: absolute; top: 0px; left: 670px;}
+#Informes{position: absolute; top: 0px; left: 770px;}
+
+h1{
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+
+    position: absolute; 
+    top: 120px; 
+    left: 600px;
+
+}
+
+#parrafo1{
+
+    position: absolute; 
+    top: 180px; 
+    left: 600px;
+
+    text-align: center;
+}
+
+.formulario1{
+
+    width: 280px;
+    height: 35px;
+
+    color: black;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+
+    border: 3px solid;
+    border-radius: 5px;
+
+    margin: 5px;
+
+    padding-left: 10px;
+
+}
+
+#ContraseñaActual{
+
+    position: absolute; 
+    top: 285px; 
+    left: 580px;
+}
+
+#ConfirmarContraseña{
+
+    position: absolute; 
+    top: 355px; 
+    left: 580px;
+}
+
+
+.formulario2{
+
+    width: 220px;
+    height: 50px;
+
+    color: black;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+
+    border: 3px solid;
+    border-radius: 5px;
+
+    margin: 5px;
+
+    padding-left: 10px;
+    cursor: pointer;
+
+}
+
+#Regresar{
+
+    font-weight: bold;
+    background-color: #8a8989;
+    position: absolute; 
+    top: 430px; 
+    left: 500px;
+
+}
+
+#EliminarCuenta{
+
+    background-color: #FF1212;
+    color: #ffffff;
+    border-color: black;
+    position: absolute; 
+    top: 430px; 
+    left: 750px;
+}
+
+#parrafo2{
+
+    position: absolute; 
+    top: 490px; 
+    left: 575px;
+
+    text-align: center;
+
+}
