@@ -17,9 +17,9 @@ body {
 
 /* Header (consistente con dashboard) */
 header {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+    display: flex;
+    justify-content: flex-start; /* align items from the left like landing */
+    align-items: center;
     background: #FFF;
     padding: 0.6rem 1.5rem;
     border-bottom:1px solid #DDE1E6;
@@ -31,10 +31,10 @@ header {
 
 nav {
     display:flex;
-    gap:1.25rem;
+    gap:2rem;
     align-items:center;
-    flex:1;
-    justify-content:center;
+    flex:1;;
+    margin-left: 65px;
 }
 
 nav a {
@@ -89,14 +89,14 @@ nav a:first-child { /* keep Vista General underlined as in dashboard example if 
     font-weight:800;
     color: #000;
     margin-bottom: 6px;
-    font-size:1.25rem;
+    font-size:1.5rem;
 }
 .test-header .accent { color:#F22323; margin-left:6px; font-weight:700; }
 
-.section-desc { color:#333; font-size:0.95rem; margin-bottom: 12px; font-family:'Roboto',sans-serif; font-weight:500; }
+.section-desc { color:#333; font-size:0.95rem; margin-bottom: 1px; font-family:'Roboto',sans-serif; font-weight:500; }
 
 /* note */
-.note { color:#6b7280; font-size:0.85rem; margin-bottom:14px; }
+.note { color:#6b7280; font-size:0.85rem; margin-bottom:14px; margin-left:35px }
 
 /* layout for section 1: two-column */
 .two-column { display:flex; gap: 1.5rem; }
@@ -186,3 +186,48 @@ nav a:first-child { /* keep Vista General underlined as in dashboard example if 
 .modal-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:12px; }
 .btn-cancel { padding:8px 12px; background:#fff; border:1px solid #DDE1E6; border-radius:8px; cursor:pointer; }
 .btn-confirm { padding:8px 12px; background:#FF383C; color:#000; border:none; border-radius:8px; cursor:pointer; font-weight:700; }
+
+/* --- UI Enhancements for test page (non-breaking overrides) --- */
+
+/* Put section name under title and add a subtle separator */
+.test-header { margin-bottom: 12px; }
+.test-header .section-desc { display:block; margin-top: 4px; margin-bottom: 10px; }
+.test-separator { height: 1px; background: #E5E7EB; border-radius: 1px; margin: 6px 0 14px; }
+
+/* Section 1: improve alignment between the two columns */
+/* Make question title take at least two lines height on desktop so paired rows align visually */
+@media (min-width: 901px){
+  .two-column { align-items: flex-start; }
+  .qtext { min-height: 44px; display:flex; align-items:flex-start; }
+  .question { padding: 12px 0; }
+}
+
+/* Likert buttons: bigger and stronger hover/active feedback */
+.likert { gap: 10px; }
+.likert-btn { width: 52px; height: 42px; border-radius: 6px; box-shadow: 0 0 0 rgba(0,0,0,0); }
+.likert-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 18px rgba(8,20,40,0.16); }
+.likert input:checked + .likert-btn, .likert-btn.selected { outline: 3px solid rgba(255,255,255,0.18); box-shadow: 0 10px 22px rgba(8,20,40,0.2); transform: translateY(-2px) scale(1.01); }
+
+/* Yes/No (section 3): larger, clearer states and hover */
+.yn-buttons { gap: 12px; }
+.yn-btn { padding: 10px 18px; font-size: 0.98rem; border-radius: 10px; transition: background .15s, transform .12s, box-shadow .15s; }
+.yn-btn[data-val="yes"] { color:#F29723; border-color:#F29723; background:#fff; }
+.yn-btn[data-val="no"] { color:#7a7a7a; border-color:#cfcfcf; background:#fff; }
+.yn-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(8,20,40,0.12); }
+.yn-btn.active[data-val="yes"] { color:#fff; background:#F29723; border-color:#F29723; }
+.yn-btn.active[data-val="no"] { background:#efefef; border-color:#cfcfcf; }
+
+/* Navigation buttons hover emphasis */
+.nav-btn { font-size: 0.98rem; padding: 12px 16px; }
+.nav-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(8,20,40,0.12); }
+
+/* Responsive refinements */
+@media (max-width: 900px){
+  .qtext { min-height: unset; }
+  .likert-btn { width: 48px; height: 40px; }
+}
+@media (max-width: 520px){
+  .likert { gap: 8px; }
+  .likert-btn { width: 44px; height: 38px; border-radius: 6px; }
+  .yn-btn { width: 48%; text-align:center; padding: 12px 10px; }
+}

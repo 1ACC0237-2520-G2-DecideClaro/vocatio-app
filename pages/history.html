@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Tests</title>
+    <link rel="stylesheet" href="../css/history.css">
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+        <img src="../assets/logo.png" alt="Vocatio Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="../pages/dashboard.html">Vista General</a></li>
+            <li><a href="../pages/test.html">Iniciar Test</a></li>
+            <li><a href="../pages/learning.html">Ruta de Aprendizaje</a></li>
+            <li><a href="../pages/explore.html">Explorar</a></li>
+            <li><a href="../pages/history.html" class="active">Historial</a></li>
+            <li><a href="../pages/profile.html"><img src="../assets/user.png" alt="Perfil"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="history-container">
+    <h1>Historial de Evaluaciones</h1>
+
+    <div class="test-card">
+        <div class="left">
+            <h2>Test #1</h2>
+            <p>Fecha: 04/11/2025</p>
+            <p><strong>Carrera más afín:</strong> Ingeniería de Software</p>
+        </div>
+        <div class="middle">
+            <p><strong>Otras afinidades:</strong></p>
+            <ul>
+                <li>- Ingeniería Industrial</li>
+                <li>- Ciencias de la Computación</li>
+                <li>- Diseño de Experiencia de Usuario</li>
+            </ul>
+        </div>
+        <div class="right">
+            <img src="../assets/descargar.png" class="icon-btn">
+            <img src="../assets/nofav.png" class="icon-btn fav-toggle">
+            <img src="../assets/papelera.png" class="icon-btn delete-btn">
+        </div>
+    </div>
+</main>
+
+<!-- Modal -->
+<div class="modal" id="deleteModal">
+    <div class="modal-content">
+        <p>¿Deseas eliminar esta evaluación?</p>
+        <button id="confirmDelete">Confirmar</button>
+    </div>
+</div>
+
+<script>
+    const favIcons = document.querySelectorAll('.fav-toggle');
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+    const modal = document.getElementById('deleteModal');
+    const confirmDelete = document.getElementById('confirmDelete');
+
+    favIcons.forEach(icon => {
+        let fav = false;
+        icon.addEventListener('mouseover', () => {
+            if (!fav) icon.src = '../assets/fav.png';
+        });
+        icon.addEventListener('mouseout', () => {
+            if (!fav) icon.src = '../assets/nofav.png';
+        });
+        icon.addEventListener('click', () => {
+            fav = !fav;
+            icon.src = fav ? '../assets/fav.png' : '../assets/nofav.png';
+        });
+    });
+
+    deleteBtns.forEach(btn => {
+        btn.addEventListener('mouseover', () => btn.src = '../assets/borrar.png');
+        btn.addEventListener('mouseout', () => btn.src = '../assets/papelera.png');
+        btn.addEventListener('click', () => modal.style.display = 'flex');
+    });
+
+    confirmDelete.addEventListener('click', () => {
+        modal.style.display = 'none';
+        alert('Evaluación eliminada del historial.');
+    });
+</script>
+</body>
+</html>

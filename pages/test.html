@@ -7,6 +7,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/test.css">
+    <!-- Header styles to match dashboard -->
+    <link rel="stylesheet" href="../css/dashboard.css">
 
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
@@ -19,11 +21,11 @@
     </div>
 
     <nav>
-        <a href="dashboard.html">Vista General</a>
-        <a href="#" class="active">Iniciar Test</a>
-        <a href="ruta-aprendizaje.html">Ruta de Aprendizaje</a>
-        <a href="explorar.html">Explorar</a>
-        <a href="informes.html">Informes</a>
+        <a href="../pages/dashboard.html">Vista General</a>
+        <a href="#" class="test-link active">Iniciar Test</a>
+        <a href="../pages/path.html">Ruta de Aprendizaje</a>
+        <a href="../pages/explore.html">Explorar</a>
+        <a href="../pages/reports.html">Informes</a>
     </nav>
 
     <div class="profile-menu">
@@ -33,13 +35,16 @@
         </button>
 
         <ul class="dropdown" id="dropdownMenu" role="menu">
-            <li class="user-section"><img src="../assets/img/usuario-thumb.png" alt=""><a href="profile.html">Roberto Hurtado</a></li>
-            <li class="divider"></li>
-            <li><img src="../assets/img/favorites.png" alt=""><a href="favorites.html">Favoritos</a></li>
-            <li><img src="../assets/img/history.png" alt=""><a href="history.html">Historial</a></li>
-            <li><img src="../assets/img/settings-alt.png" alt=""><a href="settings.html">Configuración</a></li>
-            <li class="divider"></li>
-            <li class="logout"><img src="../assets/img/logout.png" alt=""><a href="../index.html">Cerrar sesión</a></li>
+            <li class="user-section">
+                <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+                <a href="../pages/profile.html">German Garmendia</a>
+            </li>
+            <hr>
+            <li><img src="../assets/img/favorites.png" alt="Favoritos"><a href="../pages/favorites.html">Favoritos</a></li>
+            <li><img src="../assets/img/history.png" alt="Historial"><a href="../pages/history.html">Historial</a></li>
+            <li><img src="../assets/img/settings-alt.png" alt="Configuración"><a href="../pages/settings.html">Configuración</a></li>
+            <hr>
+            <li class="logout"><img src="../assets/img/logout.png" alt="Cerrar sesión"><a href="../index.html">Cerrar sesión</a></li>
         </ul>
     </div>
 </header>
@@ -52,6 +57,7 @@
         <header class="test-header">
             <h1>Test de Orientación Vocacional <span class="accent">#01</span></h1>
             <p class="section-desc"><strong>Sección <span id="currentSectionNumber">1</span></strong> — <span id="sectionType">Escala Likert (1 a 5)</span></p>
+            <div class="test-separator" aria-hidden="true"></div>
         </header>
 
         <!-- VISTAS DE SECCIONES: las tres son panels gestionados por JS -->
@@ -316,6 +322,106 @@
                             <input type="hidden" name="q24" />
                         </div>
                     </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">25. ¿Te gustaría trabajar en un laboratorio o entorno técnico?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="25" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="25" data-val="no">No</button>
+                            <input type="hidden" name="q25" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">26. ¿Prefieres los trabajos individuales antes que los grupales?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="26" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="26" data-val="no">No</button>
+                            <input type="hidden" name="q26" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">27. ¿Te sientes cómodo comunicando tus ideas frente a otras personas?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="27" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="27" data-val="no">No</button>
+                            <input type="hidden" name="q27" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">28. ¿Te llama la atención la biología o la medicina?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="28" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="28" data-val="no">No</button>
+                            <input type="hidden" name="q28" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">29. ¿Sueles analizar tus decisiones antes de tomarlas?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="29" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="29" data-val="no">No</button>
+                            <input type="hidden" name="q29" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">30. ¿Crees tener una buena capacidad para detectar errores o inconsistencias?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="30" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="30" data-val="no">No</button>
+                            <input type="hidden" name="q30" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">31. ¿Disfrutas ayudar a otros a resolver problemas personales o emocionales?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="31" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="31" data-val="no">No</button>
+                            <input type="hidden" name="q31" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">32. ¿Tienes interés en aprender sobre inteligencia artificial o robótica?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="32" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="32" data-val="no">No</button>
+                            <input type="hidden" name="q32" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">33. ¿Te atrae diseñar o crear productos visuales?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="33" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="33" data-val="no">No</button>
+                            <input type="hidden" name="q33" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">34. ¿Consideras importante el impacto social de tu trabajo futuro?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="34" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="34" data-val="no">No</button>
+                            <input type="hidden" name="q34" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">35. ¿Sueles estar motivado cuando las cosas se vuelven difíciles?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="35" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="35" data-val="no">No</button>
+                            <input type="hidden" name="q35" />
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -328,17 +434,6 @@
         </form>
     </section>
 </main>
-
-<!-- Modal confirm delete (para history.html uso similar) -->
-<div id="modalConfirm" class="modal" hidden>
-    <div class="modal-content">
-        <p id="modalText">¿Deseas eliminar esta evaluación?</p>
-        <div class="modal-actions">
-            <button id="modalCancel" class="btn-cancel">Cancelar</button>
-            <button id="modalConfirmBtn" class="btn-confirm">Confirmar</button>
-        </div>
-    </div>
-</div>
 
 <!-- SCRIPTS: controla navegación, validación, botones -->
 <script>
@@ -463,10 +558,12 @@
         // Profile dropdown
         const profileButton = document.getElementById('profileButton');
         const dropdownMenu = document.getElementById('dropdownMenu');
+        const arrow = document.querySelector('.arrow-down');
         profileButton.addEventListener('click', (e)=>{
             const expanded = profileButton.getAttribute('aria-expanded') === 'true';
             profileButton.setAttribute('aria-expanded', String(!expanded));
             dropdownMenu.classList.toggle('show');
+            if (arrow) arrow.classList.toggle('rotate');
         });
 
         // close dropdown on outside click
@@ -474,7 +571,8 @@
             if(!profileButton.contains(e.target) && !dropdownMenu.contains(e.target)){
                 dropdownMenu.classList.remove('show');
                 profileButton.setAttribute('aria-expanded', 'false');
-            }d
+                if (arrow) arrow.classList.remove('rotate');
+            }
         });
 
         // small UX: keyboard navigation for next/prev (optional)
