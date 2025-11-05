@@ -1,0 +1,176 @@
+header {
+    background-color: white;
+    height: 60px;            
+    width: 100%;
+    top: 0;                  
+    left: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#logo{
+
+width: 110px;
+height: 40px;
+float: left;
+
+position: absolute; 
+top: 9px; 
+left: 10px;
+
+}
+
+#perfil{
+
+width:140px;
+height: 130px;
+
+position: absolute;
+top: 90px;
+left: 640px;
+
+}
+
+#perfilMini{
+
+width: 50px;
+height: 45px;
+float: Right;
+
+position: absolute; 
+top: 7px; 
+left: 1415px;
+
+}
+
+h5{
+
+color: #0868A8;
+font-family: "Inter", sans-serif;
+
+}
+
+#VistaGeneral{position: absolute; top: 0px; left: 210px;}
+#IniciarTest{position: absolute; top: 0px; left: 350px;}
+#RutaDeAprendizaje{position: absolute; top: 0px; left: 480px;}
+#Explorar{position: absolute; top: 0px; left: 670px;}
+#Informes{position: absolute; top: 0px; left: 770px;}
+
+h1{
+
+font-family: "Inter", sans-serif;
+
+position: absolute;
+top: 205px;
+left: 648px;
+
+}
+
+h3{
+
+font-family: "Inter", sans-serif;
+
+}
+
+#edit{position: absolute; top: 260px; left: 250px;}
+
+.formulario2{
+
+    width: 200px;
+    height: 30px;
+
+    color: black;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+
+    border: 3px solid;
+
+    margin: 5px;
+
+    padding-left: 10px;
+
+}
+
+#Nombre{position: absolute; top: 315px; left: 260px;}
+#Apellido{position: absolute; top: 375px; left: 260px;}
+
+
+#cambiar{position: absolute; top: 440px; left: 290px;}
+
+.formulario{
+
+    width: 210px;
+    height: 40px;
+
+    color: black;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+
+    border: 3px solid;
+
+
+    margin: 5px;
+
+    padding-left: 10px;
+
+}
+
+#Contraseña{position: absolute; top: 490px; left: 260px;}
+#NuevaContraseña{position: absolute; top: 560px; left: 260px;}
+#ConfirmarNuevaContraseña{position: absolute; top: 630px; left: 260px;}
+
+hr{
+    width: 360px; 
+    transform: rotate(90deg);
+
+    position: absolute;
+    top: 470px;
+    left: 530px;
+
+
+}
+
+#config{position: absolute; top: 260px; left: 900px;}
+
+h4{
+    font-weight: 800;
+    font-family: "Inter", sans-serif;
+
+    position: absolute;
+    top: 320px;
+    left: 850px;
+}
+
+p{
+    color: #2073A1;
+    text-decoration: underline;
+    font-size: 16;
+
+    position: absolute;
+    top: 320px;
+    left: 1050px;
+}
+
+#EliminarCuenta{
+
+    width: 200px;
+    height: 50px;
+
+    font-weight: 800;
+
+    color: black;
+    background-color: #FF1212;
+
+    border: 4px solid;
+    border-radius: 5px;
+
+    position: absolute;
+    top: 560px;
+    left: 900px;
+
+    cursor: pointer;
+
+}
