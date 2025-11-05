@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado del Test Vocacional</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/suggest.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <a href="../pages/dashboard.html">
+            <img src="../assets/img/logo.png" alt="Vocatio logo">
+        </a>
+    </div>
+
+    <nav>
+        <a href="../pages/dashboard.html">Vista General</a>
+        <a href="../pages/test.html" class="test-link">Iniciar Test</a>
+        <a href="../pages/path.html">Ruta de Aprendizaje</a>
+        <a href="../pages/explore.html">Explorar</a>
+        <a href="../pages/reports.html">Informes</a>
+    </nav>
+
+    <div class="profile-menu">
+        <button id="profileButton">
+            <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+            <span class="arrow-down"></span>
+        </button>
+
+        <ul class="dropdown" id="dropdownMenu">
+            <li class="user-section">
+                <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+                <a href="../pages/profile.html">German Garmendia</a>
+            </li>
+            <hr>
+            <li><img src="../assets/img/favorites.png" alt="Favoritos"><a href="../pages/favorites.html">Favoritos</a></li>
+            <li><img src="../assets/img/history.png" alt="Historial"><a href="../pages/history.html">Historial</a></li>
+            <li><img src="../assets/img/settings-alt.png" alt="Configuración"><a href="../pages/settings.html">Configuración</a></li>
+            <hr>
+            <li class="logout"><img src="../assets/img/logout.png" alt="Cerrar sesión"><a href="../index.html">Cerrar sesión</a></li>
+        </ul>
+    </div>
+</header>
+
+<main class="suggest-container">
+    <section class="result-header">
+        <h1>Resultado del Test Vocacional #01</h1>
+        <div class="icons">
+            <img src="../assets/img/descargar.png" alt="Descargar" class="icon-btn" role="button" tabindex="0" aria-label="Descargar resultados">
+            <img src="../assets/img/nofav.png" alt="Favorito" class="icon-btn fav-toggle" role="button" aria-pressed="false" tabindex="0" aria-label="Marcar como favorito">
+            <img src="../assets/img/papelera.png" alt="Borrar" class="icon-btn delete-btn" role="button" tabindex="0" aria-label="Eliminar evaluación">
+        </div>
+    </section>
+
+    <section class="main-result">
+        <div class="chart-container">
+            <canvas id="careerChart"></canvas>
+        </div>
+        <div class="career-info">
+            <h2>Carrera más afín:</h2>
+            <div class="career-badge" aria-label="Recomendación principal"><span class="dot" aria-hidden="true"></span> Más afín</div>
+            <p id="mainCareer">Ingeniería de Software</p>
+            <div class="other-careers">
+                <h3>Otras afinidades:</h3>
+                <ul>
+                    <li>Ingeniería Industrial</li>
+                    <li>Ciencias de la Computación</li>
+                    <li>Diseño de Experiencia de Usuario</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="summary">
+        <h3>Respuestas más influyentes</h3>
+        <p>Mostraste gran afinidad por la resolución de problemas, la curiosidad tecnológica y la innovación. Tus respuestas reflejan interés por comprender cómo funcionan los sistemas y aplicar el conocimiento para mejorar la vida de las personas.</p>
+    </section>
+</main>
+
+
+<div id="deleteModal" class="modal" hidden>
+    <div class="modal-content">
+        <p id="modalText">¿Deseas eliminar esta evaluación?</p>
+        <div class="modal-actions">
+            <button id="modalCancel" class="btn-cancel">Cancelar</button>
+            <button id="confirmDelete" class="btn-confirm">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Gráfico con Chart.js (paleta alineada)
+    const ctx = document.getElementById('careerChart');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Ingeniería de Software', 'Ingeniería Industrial', 'Ciencias de la Computación', 'Diseño UX'],
+            datasets: [{
+                data: [45, 25, 20, 10],
+                backgroundColor: ['#F29723', '#80BA23', '#1F80C1', '#0A3D66'],
+                borderColor: '#FFFFFF',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'bottom' } }
+        }
+    });
+
+    // Menú contextual del header
+    const profileButton = document.getElementById('profileButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const arrow = document.querySelector('.arrow-down');
+    if (profileButton && dropdownMenu) {
+        profileButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('show');
+            if (arrow) arrow.classList.toggle('rotate');
+        });
+        document.addEventListener('click', (e) => {
+            if (!profileButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+                if (arrow) arrow.classList.remove('rotate');
+            }
+        });
+    }
+
+    // Favorito (accesible)
+    const favIcon = document.querySelector('.fav-toggle');
+    let fav = false;
+    if (favIcon) {
+        const toggleFav = () => {
+            fav = !fav;
+            favIcon.src = fav ? '../assets/img/fav.png' : '../assets/img/nofav.png';
+            favIcon.setAttribute('aria-pressed', String(fav));
+            favIcon.setAttribute('aria-label', fav ? 'Quitar de favoritos' : 'Marcar como favorito');
+        };
+        favIcon.addEventListener('click', toggleFav);
+        favIcon.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleFav();
+            }
+        });
+    }
+
+    // Modal de borrado (accesible)
+    const deleteBtn = document.querySelector('.delete-btn');
+    const modal = document.getElementById('deleteModal');
+    const confirmDelete = document.getElementById('confirmDelete');
+    const modalCancel = document.getElementById('modalCancel');
+
+    const openModal = () => { if (modal) modal.hidden = false; };
+    const closeModal = () => { if (modal) modal.hidden = true; };
+
+    if (deleteBtn && modal) {
+        deleteBtn.addEventListener('click', openModal);
+        confirmDelete.addEventListener('click', () => {
+            closeModal();
+            alert('Evaluación eliminada del historial');
+            window.location.href = '../pages/history.html';
+        });
+        if (modalCancel) modalCancel.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    }
+</script>
+</body>
+</html>

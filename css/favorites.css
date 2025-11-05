@@ -1,0 +1,249 @@
+/* ======== FUENTES Y CONFIGURACIÓN GENERAL ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #f8f9fb;
+  color: #222;
+}
+
+/* ======== ENCABEZADO ======== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #DDE1E6;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  width: 99.6%;
+  max-width: 1800px;
+  margin: 0.5rem auto;
+  border-radius: 8px;
+}
+
+header .logo img {
+  height: 48px;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-left: clamp(2rem, 10vw, 15rem);
+  flex-grow: 1;
+}
+
+header nav a {
+  color: #0868A8;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  padding-bottom: 6px;
+  position: relative;
+}
+
+header nav a:hover,
+header nav a.active {
+  color: #F29723;
+}
+
+header nav a.active::after,
+header nav a:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #F29723;
+  border-radius: 2px;
+}
+
+/* ===== PERFIL ===== */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile {
+  position: relative;
+  display: inline-block;
+}
+
+.profile img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #EFF3F6;
+  background: #fff;
+}
+
+.profile .dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  background: #fff;
+  min-width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+  overflow: hidden;
+  z-index: 50;
+}
+
+.profile .dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.profile .dropdown a:last-child {
+  border-top: 1px solid #eee;
+  border-bottom: none;
+  color: #F22323;
+  font-weight: 600;
+}
+
+/* ===== TÍTULO ===== */
+.header-title {
+  margin: 2rem 3rem 1rem 3rem;
+}
+
+.header-title h1 {
+  font-size: 2.3rem;
+  color: #F29723;
+  font-weight: 700;
+}
+
+/* ===== GRID ===== */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  padding: 0 3rem 3rem 3rem;
+}
+
+.career-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(12,18,24,0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  min-height: 420px;
+}
+
+.career-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 22px rgba(12,18,24,0.08);
+}
+
+.career-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.career-info {
+  padding: 1rem 1.1rem;
+  flex: 1;
+}
+
+.career-info h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.career-info p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.career-info strong {
+  color: #0868A8;
+}
+
+/* ===== BOTONES ===== */
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.1rem;
+  border-top: 1px solid #f2f4f6;
+  background: #fff;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.favorite-btn img {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.2s ease;
+}
+
+.favorite-btn:hover img {
+  transform: scale(1.1);
+}
+
+.btn-start {
+  background: #F22323;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+
+.btn-start:hover {
+  background: #c61b1b;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .favorites-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  header nav {
+    display: none;
+  }
+  .favorites-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem 2rem 1rem;
+  }
+  .header-title {
+    margin: 1.5rem 1rem;
+  }
+  .header-title h1 {
+    font-size: 1.7rem;
+  }
+}
