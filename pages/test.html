@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Test Vocacional | Vocatio</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/test.css">
+    <!-- Header styles to match dashboard -->
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- HEADER (mismo estilo que dashboard) -->
+<header>
+    <div class="logo">
+        <a href="dashboard.html"><img src="../assets/img/logo.png" alt="Vocatio logo"></a>
+    </div>
+
+    <nav>
+        <a href="../pages/dashboard.html">Vista General</a>
+        <a href="#" class="test-link active">Iniciar Test</a>
+        <a href="../pages/path.html">Ruta de Aprendizaje</a>
+        <a href="../pages/explore.html">Explorar</a>
+        <a href="../pages/reports.html">Informes</a>
+    </nav>
+
+    <div class="profile-menu">
+        <button id="profileButton" aria-haspopup="true" aria-expanded="false">
+            <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+            <span class="arrow-down" aria-hidden="true"></span>
+        </button>
+
+        <ul class="dropdown" id="dropdownMenu" role="menu">
+            <li class="user-section">
+                <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+                <a href="../pages/profile.html">German Garmendia</a>
+            </li>
+            <hr>
+            <li><img src="../assets/img/favorites.png" alt="Favoritos"><a href="../pages/favorites.html">Favoritos</a></li>
+            <li><img src="../assets/img/history.png" alt="Historial"><a href="../pages/history.html">Historial</a></li>
+            <li><img src="../assets/img/settings-alt.png" alt="Configuración"><a href="../pages/settings.html">Configuración</a></li>
+            <hr>
+            <li class="logout"><img src="../assets/img/logout.png" alt="Cerrar sesión"><a href="../index.html">Cerrar sesión</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- MAIN -->
+<main class="container">
+    <section class="test-wrapper">
+
+        <!-- TITULO / SECCION -->
+        <header class="test-header">
+            <h1>Test de Orientación Vocacional <span class="accent">#01</span></h1>
+            <p class="section-desc"><strong>Sección <span id="currentSectionNumber">1</span></strong> — <span id="sectionType">Escala Likert (1 a 5)</span></p>
+            <div class="test-separator" aria-hidden="true"></div>
+        </header>
+
+        <!-- VISTAS DE SECCIONES: las tres son panels gestionados por JS -->
+        <form id="vocationalTest" novalidate>
+            <!-- SECCIÓN 1: Likert 1-10 -->
+            <div class="section" id="section-1" data-section="1">
+                <p class="note">Tipo: 1 = Muy en desacuerdo, 2 = En desacuerdo, 3 = Indiferente, 4 = De acuerdo, 5 = Muy de acuerdo</p>
+
+                <div class="two-column">
+                    <!-- 5 questions per column to imitate layout -->
+                    <div class="col">
+                        <!-- Q1 -->
+                        <div class="question">
+                            <p class="qtext">1. Me gusta resolver problemas lógicos o de cálculo.</p>
+                            <div class="likert" data-q="1">
+                                <label><input type="radio" name="q1" value="1"><span class="likert-btn l1">1</span></label>
+                                <label><input type="radio" name="q1" value="2"><span class="likert-btn l2">2</span></label>
+                                <label><input type="radio" name="q1" value="3"><span class="likert-btn l3">3</span></label>
+                                <label><input type="radio" name="q1" value="4"><span class="likert-btn l4">4</span></label>
+                                <label><input type="radio" name="q1" value="5"><span class="likert-btn l5">5</span></label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p class="qtext">2. Disfruto aprender cómo funcionan las tecnologías que uso.</p>
+                            <div class="likert" data-q="2">
+                                <label><input type="radio" name="q2" value="1"><span class="likert-btn l1">1</span></label>
+                                <label><input type="radio" name="q2" value="2"><span class="likert-btn l2">2</span></label>
+                                <label><input type="radio" name="q2" value="3"><span class="likert-btn l3">3</span></label>
+                                <label><input type="radio" name="q2" value="4"><span class="likert-btn l4">4</span></label>
+                                <label><input type="radio" name="q2" value="5"><span class="likert-btn l5">5</span></label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p class="qtext">3. Me siento cómodo trabajando con datos o información numérica.</p>
+                            <div class="likert" data-q="3">
+                                <label><input type="radio" name="q3" value="1"><span class="likert-btn l1">1</span></label>
+                                <label><input type="radio" name="q3" value="2"><span class="likert-btn l2">2</span></label>
+                                <label><input type="radio" name="q3" value="3"><span class="likert-btn l3">3</span></label>
+                                <label><input type="radio" name="q3" value="4"><span class="likert-btn l4">4</span></label>
+                                <label><input type="radio" name="q3" value="5"><span class="likert-btn l5">5</span></label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p class="qtext">4. Prefiero entender la causa de un problema antes de buscar una solución rápida.</p>
+                            <div class="likert" data-q="4">
+                                <label><input type="radio" name="q4" value="1"><span class="likert-btn l1">1</span></label>
+                                <label><input type="radio" name="q4" value="2"><span class="likert-btn l2">2</span></label>
+                                <label><input type="radio" name="q4" value="3"><span class="likert-btn l3">3</span></label>
+                                <label><input type="radio" name="q4" value="4"><span class="likert-btn l4">4</span></label>
+                                <label><input type="radio" name="q4" value="5"><span class="likert-btn l5">5</span></label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p class="qtext">5. Me entusiasma la idea de crear algo nuevo usando software o herramientas digitales.</p>
+                            <div class="likert" data-q="5">
+                                <label><input type="radio" name="q5" value="1"><span class="likert-btn l1">1</span></label>
+                                <label><input type="radio" name="q5" value="2"><span class="likert-btn l2">2</span></label>
+                                <label><input type="radio" name="q5" value="3"><span class="likert-btn l3">3</span></label>
+                                <label><input type="radio" name="q5" value="4"><span class="likert-btn l4">4</span></label>
+                                <label><input type="radio" name="q5" value="5"><span class="likert-btn l5">5</span></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="question">
+                            <p class="qtext">6. Me interesa aplicar la tecnología para mejorar la calidad de vida de las personas.</p>
+                            <div class="likert" data-q="6">
+                                <label><input type="radio" name="q6" value="1"><span class="likert-btn l1">1</span></label>
+                                <label><input type="radio" name="q6" value="2"><span class="likert-btn l2">2</span></label>
+                                <label><input type="radio" name="q6" value="3"><span class="likert-btn l3">3</span></label>
+                                <label><input type="radio" name="q6" value="4"><span class="likert-btn l4">4</span></label>
+                                <label><input type="radio" name="q6" value="5"><span class="likert-btn l5">5</span></label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p class="qtext">7. Me considero una persona metódica y organizada al trabajar.</p>
+                            <div class="likert" data-q="7">
+                                <label><input type="radio" name="q7" value="1"><span class="likert-btn l1">1</span></label>
+                                <label><input type="radio" name="q7" value="2"><span class="likert-btn l2">2</span></label>
+                                <label><input type="radio" name="q7" value="3"><span class="likert-btn l3">3</span></label>
+                                <label><input type="radio" name="q7" value="4"><span class="likert-btn l4">4</span></label>
+                                <label><input type="radio" name="q7" value="5"><span class="likert-btn l5">5</span></label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p class="qtext">8. Me motiva participar en proyectos colaborativos donde cada integrante cumple un rol técnico.</p>
+                            <div class="likert" data-q="8">
+                                <label><input type="radio" name="q8" value="1"><span class="likert-btn l1">1</span></label>
+                                <label><input type="radio" name="q8" value="2"><span class="likert-btn l2">2</span></label>
+                                <label><input type="radio" name="q8" value="3"><span class="likert-btn l3">3</span></label>
+                                <label><input type="radio" name="q8" value="4"><span class="likert-btn l4">4</span></label>
+                                <label><input type="radio" name="q8" value="5"><span class="likert-btn l5">5</span></label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p class="qtext">9. Siento curiosidad por los avances en inteligencia artificial, robótica o biotecnología.</p>
+                            <div class="likert" data-q="9">
+                                <label><input type="radio" name="q9" value="1"><span class="likert-btn l1">1</span></label>
+                                <label><input type="radio" name="q9" value="2"><span class="likert-btn l2">2</span></label>
+                                <label><input type="radio" name="q9" value="3"><span class="likert-btn l3">3</span></label>
+                                <label><input type="radio" name="q9" value="4"><span class="likert-btn l4">4</span></label>
+                                <label><input type="radio" name="q9" value="5"><span class="likert-btn l5">5</span></label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p class="qtext">10. Puedo mantener la calma y analizar una situación cuando algo falla o no funciona como esperaba.</p>
+                            <div class="likert" data-q="10">
+                                <label><input type="radio" name="q10" value="1"><span class="likert-btn l1">1</span></label>
+                                <label><input type="radio" name="q10" value="2"><span class="likert-btn l2">2</span></label>
+                                <label><input type="radio" name="q10" value="3"><span class="likert-btn l3">3</span></label>
+                                <label><input type="radio" name="q10" value="4"><span class="likert-btn l4">4</span></label>
+                                <label><input type="radio" name="q10" value="5"><span class="likert-btn l5">5</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 2: opción múltiple (11-19) -->
+            <div class="section" id="section-2" data-section="2" hidden>
+                <p class="note">Sección 2 — Opción múltiple. Elige la alternativa con la que más te identificas.</p>
+
+                <div class="grid-multiple">
+                    <!-- Q11 -->
+                    <div class="multi qblock">
+                        <p class="qtext">11. Cuando enfrento un problema difícil, suelo:</p>
+                        <label class="checkbox"><input type="radio" name="q11" value="a"> Buscar información y analizarla paso a paso</label>
+                        <label class="checkbox"><input type="radio" name="q11" value="b"> Consultar a otras personas para decidir juntos</label>
+                        <label class="checkbox"><input type="radio" name="q11" value="c"> Actuar rápidamente por intuición</label>
+                        <label class="checkbox"><input type="radio" name="q11" value="d"> Evitarlo hasta tener más claridad</label>
+                    </div>
+
+                    <!-- Q12 -->
+                    <div class="multi qblock">
+                        <p class="qtext">12. En un proyecto, prefiero encargarme de:</p>
+                        <label class="checkbox"><input type="radio" name="q12" value="a"> La parte técnica o de programación</label>
+                        <label class="checkbox"><input type="radio" name="q12" value="b"> El diseño y la presentación visual</label>
+                        <label class="checkbox"><input type="radio" name="q12" value="c"> La comunicación y organización del equipo</label>
+                        <label class="checkbox"><input type="radio" name="q12" value="d"> La planificación estratégica y decisiones finales</label>
+                    </div>
+
+                    <!-- Q13 -->
+                    <div class="multi qblock">
+                        <p class="qtext">13. ¿Qué actividad te resulta más atractiva?</p>
+                        <label class="checkbox"><input type="radio" name="q13" value="a"> Programar o automatizar tareas</label>
+                        <label class="checkbox"><input type="radio" name="q13" value="b"> Diseñar interfaces o productos</label>
+                        <label class="checkbox"><input type="radio" name="q13" value="c"> Investigar comportamientos humanos</label>
+                        <label class="checkbox"><input type="radio" name="q13" value="d"> Redactar contenidos o presentaciones</label>
+                    </div>
+
+                    <!-- Q14 -->
+                    <div class="multi qblock">
+                        <p class="qtext">14. ¿Qué tipo de entorno laboral prefieres?</p>
+                        <label class="checkbox"><input type="radio" name="q14" value="a"> Laboratorio o entorno tecnológico</label>
+                        <label class="checkbox"><input type="radio" name="q14" value="b"> Espacio creativo con dinámicas de grupo</label>
+                        <label class="checkbox"><input type="radio" name="q14" value="c"> Oficina con tareas estructuradas</label>
+                        <label class="checkbox"><input type="radio" name="q14" value="d"> Trabajo en campo o con personas</label>
+                    </div>
+
+                    <!-- Q15 -->
+                    <div class="multi qblock">
+                        <p class="qtext">15. ¿Qué habilidad valoras más en ti mismo?</p>
+                        <label class="checkbox"><input type="radio" name="q15" value="a"> Análisis lógico</label>
+                        <label class="checkbox"><input type="radio" name="q15" value="b"> Empatía</label>
+                        <label class="checkbox"><input type="radio" name="q15" value="c"> Comunicación</label>
+                        <label class="checkbox"><input type="radio" name="q15" value="d"> Liderazgo</label>
+                    </div>
+
+                    <!-- Q16 -->
+                    <div class="multi qblock">
+                        <p class="qtext">16. Si pudieras desarrollar una app, ¿qué tipo harías?</p>
+                        <label class="checkbox"><input type="radio" name="q16" value="a"> Una que resuelva un problema de salud o bienestar</label>
+                        <label class="checkbox"><input type="radio" name="q16" value="b"> Una que enseñe o difunda conocimiento</label>
+                        <label class="checkbox"><input type="radio" name="q16" value="c"> Una herramienta de productividad</label>
+                        <label class="checkbox"><input type="radio" name="q16" value="d"> Un juego o experiencia interactiva</label>
+                    </div>
+
+                    <!-- Q17 -->
+                    <div class="multi qblock">
+                        <p class="qtext">17. ¿Qué te motiva más en una carrera?</p>
+                        <label class="checkbox"><input type="radio" name="q17" value="a"> Innovar con tecnología</label>
+                        <label class="checkbox"><input type="radio" name="q17" value="b"> Ayudar a las personas directamente</label>
+                        <label class="checkbox"><input type="radio" name="q17" value="c"> Comprender cómo piensan los demás</label>
+                        <label class="checkbox"><input type="radio" name="q17" value="d"> Lograr estabilidad económica</label>
+                    </div>
+
+                    <!-- Q18 -->
+                    <div class="multi qblock">
+                        <p class="qtext">18. ¿Cómo manejas los errores en tu trabajo o estudios?</p>
+                        <label class="checkbox"><input type="radio" name="q18" value="a"> Los analizo y aprendo del fallo</label>
+                        <label class="checkbox"><input type="radio" name="q18" value="b"> Me frustro pero busco solucionarlo</label>
+                        <label class="checkbox"><input type="radio" name="q18" value="c"> Pido ayuda inmediatamente</label>
+                        <label class="checkbox"><input type="radio" name="q18" value="d"> Suelo evitarlos cambiando de tarea</label>
+                    </div>
+
+                    <!-- Q19 -->
+                    <div class="multi qblock">
+                        <p class="qtext">19. Si tuvieras que elegir un proyecto universitario, sería:</p>
+                        <label class="checkbox"><input type="radio" name="q19" value="a"> Un sistema informático que automatice procesos</label>
+                        <label class="checkbox"><input type="radio" name="q19" value="b"> Un estudio sobre comportamiento humano</label>
+                        <label class="checkbox"><input type="radio" name="q19" value="c"> Una campaña de comunicación visual</label>
+                        <label class="checkbox"><input type="radio" name="q19" value="d"> Un dispositivo o prototipo biomédico</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3: Sí/No (20-24) -->
+            <div class="section" id="section-3" data-section="3" hidden>
+                <p class="note">Sección 3 — Preguntas de Sí / No</p>
+
+                <div class="yesno-grid">
+                    <div class="yn qblock">
+                        <p class="qtext">20. ¿Te gusta trabajar con computadoras o dispositivos tecnológicos?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="20" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="20" data-val="no">No</button>
+                            <input type="hidden" name="q20" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">21. ¿Te resulta fácil entender conceptos científicos o matemáticos?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="21" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="21" data-val="no">No</button>
+                            <input type="hidden" name="q21" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">22. ¿Te interesa saber cómo se construyen los programas o aplicaciones?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="22" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="22" data-val="no">No</button>
+                            <input type="hidden" name="q22" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">23. ¿Te atrae la idea de estudiar una carrera en ingeniería?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="23" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="23" data-val="no">No</button>
+                            <input type="hidden" name="q23" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">24. ¿Consideras que tienes buena memoria para datos o fórmulas?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="24" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="24" data-val="no">No</button>
+                            <input type="hidden" name="q24" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">25. ¿Te gustaría trabajar en un laboratorio o entorno técnico?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="25" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="25" data-val="no">No</button>
+                            <input type="hidden" name="q25" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">26. ¿Prefieres los trabajos individuales antes que los grupales?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="26" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="26" data-val="no">No</button>
+                            <input type="hidden" name="q26" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">27. ¿Te sientes cómodo comunicando tus ideas frente a otras personas?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="27" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="27" data-val="no">No</button>
+                            <input type="hidden" name="q27" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">28. ¿Te llama la atención la biología o la medicina?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="28" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="28" data-val="no">No</button>
+                            <input type="hidden" name="q28" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">29. ¿Sueles analizar tus decisiones antes de tomarlas?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="29" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="29" data-val="no">No</button>
+                            <input type="hidden" name="q29" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">30. ¿Crees tener una buena capacidad para detectar errores o inconsistencias?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="30" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="30" data-val="no">No</button>
+                            <input type="hidden" name="q30" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">31. ¿Disfrutas ayudar a otros a resolver problemas personales o emocionales?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="31" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="31" data-val="no">No</button>
+                            <input type="hidden" name="q31" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">32. ¿Tienes interés en aprender sobre inteligencia artificial o robótica?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="32" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="32" data-val="no">No</button>
+                            <input type="hidden" name="q32" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">33. ¿Te atrae diseñar o crear productos visuales?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="33" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="33" data-val="no">No</button>
+                            <input type="hidden" name="q33" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">34. ¿Consideras importante el impacto social de tu trabajo futuro?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="34" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="34" data-val="no">No</button>
+                            <input type="hidden" name="q34" />
+                        </div>
+                    </div>
+
+                    <div class="yn qblock">
+                        <p class="qtext">35. ¿Sueles estar motivado cuando las cosas se vuelven difíciles?</p>
+                        <div class="yn-buttons">
+                            <button type="button" class="yn-btn" data-q="35" data-val="yes">Sí</button>
+                            <button type="button" class="yn-btn" data-q="35" data-val="no">No</button>
+                            <input type="hidden" name="q35" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- NAVEGACIÓN -->
+            <div class="nav-buttons">
+                <button type="button" id="btnPrev" class="nav-btn">Atrás</button>
+                <button type="button" id="btnNext" class="nav-btn">Próximo</button>
+                <button type="button" id="btnFinish" class="nav-btn finish" hidden>Finalizar</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<!-- SCRIPTS: controla navegación, validación, botones -->
+<script>
+    (function(){
+        // UI refs
+        const sections = Array.from(document.querySelectorAll('.section'));
+        let current = 0;
+
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        const btnFinish = document.getElementById('btnFinish');
+
+        const sectionNumber = document.getElementById('currentSectionNumber');
+        const sectionType = document.getElementById('sectionType');
+
+        // init
+        function showSection(idx){
+            sections.forEach((s,i)=>{
+                s.hidden = i !== idx;
+            });
+            current = idx;
+            sectionNumber.textContent = idx + 1;
+            // change section label
+            const types = ['Escala Likert (1 a 5)', 'Opción múltiple', 'Preguntas de Sí / No'];
+            sectionType.textContent = types[idx];
+            // nav buttons
+            btnPrev.style.display = idx === 0 ? 'none' : 'inline-block';
+            btnNext.style.display = idx === sections.length - 1 ? 'none' : 'inline-block';
+            btnFinish.hidden = idx === sections.length - 1 ? false : true;
+            // focus top
+            window.scrollTo({top:0,behavior:'smooth'});
+        }
+        showSection(0);
+
+        // valida la sección actual: retorna true si está completa
+        function validateSection(idx){
+            const sec = sections[idx];
+            if(!sec) return true;
+            // If Likert: check all radio groups have value (questions 1..10)
+            if(idx === 0){
+                for(let i=1;i<=10;i++){
+                    const v = sec.querySelector('input[name="q'+i+'"]:checked');
+                    if(!v) return false;
+                }
+            }
+            // If multiple: check q11..q19
+            if(idx === 1){
+                for(let i=11;i<=19;i++){
+                    const v = sec.querySelector('input[name="q'+i+'"]:checked');
+                    if(!v) return false;
+                }
+            }
+            // If yes/no: check hidden inputs are filled for q20..q24
+            if(idx === 2){
+                for(let i=20;i<=24;i++){
+                    const v = sec.querySelector('input[name="q'+i+'"]').value;
+                    if(!v) return false;
+                }
+            }
+            return true;
+        }
+
+        btnNext.addEventListener('click', ()=>{
+            if(!validateSection(current)){
+                alert('Por favor responde todas las preguntas de esta sección antes de continuar.');
+                return;
+            }
+            showSection(current+1);
+        });
+
+        btnPrev.addEventListener('click', ()=>{
+            showSection(current-1);
+        });
+
+        // Finish
+        btnFinish.addEventListener('click', ()=>{
+            // validate all
+            for(let i=0;i<sections.length;i++){
+                if(!validateSection(i)){
+                    alert('Completa todas las preguntas antes de finalizar.');
+                    showSection(i);
+                    return;
+                }
+            }
+            // (aquí podrías calcular resultados y guardarlos en backend)
+            // redirect to suggest page (same folder)
+            window.location.href = 'suggest.html';
+        });
+
+        // interactive Likert visuals: clicking the styled span toggles radio for accessibility
+        document.querySelectorAll('.likert label').forEach(lbl=>{
+            lbl.addEventListener('click', (e)=>{
+                // the input inside the label will be checked by default
+                // we add small visual feedback by toggling "selected" class on spans in same group
+                const container = lbl.closest('.likert');
+                setTimeout(()=>{
+                    const checked = container.querySelector('input:checked');
+                    if(checked){
+                        container.querySelectorAll('.likert-btn').forEach(s=>s.classList.remove('selected'));
+                        const span = checked.nextElementSibling;
+                        if(span) span.classList.add('selected');
+                    }
+                },10);
+            });
+        });
+
+        // YES/NO buttons behavior (set hidden inputs, toggle class)
+        document.querySelectorAll('.yn-btn').forEach(btn=>{
+            btn.addEventListener('click', (e)=>{
+                const q = btn.dataset.q;
+                const val = btn.dataset.val;
+                // set hidden input:
+                const hidden = document.querySelector('input[name="q'+q+'"]');
+                if(hidden) hidden.value = val;
+                // styling: remove active from siblings in same group
+                const group = btn.parentElement;
+                group.querySelectorAll('.yn-btn').forEach(b=>b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Profile dropdown
+        const profileButton = document.getElementById('profileButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const arrow = document.querySelector('.arrow-down');
+        profileButton.addEventListener('click', (e)=>{
+            const expanded = profileButton.getAttribute('aria-expanded') === 'true';
+            profileButton.setAttribute('aria-expanded', String(!expanded));
+            dropdownMenu.classList.toggle('show');
+            if (arrow) arrow.classList.toggle('rotate');
+        });
+
+        // close dropdown on outside click
+        document.addEventListener('click', (e)=>{
+            if(!profileButton.contains(e.target) && !dropdownMenu.contains(e.target)){
+                dropdownMenu.classList.remove('show');
+                profileButton.setAttribute('aria-expanded', 'false');
+                if (arrow) arrow.classList.remove('rotate');
+            }
+        });
+
+        // small UX: keyboard navigation for next/prev (optional)
+        document.addEventListener('keydown', (e)=>{
+            if(e.key === 'ArrowRight') btnNext.click();
+            if(e.key === 'ArrowLeft') btnPrev.click();
+        });
+
+        // make likert buttons hover-smooth via css (no extra JS needed)
+    })();
+</script>
+</body>
+</html>
