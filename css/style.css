@@ -43,31 +43,31 @@ header .logo img {
     margin-bottom: 0.1rem;
 }
 
-header nav a {
-    color: #0868A8;
-    font-weight: bold;
-    letter-spacing: 0.03em;
-    font-family: 'Roboto', sans-serif;
+/*header nav a {*/
+/*    color: #0868A8;*/
+/*    font-weight: bold;*/
+/*    letter-spacing: 0.03em;*/
+/*    font-family: 'Roboto', sans-serif;*/
 
-    /* Make the whole pill clickable like a normal button */
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 1rem 0.05rem;
-    border-radius: 1px; /* pill shape; change to 6px if you prefer squared corners */
-    cursor: pointer;
-    position: relative;
-    margin-bottom: 0.5rem;
+/*    !* Make the whole pill clickable like a normal button *!*/
+/*    display: inline-flex;*/
+/*    align-items: center;*/
+/*    gap: 0.35rem;*/
+/*    padding: 1rem 0.05rem;*/
+/*    border-radius: 1px; !* pill shape; change to 6px if you prefer squared corners *!*/
+/*    cursor: pointer;*/
+/*    position: relative;*/
+/*    margin-bottom: 0.5rem;*/
 
-    /* 2px stroke under the button in the same color as the label */
-    background-image: linear-gradient(currentColor, currentColor);
-    background-size: 100% 3px;
-    background-position: bottom left;
-    background-repeat: no-repeat;
+/*    !* 2px stroke under the button in the same color as the label *!*/
+/*    background-image: linear-gradient(currentColor, currentColor);*/
+/*    background-size: 100% 3px;*/
+/*    background-position: bottom left;*/
+/*    background-repeat: no-repeat;*/
 
-    /* Preserve existing spacing to the right */
-    margin-right: 70rem;
-}
+/*    !* Preserve existing spacing to the right *!*/
+/*    margin-right: 70rem;*/
+/*}*/
 
 /* Hover and focus styles for the header nav button */
 header nav a:focus-visible {
