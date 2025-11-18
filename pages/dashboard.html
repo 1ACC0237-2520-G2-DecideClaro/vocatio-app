@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- Encabezado -->
 <header>
     <div class="logo">
         <a href="dashboard.html">
@@ -24,7 +23,6 @@
         <a href="../pages/reports.html">Informes</a>
     </nav>
 
-    <!-- Menú contextual -->
     <div class="profile-menu">
         <button id="profileButton">
             <img src="../assets/img/usuario-thumb.png" alt="Usuario">
@@ -46,7 +44,6 @@
     </div>
 </header>
 
-<!-- Cuerpo principal -->
 <main>
     <h1>Mi espacio vocacional</h1>
 
@@ -132,27 +129,17 @@
     </div>
 </main>
 
-<script>
-    // Menú contextual interactivo
-    const profileButton = document.getElementById('profileButton');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const arrow = document.querySelector('.arrow-down');
+<!--<script>-->
+<!--    // Menú contextual interactivo-->
+<!--    const profileButton = document.getElementById('profileButton');-->
+<!--    const dropdownMenu = document.getElementById('dropdownMenu');-->
+<!--    const arrow = document.querySelector('.arrow-down');-->
 
-    profileButton.addEventListener('click', () => {
-        dropdownMenu.classList.toggle('show');
-        arrow.classList.toggle('rotate');
-    });
-<!--
-      document.querySelectorAll('.fav-icon').forEach(icon => {
-        icon.addEventListener('click', () => {
-            if (icon.src.includes('nofav')) {
-                icon.src = '../assets/img/fav.png';
-            } else {
-                icon.src = '../assets/img/nofav.png';
-            }
-        });
-    });
--->
-</script>
+<!--    profileButton.addEventListener('click', () => {-->
+<!--        dropdownMenu.classList.toggle('show');-->
+<!--        arrow.classList.toggle('rotate');-->
+<!--    });-->
+<!--</script>-->
+<script src="../js/dashboard.js"></script>
 </body>
 </html>
