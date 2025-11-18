@@ -1,51 +1,51 @@
 header {
     background-color: white;
-    height: 60px;            
+    height: 60px;
     width: 100%;
-    top: 0;                  
+    top: 0;
     left: 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 #logo{
 
-width: 110px;
-height: 40px;
-float: left;
+    width: 110px;
+    height: 40px;
+    float: left;
 
-position: absolute; 
-top: 9px; 
-left: 10px;
+    position: absolute;
+    top: 9px;
+    left: 10px;
 
 }
 
 #perfil{
 
-width:140px;
-height: 130px;
+    width:140px;
+    height: 130px;
 
-position: absolute;
-top: 90px;
-left: 640px;
+    position: absolute;
+    top: 90px;
+    left: 640px;
 
 }
 
 #perfilMini{
 
-width: 50px;
-height: 45px;
-float: Right;
+    width: 50px;
+    height: 45px;
+    float: Right;
 
-position: absolute; 
-top: 7px; 
-left: 1415px;
+    position: absolute;
+    top: 7px;
+    left: 1415px;
 
 }
 
 h5{
 
-color: #0868A8;
-font-family: "Inter", sans-serif;
+    color: #0868A8;
+    font-family: "Inter", sans-serif;
 
 }
 
@@ -57,17 +57,17 @@ font-family: "Inter", sans-serif;
 
 h1{
 
-font-family: "Inter", sans-serif;
+    font-family: "Inter", sans-serif;
 
-position: absolute;
-top: 205px;
-left: 648px;
+    position: absolute;
+    top: 205px;
+    left: 648px;
 
 }
 
 h3{
 
-font-family: "Inter", sans-serif;
+    font-family: "Inter", sans-serif;
 
 }
 
@@ -123,7 +123,7 @@ font-family: "Inter", sans-serif;
 #ConfirmarNuevaContraseña{position: absolute; top: 630px; left: 260px;}
 
 hr{
-    width: 360px; 
+    width: 360px;
     transform: rotate(90deg);
 
     position: absolute;

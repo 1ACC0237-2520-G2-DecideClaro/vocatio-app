@@ -110,15 +110,15 @@ nav a.active { background-image: none !important; }
 
 /* Responsivo */
 @media (max-width: 1024px){
-  .main-result { grid-template-columns: 360px 1fr; gap: 28px; }
+    .main-result { grid-template-columns: 360px 1fr; gap: 28px; }
 }
 @media (max-width: 820px){
-  .result-header { align-items: flex-start; }
-  .main-result { grid-template-columns: 1fr; }
-  .chart-container { max-width: 520px; }
+    .result-header { align-items: flex-start; }
+    .main-result { grid-template-columns: 1fr; }
+    .chart-container { max-width: 520px; }
 }
 @media (max-width: 520px){
-  .result-header h1 { font-size: 1.6rem; }
-  #mainCareer { font-size: 1.6rem; }
-  .icons img { width: 26px; height: 26px; }
+    .result-header h1 { font-size: 1.6rem; }
+    #mainCareer { font-size: 1.6rem; }
+    .icons img { width: 26px; height: 26px; }
 }

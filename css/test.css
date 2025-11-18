@@ -197,9 +197,9 @@ nav a:first-child { /* keep Vista General underlined as in dashboard example if 
 /* Section 1: improve alignment between the two columns */
 /* Make question title take at least two lines height on desktop so paired rows align visually */
 @media (min-width: 901px){
-  .two-column { align-items: flex-start; }
-  .qtext { min-height: 44px; display:flex; align-items:flex-start; }
-  .question { padding: 12px 0; }
+    .two-column { align-items: flex-start; }
+    .qtext { min-height: 44px; display:flex; align-items:flex-start; }
+    .question { padding: 12px 0; }
 }
 
 /* Likert buttons: bigger and stronger hover/active feedback */
@@ -223,11 +223,11 @@ nav a:first-child { /* keep Vista General underlined as in dashboard example if 
 
 /* Responsive refinements */
 @media (max-width: 900px){
-  .qtext { min-height: unset; }
-  .likert-btn { width: 48px; height: 40px; }
+    .qtext { min-height: unset; }
+    .likert-btn { width: 48px; height: 40px; }
 }
 @media (max-width: 520px){
-  .likert { gap: 8px; }
-  .likert-btn { width: 44px; height: 38px; border-radius: 6px; }
-  .yn-btn { width: 48%; text-align:center; padding: 12px 10px; }
+    .likert { gap: 8px; }
+    .likert-btn { width: 44px; height: 38px; border-radius: 6px; }
+    .yn-btn { width: 48%; text-align:center; padding: 12px 10px; }
 }
