@@ -1,8 +1,8 @@
 /**
-Librerías usadas:
-- Google Analytics (gtag.js) - Para tracking de interacciones del usuario
-- LocalStorage API (nativa) - Para guardar respuestas temporales
-*/
+ * Librerías usadas:
+Google Analytics (gtag.js) - Para tracking de interacciones del usuario
+LocalStorage API (nativa) - Para guardar respuestas temporales
+ */
 
 (function() {
     'use strict';

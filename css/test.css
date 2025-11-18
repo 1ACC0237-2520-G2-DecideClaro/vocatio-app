@@ -9,76 +9,17 @@ body {
     -moz-osx-font-smoothing:grayscale;
 }
 
-/*header {*/
-/*    display: flex;*/
-/*    justify-content: flex-start; !* align items from the left like landing *!*/
-/*    align-items: center;*/
-/*    background: #FFF;*/
-/*    padding: 0.6rem 1.5rem;*/
-/*    border-bottom:1px solid #DDE1E6;*/
-/*    margin: 1rem 1.5rem;*/
-/*    border-radius: 8px;*/
-/*}*/
-
-
-/*.logo img { height:45px; }*/
-
-/*nav {*/
-/*    display:flex;*/
-/*    gap:2rem;*/
-/*    align-items:center;*/
-/*    flex:1;;*/
-/*    margin-left: 65px;*/
-/*}*/
-
-/*nav a {*/
-/*    color:#0868A8;*/
-/*    text-decoration:none;*/
-/*    font-weight:500;*/
-/*    font-family:'Roboto',sans-serif;*/
-/*    padding: 0.5rem 0.2rem;*/
-/*    position:relative;*/
-/*    display:inline-flex;*/
-/*    align-items:center;*/
-/*}*/
-
-/*nav a.active {*/
-/*    color:#FF5F57;*/
-/*}*/
-
-/*!* subrayado del item activo (como stroke en figma) *!*/
-/*nav a:first-child { !* keep Vista General underlined as in dashboard example if needed *!*/
-/*    !* no-op: first child styling handled by specific cases in HTML *!*/
-/*}*/
-
-/*!* profile menu *!*/
-/*.profile-menu { position:relative; margin-left: 1rem; }*/
-/*#profileButton {*/
-/*    background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:6px;*/
-/*}*/
-/*#profileButton img{ width:35px; height:35px; border-radius:50%; }*/
-
-/*!* arrow *!*/
-/*.arrow-down{*/
-/*    border: solid #A6A6A6;*/
-/*    border-width: 0 2px 2px 0;*/
-/*    padding:4px; transform:rotate(45deg); display:inline-block; transition:transform .2s;*/
-/*}*/
-/*.dropdown { position:absolute; right:0; top:52px; width:240px; background:#FFF; border:1px solid #DDE1E6; border-radius:8px; box-shadow:0 8px 24px rgba(8,20,40,0.08); display:none; z-index:50; }*/
-/*.dropdown.show{ display:block; }*/
-/*.dropdown li{ list-style:none; padding:10px 12px; display:flex; align-items:center; gap:10px; }*/
-/*.dropdown li img { width:20px; }*/
-/*.dropdown .divider{ height:1px; background:#A6A6A6; margin:6px 0; opacity:0.35; }*/
+/* ====== Header ====== */
 header {
     display: flex;
-    justify-content: flex-start; /* align items from the left like landing */
+    justify-content: flex-start;
     align-items: center;
     gap: 1.5rem;
     background: #FFF;
     padding: 0.5rem 2rem;
-    border-bottom: 1px solid #DDE1E6; /* same thickness as landing */
-    margin: 1rem 2rem; /* same outer margins as landing */
-    border-radius: 0; /* match landing: no rounded corners */
+    border-bottom: 1px solid #DDE1E6;
+    margin: 1rem 2rem;
+    border-radius: 0;
 }
 
 .logo img {
@@ -92,7 +33,7 @@ nav {
     margin-left: 65px;
     display: flex;
     gap: 2rem;
-    margin-right: auto; /* keep nav near the left, push profile menu to the right */
+    margin-right: auto;
 }
 
 nav a {
@@ -102,23 +43,20 @@ nav a {
     color: #0868A8;
     text-decoration: none;
     position: relative;
-    padding: 1rem 0.1rem; /* vertical rhythm similar to landing */
+    padding: 1rem 0.1rem;
 }
 
 nav a.active {
-    /* keep the text color, show stroke */
     background-image: linear-gradient(currentColor, currentColor);
     background-size: 100% 3px;
     background-position: bottom left;
     background-repeat: no-repeat;
 }
 
-/* remove forced underline from first item; hover keeps color only */
 nav a:hover {
     opacity: 0.85;
 }
 
-/* Special color for "Iniciar Test" link */
 nav a.test-link {
     color: #FF5F57;
 }
@@ -197,7 +135,7 @@ nav a.test-link {
     color: #FF383C;
 }
 
-/* CONTAINER */
+/* ====== CONTAINER ====== */
 .container { max-width:1200px; margin: 1rem auto; padding: 0 16px; }
 
 /* Test wrapper */
@@ -288,18 +226,6 @@ nav a.test-link {
 /* hide default focus outlines but keep accessible style */
 .likert-btn:focus, .yn-btn:focus, .nav-btn:focus { outline: 3px solid rgba(8,104,168,0.15); outline-offset:2px; }
 
-/* Responsive */
-@media (max-width: 900px){
-    .two-column { flex-direction:column; }
-    nav { justify-content:flex-start; gap:0.9rem; }
-}
-
-/* small screens - stack nicely */
-@media (max-width: 520px){
-    .container { padding: 0 12px; }
-    .nav-buttons { justify-content: center; flex-wrap:wrap;}
-}
-
 /* minimal modal styles for reuse (history uses similar) */
 .modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.35); z-index:200; }
 .modal-content { background:#fff; padding:20px; border-radius:10px; width:90%; max-width:420px; box-shadow:0 12px 30px rgba(0,0,0,0.2); }
@@ -339,13 +265,79 @@ nav a.test-link {
 .nav-btn { font-size: 0.98rem; padding: 12px 16px; }
 .nav-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(8,20,40,0.12); }
 
+/* ====== RESPONSIVE: HEADER ====== */
+@media (max-width: 768px) {
+    /* Header responsive igual que dashboard */
+    header {
+        margin: 0.5rem 1rem;
+        padding: 0.5rem 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .logo {
+        order: 1;
+    }
+
+    .logo img {
+        margin-left: 0;
+        height: 40px;
+    }
+
+    .profile-menu {
+        order: 2;
+        margin-left: auto;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        gap: 0.75rem;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    nav a {
+        padding: 0.6rem 0.5rem;
+        display: inline-block;
+    }
+}
+/* Responsive */
+@media (max-width: 900px){
+    .two-column { flex-direction:column; }
+    nav { justify-content:flex-start; gap:0.9rem; }
+}
+
+/* small screens - stack nicely */
+@media (max-width: 520px){
+    .container { padding: 0 12px; }
+    .nav-buttons { justify-content: center; flex-wrap:wrap;}
+}
+/* Section 1: improve alignment between the two columns */
+/* Make question title take at least two lines height on desktop so paired rows align visually */
+@media (min-width: 901px){
+    .two-column { align-items: flex-start; }
+    .qtext { min-height: 44px; display:flex; align-items:flex-start; }
+    .question { padding: 12px 0; }
+}
 /* Responsive refinements */
 @media (max-width: 900px){
+    .two-column { flex-direction:column; }
     .qtext { min-height: unset; }
     .likert-btn { width: 48px; height: 40px; }
 }
+
 @media (max-width: 520px){
+    .container { padding: 0 12px; }
+    .nav-buttons { justify-content: center; flex-wrap:wrap;}
     .likert { gap: 8px; }
     .likert-btn { width: 44px; height: 38px; border-radius: 6px; }
     .yn-btn { width: 48%; text-align:center; padding: 12px 10px; }
+
+    nav a { padding: 0.5rem 0.4rem; }
 }
