@@ -1,12 +1,8 @@
 /**
- * test.js - Módulo 2: Evaluación de Intereses Vocacionales
- * Funcionalidad 1: Test vocacional interactivo con validaciones
- * Autor: DecideClaro - Vocatio
- *
- * Librerías usadas:
- * - Google Analytics (gtag.js) - Para tracking de interacciones del usuario
- * - LocalStorage API (nativa) - Para guardar respuestas temporales
- */
+Librerías usadas:
+- Google Analytics (gtag.js) - Para tracking de interacciones del usuario
+- LocalStorage API (nativa) - Para guardar respuestas temporales
+*/
 
 (function() {
     'use strict';

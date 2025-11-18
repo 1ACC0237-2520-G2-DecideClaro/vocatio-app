@@ -1,12 +1,8 @@
 /**
- * suggest.js - Módulo 2: Evaluación de Intereses Vocacionales
- * Funcionalidad 2 y 3: Cálculo automático de resultados y sugerencias de carreras
- * Autor: DecideClaro - Vocatio
- *
- * Librerías usadas:
- * - Chart.js - Para visualización de resultados en gráfico de pastel
- * - LocalStorage API (nativa) - Para recuperar datos del test y guardar evaluaciones
- */
+Librerías usadas:
+- Chart.js - Para visualización de resultados en gráfico de pastel
+- LocalStorage API (nativa) - Para recuperar datos del test y guardar evaluaciones
+*/
 
 (function() {
     'use strict';

@@ -1,4 +1,3 @@
-/**** Resultados del test — estilos específicos de la página ****/
 :root {
     --orange: #F29723;
     --green:  #80BA23;
@@ -17,7 +16,6 @@ body {
     color: var(--ink);
 }
 
-/* En esta página NO se muestra stroke en la navegación aunque algún link tuviera .active */
 nav a.active { background-image: none !important; }
 
 header {
@@ -66,7 +64,6 @@ nav a.test-link {
     color: #FF5F57;
 }
 
-/* ====== Menú contextual ====== */
 .profile-menu {
     position: relative;
 }

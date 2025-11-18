@@ -4,15 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Test Vocacional | Vocatio</title>
-
-    <!-- Header styles to match dashboard -->
     <link rel="stylesheet" href="../css/test.css">
-
-    <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- HEADER (mismo estilo que dashboard) -->
 <header>
     <div class="logo">
         <a href="dashboard.html"><img src="../assets/img/logo.png" alt="Vocatio logo"></a>
@@ -47,25 +42,21 @@
     </div>
 </header>
 
-<!-- MAIN -->
 <main class="container">
     <section class="test-wrapper">
 
-        <!-- TITULO / SECCION -->
         <header class="test-header">
             <h1>Test de Orientación Vocacional <span class="accent">#01</span></h1>
             <p class="section-desc"><strong>Sección <span id="currentSectionNumber">1</span></strong> — <span id="sectionType">Escala Likert (1 a 5)</span></p>
             <div class="test-separator" aria-hidden="true"></div>
         </header>
 
-        <!-- VISTAS DE SECCIONES: las tres son panels gestionados por JS -->
         <form id="vocationalTest" novalidate>
             <!-- SECCIÓN 1: Likert 1-10 -->
             <div class="section" id="section-1" data-section="1">
                 <p class="note">Tipo: 1 = Muy en desacuerdo, 2 = En desacuerdo, 3 = Indiferente, 4 = De acuerdo, 5 = Muy de acuerdo</p>
 
                 <div class="two-column">
-                    <!-- 5 questions per column to imitate layout -->
                     <div class="col">
                         <!-- Q1 -->
                         <div class="question">
@@ -423,7 +414,7 @@
                 </div>
             </div>
 
-            <!-- NAVEGACIÓN -->
+            <!-- Botones de navegación -->
             <div class="nav-buttons">
                 <button type="button" id="btnPrev" class="nav-btn">Atrás</button>
                 <button type="button" id="btnNext" class="nav-btn">Próximo</button>

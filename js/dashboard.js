@@ -1,11 +1,7 @@
 /**
- * dashboard.js - Módulo 2: Evaluación de Intereses Vocacionales
- * Funcionalidades del Dashboard: mostrar último test, gestión de perfil
- * Autor: DecideClaro - Vocatio
- *
- * Librerías usadas:
- * - LocalStorage API (nativa) - Para recuperar datos de evaluaciones
- */
+Librerías usadas:
+- LocalStorage API (nativa) - Para recuperar datos de evaluaciones
+*/
 
 (function() {
     'use strict';

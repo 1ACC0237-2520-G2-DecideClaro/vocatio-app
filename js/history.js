@@ -1,11 +1,7 @@
 /**
- * history.js - Módulo 2: Evaluación de Intereses Vocacionales
- * Funcionalidad 4: Historial de evaluaciones (guardar/eliminar/visualizar)
- * Autor: DecideClaro - Vocatio
- *
- * Librerías usadas:
- * - LocalStorage API (nativa) - Para persistencia y recuperación de evaluaciones
- */
+Librerías usadas:
+- LocalStorage API (nativa) - Para persistencia y recuperación de evaluaciones
+*/
 
 (function() {
     'use strict';

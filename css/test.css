@@ -1,12 +1,6 @@
-/* test.css - Estilos para pages/test.html
-   Paleta y tipografías según tus especificaciones.
-*/
-
-/* reset ligero */
 * { box-sizing: border-box; }
 html,body { height: 100%; margin:0; }
 
-/* Body */
 body {
     font-family: "Roboto Condensed", "Roboto", sans-serif;
     background: #F2F4F8;
@@ -48,7 +42,6 @@ body {
 /*    align-items:center;*/
 /*}*/
 
-/*!* "Iniciar Test" debe verse activo: lo definimos con class .active *!*/
 /*nav a.active {*/
 /*    color:#FF5F57;*/
 /*}*/
@@ -76,8 +69,6 @@ body {
 /*.dropdown li{ list-style:none; padding:10px 12px; display:flex; align-items:center; gap:10px; }*/
 /*.dropdown li img { width:20px; }*/
 /*.dropdown .divider{ height:1px; background:#A6A6A6; margin:6px 0; opacity:0.35; }*/
-/* Navegación */
-/* ====== Encabezado ====== */
 header {
     display: flex;
     justify-content: flex-start; /* align items from the left like landing */
@@ -114,7 +105,6 @@ nav a {
     padding: 1rem 0.1rem; /* vertical rhythm similar to landing */
 }
 
-/* underline stroke only for the active section */
 nav a.active {
     /* keep the text color, show stroke */
     background-image: linear-gradient(currentColor, currentColor);
@@ -133,7 +123,6 @@ nav a.test-link {
     color: #FF5F57;
 }
 
-/* ====== Menú contextual ====== */
 .profile-menu {
     position: relative;
 }
@@ -165,7 +154,6 @@ nav a.test-link {
     transform: rotate(-135deg);
 }
 
-/* Dropdown */
 .dropdown {
     position: absolute;
     right: 0;
@@ -318,8 +306,6 @@ nav a.test-link {
 .modal-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:12px; }
 .btn-cancel { padding:8px 12px; background:#fff; border:1px solid #DDE1E6; border-radius:8px; cursor:pointer; }
 .btn-confirm { padding:8px 12px; background:#FF383C; color:#000; border:none; border-radius:8px; cursor:pointer; font-weight:700; }
-
-/* --- UI Enhancements for test page (non-breaking overrides) --- */
 
 /* Put section name under title and add a subtle separator */
 .test-header { margin-bottom: 12px; }
