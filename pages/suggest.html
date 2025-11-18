@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado del Test Vocacional</title>
-    <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/suggest.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -92,82 +91,83 @@
     </div>
 </div>
 
-<script>
-    // Gráfico con Chart.js (paleta alineada)
-    const ctx = document.getElementById('careerChart');
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Ingeniería de Software', 'Ingeniería Industrial', 'Ciencias de la Computación', 'Diseño UX'],
-            datasets: [{
-                data: [45, 25, 20, 10],
-                backgroundColor: ['#F29723', '#80BA23', '#1F80C1', '#0A3D66'],
-                borderColor: '#FFFFFF',
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: { legend: { position: 'bottom' } }
-        }
-    });
+<!--<script>-->
+<!--    // Gráfico con Chart.js (paleta alineada)-->
+<!--    const ctx = document.getElementById('careerChart');-->
+<!--    new Chart(ctx, {-->
+<!--        type: 'pie',-->
+<!--        data: {-->
+<!--            labels: ['Ingeniería de Software', 'Ingeniería Industrial', 'Ciencias de la Computación', 'Diseño UX'],-->
+<!--            datasets: [{-->
+<!--                data: [45, 25, 20, 10],-->
+<!--                backgroundColor: ['#F29723', '#80BA23', '#1F80C1', '#0A3D66'],-->
+<!--                borderColor: '#FFFFFF',-->
+<!--                borderWidth: 2-->
+<!--            }]-->
+<!--        },-->
+<!--        options: {-->
+<!--            responsive: true,-->
+<!--            plugins: { legend: { position: 'bottom' } }-->
+<!--        }-->
+<!--    });-->
 
-    // Menú contextual del header
-    const profileButton = document.getElementById('profileButton');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const arrow = document.querySelector('.arrow-down');
-    if (profileButton && dropdownMenu) {
-        profileButton.addEventListener('click', () => {
-            dropdownMenu.classList.toggle('show');
-            if (arrow) arrow.classList.toggle('rotate');
-        });
-        document.addEventListener('click', (e) => {
-            if (!profileButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                dropdownMenu.classList.remove('show');
-                if (arrow) arrow.classList.remove('rotate');
-            }
-        });
-    }
+<!--    // Menú contextual del header-->
+<!--    const profileButton = document.getElementById('profileButton');-->
+<!--    const dropdownMenu = document.getElementById('dropdownMenu');-->
+<!--    const arrow = document.querySelector('.arrow-down');-->
+<!--    if (profileButton && dropdownMenu) {-->
+<!--        profileButton.addEventListener('click', () => {-->
+<!--            dropdownMenu.classList.toggle('show');-->
+<!--            if (arrow) arrow.classList.toggle('rotate');-->
+<!--        });-->
+<!--        document.addEventListener('click', (e) => {-->
+<!--            if (!profileButton.contains(e.target) && !dropdownMenu.contains(e.target)) {-->
+<!--                dropdownMenu.classList.remove('show');-->
+<!--                if (arrow) arrow.classList.remove('rotate');-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
 
-    // Favorito (accesible)
-    const favIcon = document.querySelector('.fav-toggle');
-    let fav = false;
-    if (favIcon) {
-        const toggleFav = () => {
-            fav = !fav;
-            favIcon.src = fav ? '../assets/img/fav.png' : '../assets/img/nofav.png';
-            favIcon.setAttribute('aria-pressed', String(fav));
-            favIcon.setAttribute('aria-label', fav ? 'Quitar de favoritos' : 'Marcar como favorito');
-        };
-        favIcon.addEventListener('click', toggleFav);
-        favIcon.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleFav();
-            }
-        });
-    }
+<!--    // Favorito (accesible)-->
+<!--    const favIcon = document.querySelector('.fav-toggle');-->
+<!--    let fav = false;-->
+<!--    if (favIcon) {-->
+<!--        const toggleFav = () => {-->
+<!--            fav = !fav;-->
+<!--            favIcon.src = fav ? '../assets/img/fav.png' : '../assets/img/nofav.png';-->
+<!--            favIcon.setAttribute('aria-pressed', String(fav));-->
+<!--            favIcon.setAttribute('aria-label', fav ? 'Quitar de favoritos' : 'Marcar como favorito');-->
+<!--        };-->
+<!--        favIcon.addEventListener('click', toggleFav);-->
+<!--        favIcon.addEventListener('keydown', (e) => {-->
+<!--            if (e.key === 'Enter' || e.key === ' ') {-->
+<!--                e.preventDefault();-->
+<!--                toggleFav();-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
 
-    // Modal de borrado (accesible)
-    const deleteBtn = document.querySelector('.delete-btn');
-    const modal = document.getElementById('deleteModal');
-    const confirmDelete = document.getElementById('confirmDelete');
-    const modalCancel = document.getElementById('modalCancel');
+<!--    // Modal de borrado (accesible)-->
+<!--    const deleteBtn = document.querySelector('.delete-btn');-->
+<!--    const modal = document.getElementById('deleteModal');-->
+<!--    const confirmDelete = document.getElementById('confirmDelete');-->
+<!--    const modalCancel = document.getElementById('modalCancel');-->
 
-    const openModal = () => { if (modal) modal.hidden = false; };
-    const closeModal = () => { if (modal) modal.hidden = true; };
+<!--    const openModal = () => { if (modal) modal.hidden = false; };-->
+<!--    const closeModal = () => { if (modal) modal.hidden = true; };-->
 
-    if (deleteBtn && modal) {
-        deleteBtn.addEventListener('click', openModal);
-        confirmDelete.addEventListener('click', () => {
-            closeModal();
-            alert('Evaluación eliminada del historial');
-            window.location.href = '../pages/history.html';
-        });
-        if (modalCancel) modalCancel.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-    }
-</script>
+<!--    if (deleteBtn && modal) {-->
+<!--        deleteBtn.addEventListener('click', openModal);-->
+<!--        confirmDelete.addEventListener('click', () => {-->
+<!--            closeModal();-->
+<!--            alert('Evaluación eliminada del historial');-->
+<!--            window.location.href = '../pages/history.html';-->
+<!--        });-->
+<!--        if (modalCancel) modalCancel.addEventListener('click', closeModal);-->
+<!--        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });-->
+<!--        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });-->
+<!--    }-->
+<!--</script>-->
+<script src="../js/suggest.js"></script>
 </body>
 </html>

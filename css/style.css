@@ -454,22 +454,22 @@ footer img {
 
 
 @media (max-width: 480px) {
-  header { padding: 0.5rem 0.75rem; margin: 0.5rem; }
-  .card { padding: 1rem; }
-  .intro h1 { font-size: 1.6rem; }
-  .intro p { font-size: 0.95rem; }
-  .btn-start { padding: 0.75rem 1rem; }
-  .features-right ul { font-size: 0.95rem; }
+    header { padding: 0.5rem 0.75rem; margin: 0.5rem; }
+    .card { padding: 1rem; }
+    .intro h1 { font-size: 1.6rem; }
+    .intro p { font-size: 0.95rem; }
+    .btn-start { padding: 0.75rem 1rem; }
+    .features-right ul { font-size: 0.95rem; }
 }
 
 
 /* Desktop explicit grid placement for first-row cards */
 @media (min-width: 769px) {
-  .intro { grid-column: 1; }
-  .icons {
-    grid-column: 2;
-    justify-self: stretch; /* fill the grid track horizontally */
-    align-self: stretch;   /* fill the grid track vertically if heights differ */
-    width: 100%;
-  }
+    .intro { grid-column: 1; }
+    .icons {
+        grid-column: 2;
+        justify-self: stretch; /* fill the grid track horizontally */
+        align-self: stretch;   /* fill the grid track vertically if heights differ */
+        width: 100%;
+    }
 }

@@ -4,17 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Test Vocacional | Vocatio</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="../css/test.css">
-    <!-- Header styles to match dashboard -->
-    <link rel="stylesheet" href="../css/dashboard.css">
-
-    <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- HEADER (mismo estilo que dashboard) -->
 <header>
     <div class="logo">
         <a href="dashboard.html"><img src="../assets/img/logo.png" alt="Vocatio logo"></a>
@@ -49,25 +42,21 @@
     </div>
 </header>
 
-<!-- MAIN -->
 <main class="container">
     <section class="test-wrapper">
 
-        <!-- TITULO / SECCION -->
         <header class="test-header">
             <h1>Test de Orientación Vocacional <span class="accent">#01</span></h1>
             <p class="section-desc"><strong>Sección <span id="currentSectionNumber">1</span></strong> — <span id="sectionType">Escala Likert (1 a 5)</span></p>
             <div class="test-separator" aria-hidden="true"></div>
         </header>
 
-        <!-- VISTAS DE SECCIONES: las tres son panels gestionados por JS -->
         <form id="vocationalTest" novalidate>
             <!-- SECCIÓN 1: Likert 1-10 -->
             <div class="section" id="section-1" data-section="1">
                 <p class="note">Tipo: 1 = Muy en desacuerdo, 2 = En desacuerdo, 3 = Indiferente, 4 = De acuerdo, 5 = Muy de acuerdo</p>
 
                 <div class="two-column">
-                    <!-- 5 questions per column to imitate layout -->
                     <div class="col">
                         <!-- Q1 -->
                         <div class="question">
@@ -425,7 +414,7 @@
                 </div>
             </div>
 
-            <!-- NAVEGACIÓN -->
+            <!-- Botones de navegación -->
             <div class="nav-buttons">
                 <button type="button" id="btnPrev" class="nav-btn">Atrás</button>
                 <button type="button" id="btnNext" class="nav-btn">Próximo</button>
@@ -436,153 +425,154 @@
 </main>
 
 <!-- SCRIPTS: controla navegación, validación, botones -->
-<script>
-    (function(){
-        // UI refs
-        const sections = Array.from(document.querySelectorAll('.section'));
-        let current = 0;
+<!--<script>-->
+<!--    (function(){-->
+<!--        // UI refs-->
+<!--        const sections = Array.from(document.querySelectorAll('.section'));-->
+<!--        let current = 0;-->
 
-        const btnPrev = document.getElementById('btnPrev');
-        const btnNext = document.getElementById('btnNext');
-        const btnFinish = document.getElementById('btnFinish');
+<!--        const btnPrev = document.getElementById('btnPrev');-->
+<!--        const btnNext = document.getElementById('btnNext');-->
+<!--        const btnFinish = document.getElementById('btnFinish');-->
 
-        const sectionNumber = document.getElementById('currentSectionNumber');
-        const sectionType = document.getElementById('sectionType');
+<!--        const sectionNumber = document.getElementById('currentSectionNumber');-->
+<!--        const sectionType = document.getElementById('sectionType');-->
 
-        // init
-        function showSection(idx){
-            sections.forEach((s,i)=>{
-                s.hidden = i !== idx;
-            });
-            current = idx;
-            sectionNumber.textContent = idx + 1;
-            // change section label
-            const types = ['Escala Likert (1 a 5)', 'Opción múltiple', 'Preguntas de Sí / No'];
-            sectionType.textContent = types[idx];
-            // nav buttons
-            btnPrev.style.display = idx === 0 ? 'none' : 'inline-block';
-            btnNext.style.display = idx === sections.length - 1 ? 'none' : 'inline-block';
-            btnFinish.hidden = idx === sections.length - 1 ? false : true;
-            // focus top
-            window.scrollTo({top:0,behavior:'smooth'});
-        }
-        showSection(0);
+<!--        // init-->
+<!--        function showSection(idx){-->
+<!--            sections.forEach((s,i)=>{-->
+<!--                s.hidden = i !== idx;-->
+<!--            });-->
+<!--            current = idx;-->
+<!--            sectionNumber.textContent = idx + 1;-->
+<!--            // change section label-->
+<!--            const types = ['Escala Likert (1 a 5)', 'Opción múltiple', 'Preguntas de Sí / No'];-->
+<!--            sectionType.textContent = types[idx];-->
+<!--            // nav buttons-->
+<!--            btnPrev.style.display = idx === 0 ? 'none' : 'inline-block';-->
+<!--            btnNext.style.display = idx === sections.length - 1 ? 'none' : 'inline-block';-->
+<!--            btnFinish.hidden = idx === sections.length - 1 ? false : true;-->
+<!--            // focus top-->
+<!--            window.scrollTo({top:0,behavior:'smooth'});-->
+<!--        }-->
+<!--        showSection(0);-->
 
-        // valida la sección actual: retorna true si está completa
-        function validateSection(idx){
-            const sec = sections[idx];
-            if(!sec) return true;
-            // If Likert: check all radio groups have value (questions 1..10)
-            if(idx === 0){
-                for(let i=1;i<=10;i++){
-                    const v = sec.querySelector('input[name="q'+i+'"]:checked');
-                    if(!v) return false;
-                }
-            }
-            // If multiple: check q11..q19
-            if(idx === 1){
-                for(let i=11;i<=19;i++){
-                    const v = sec.querySelector('input[name="q'+i+'"]:checked');
-                    if(!v) return false;
-                }
-            }
-            // If yes/no: check hidden inputs are filled for q20..q24
-            if(idx === 2){
-                for(let i=20;i<=24;i++){
-                    const v = sec.querySelector('input[name="q'+i+'"]').value;
-                    if(!v) return false;
-                }
-            }
-            return true;
-        }
+<!--        // valida la sección actual: retorna true si está completa-->
+<!--        function validateSection(idx){-->
+<!--            const sec = sections[idx];-->
+<!--            if(!sec) return true;-->
+<!--            // If Likert: check all radio groups have value (questions 1..10)-->
+<!--            if(idx === 0){-->
+<!--                for(let i=1;i<=10;i++){-->
+<!--                    const v = sec.querySelector('input[name="q'+i+'"]:checked');-->
+<!--                    if(!v) return false;-->
+<!--                }-->
+<!--            }-->
+<!--            // If multiple: check q11..q19-->
+<!--            if(idx === 1){-->
+<!--                for(let i=11;i<=19;i++){-->
+<!--                    const v = sec.querySelector('input[name="q'+i+'"]:checked');-->
+<!--                    if(!v) return false;-->
+<!--                }-->
+<!--            }-->
+<!--            // If yes/no: check hidden inputs are filled for q20..q24-->
+<!--            if(idx === 2){-->
+<!--                for(let i=20;i<=24;i++){-->
+<!--                    const v = sec.querySelector('input[name="q'+i+'"]').value;-->
+<!--                    if(!v) return false;-->
+<!--                }-->
+<!--            }-->
+<!--            return true;-->
+<!--        }-->
 
-        btnNext.addEventListener('click', ()=>{
-            if(!validateSection(current)){
-                alert('Por favor responde todas las preguntas de esta sección antes de continuar.');
-                return;
-            }
-            showSection(current+1);
-        });
+<!--        btnNext.addEventListener('click', ()=>{-->
+<!--            if(!validateSection(current)){-->
+<!--                alert('Por favor responde todas las preguntas de esta sección antes de continuar.');-->
+<!--                return;-->
+<!--            }-->
+<!--            showSection(current+1);-->
+<!--        });-->
 
-        btnPrev.addEventListener('click', ()=>{
-            showSection(current-1);
-        });
+<!--        btnPrev.addEventListener('click', ()=>{-->
+<!--            showSection(current-1);-->
+<!--        });-->
 
-        // Finish
-        btnFinish.addEventListener('click', ()=>{
-            // validate all
-            for(let i=0;i<sections.length;i++){
-                if(!validateSection(i)){
-                    alert('Completa todas las preguntas antes de finalizar.');
-                    showSection(i);
-                    return;
-                }
-            }
-            // (aquí podrías calcular resultados y guardarlos en backend)
-            // redirect to suggest page (same folder)
-            window.location.href = 'suggest.html';
-        });
+<!--        // Finish-->
+<!--        btnFinish.addEventListener('click', ()=>{-->
+<!--            // validate all-->
+<!--            for(let i=0;i<sections.length;i++){-->
+<!--                if(!validateSection(i)){-->
+<!--                    alert('Completa todas las preguntas antes de finalizar.');-->
+<!--                    showSection(i);-->
+<!--                    return;-->
+<!--                }-->
+<!--            }-->
+<!--            // (aquí podrías calcular resultados y guardarlos en backend)-->
+<!--            // redirect to suggest page (same folder)-->
+<!--            window.location.href = 'suggest.html';-->
+<!--        });-->
 
-        // interactive Likert visuals: clicking the styled span toggles radio for accessibility
-        document.querySelectorAll('.likert label').forEach(lbl=>{
-            lbl.addEventListener('click', (e)=>{
-                // the input inside the label will be checked by default
-                // we add small visual feedback by toggling "selected" class on spans in same group
-                const container = lbl.closest('.likert');
-                setTimeout(()=>{
-                    const checked = container.querySelector('input:checked');
-                    if(checked){
-                        container.querySelectorAll('.likert-btn').forEach(s=>s.classList.remove('selected'));
-                        const span = checked.nextElementSibling;
-                        if(span) span.classList.add('selected');
-                    }
-                },10);
-            });
-        });
+<!--        // interactive Likert visuals: clicking the styled span toggles radio for accessibility-->
+<!--        document.querySelectorAll('.likert label').forEach(lbl=>{-->
+<!--            lbl.addEventListener('click', (e)=>{-->
+<!--                // the input inside the label will be checked by default-->
+<!--                // we add small visual feedback by toggling "selected" class on spans in same group-->
+<!--                const container = lbl.closest('.likert');-->
+<!--                setTimeout(()=>{-->
+<!--                    const checked = container.querySelector('input:checked');-->
+<!--                    if(checked){-->
+<!--                        container.querySelectorAll('.likert-btn').forEach(s=>s.classList.remove('selected'));-->
+<!--                        const span = checked.nextElementSibling;-->
+<!--                        if(span) span.classList.add('selected');-->
+<!--                    }-->
+<!--                },10);-->
+<!--            });-->
+<!--        });-->
 
-        // YES/NO buttons behavior (set hidden inputs, toggle class)
-        document.querySelectorAll('.yn-btn').forEach(btn=>{
-            btn.addEventListener('click', (e)=>{
-                const q = btn.dataset.q;
-                const val = btn.dataset.val;
-                // set hidden input:
-                const hidden = document.querySelector('input[name="q'+q+'"]');
-                if(hidden) hidden.value = val;
-                // styling: remove active from siblings in same group
-                const group = btn.parentElement;
-                group.querySelectorAll('.yn-btn').forEach(b=>b.classList.remove('active'));
-                btn.classList.add('active');
-            });
-        });
+<!--        // YES/NO buttons behavior (set hidden inputs, toggle class)-->
+<!--        document.querySelectorAll('.yn-btn').forEach(btn=>{-->
+<!--            btn.addEventListener('click', (e)=>{-->
+<!--                const q = btn.dataset.q;-->
+<!--                const val = btn.dataset.val;-->
+<!--                // set hidden input:-->
+<!--                const hidden = document.querySelector('input[name="q'+q+'"]');-->
+<!--                if(hidden) hidden.value = val;-->
+<!--                // styling: remove active from siblings in same group-->
+<!--                const group = btn.parentElement;-->
+<!--                group.querySelectorAll('.yn-btn').forEach(b=>b.classList.remove('active'));-->
+<!--                btn.classList.add('active');-->
+<!--            });-->
+<!--        });-->
 
-        // Profile dropdown
-        const profileButton = document.getElementById('profileButton');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-        const arrow = document.querySelector('.arrow-down');
-        profileButton.addEventListener('click', (e)=>{
-            const expanded = profileButton.getAttribute('aria-expanded') === 'true';
-            profileButton.setAttribute('aria-expanded', String(!expanded));
-            dropdownMenu.classList.toggle('show');
-            if (arrow) arrow.classList.toggle('rotate');
-        });
+<!--        // Profile dropdown-->
+<!--        const profileButton = document.getElementById('profileButton');-->
+<!--        const dropdownMenu = document.getElementById('dropdownMenu');-->
+<!--        const arrow = document.querySelector('.arrow-down');-->
+<!--        profileButton.addEventListener('click', (e)=>{-->
+<!--            const expanded = profileButton.getAttribute('aria-expanded') === 'true';-->
+<!--            profileButton.setAttribute('aria-expanded', String(!expanded));-->
+<!--            dropdownMenu.classList.toggle('show');-->
+<!--            if (arrow) arrow.classList.toggle('rotate');-->
+<!--        });-->
 
-        // close dropdown on outside click
-        document.addEventListener('click', (e)=>{
-            if(!profileButton.contains(e.target) && !dropdownMenu.contains(e.target)){
-                dropdownMenu.classList.remove('show');
-                profileButton.setAttribute('aria-expanded', 'false');
-                if (arrow) arrow.classList.remove('rotate');
-            }
-        });
+<!--        // close dropdown on outside click-->
+<!--        document.addEventListener('click', (e)=>{-->
+<!--            if(!profileButton.contains(e.target) && !dropdownMenu.contains(e.target)){-->
+<!--                dropdownMenu.classList.remove('show');-->
+<!--                profileButton.setAttribute('aria-expanded', 'false');-->
+<!--                if (arrow) arrow.classList.remove('rotate');-->
+<!--            }-->
+<!--        });-->
 
-        // small UX: keyboard navigation for next/prev (optional)
-        document.addEventListener('keydown', (e)=>{
-            if(e.key === 'ArrowRight') btnNext.click();
-            if(e.key === 'ArrowLeft') btnPrev.click();
-        });
+<!--        // small UX: keyboard navigation for next/prev (optional)-->
+<!--        document.addEventListener('keydown', (e)=>{-->
+<!--            if(e.key === 'ArrowRight') btnNext.click();-->
+<!--            if(e.key === 'ArrowLeft') btnPrev.click();-->
+<!--        });-->
 
-        // make likert buttons hover-smooth via css (no extra JS needed)
-    })();
-</script>
+<!--        // make likert buttons hover-smooth via css (no extra JS needed)-->
+<!--    })();-->
+<!--</script>-->
+<script src="../js/test.js"></script>
 </body>
 </html>
