@@ -15,67 +15,199 @@ body {
     -moz-osx-font-smoothing:grayscale;
 }
 
-/* Header (consistente con dashboard) */
+/*header {*/
+/*    display: flex;*/
+/*    justify-content: flex-start; !* align items from the left like landing *!*/
+/*    align-items: center;*/
+/*    background: #FFF;*/
+/*    padding: 0.6rem 1.5rem;*/
+/*    border-bottom:1px solid #DDE1E6;*/
+/*    margin: 1rem 1.5rem;*/
+/*    border-radius: 8px;*/
+/*}*/
+
+
+/*.logo img { height:45px; }*/
+
+/*nav {*/
+/*    display:flex;*/
+/*    gap:2rem;*/
+/*    align-items:center;*/
+/*    flex:1;;*/
+/*    margin-left: 65px;*/
+/*}*/
+
+/*nav a {*/
+/*    color:#0868A8;*/
+/*    text-decoration:none;*/
+/*    font-weight:500;*/
+/*    font-family:'Roboto',sans-serif;*/
+/*    padding: 0.5rem 0.2rem;*/
+/*    position:relative;*/
+/*    display:inline-flex;*/
+/*    align-items:center;*/
+/*}*/
+
+/*!* "Iniciar Test" debe verse activo: lo definimos con class .active *!*/
+/*nav a.active {*/
+/*    color:#FF5F57;*/
+/*}*/
+
+/*!* subrayado del item activo (como stroke en figma) *!*/
+/*nav a:first-child { !* keep Vista General underlined as in dashboard example if needed *!*/
+/*    !* no-op: first child styling handled by specific cases in HTML *!*/
+/*}*/
+
+/*!* profile menu *!*/
+/*.profile-menu { position:relative; margin-left: 1rem; }*/
+/*#profileButton {*/
+/*    background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:6px;*/
+/*}*/
+/*#profileButton img{ width:35px; height:35px; border-radius:50%; }*/
+
+/*!* arrow *!*/
+/*.arrow-down{*/
+/*    border: solid #A6A6A6;*/
+/*    border-width: 0 2px 2px 0;*/
+/*    padding:4px; transform:rotate(45deg); display:inline-block; transition:transform .2s;*/
+/*}*/
+/*.dropdown { position:absolute; right:0; top:52px; width:240px; background:#FFF; border:1px solid #DDE1E6; border-radius:8px; box-shadow:0 8px 24px rgba(8,20,40,0.08); display:none; z-index:50; }*/
+/*.dropdown.show{ display:block; }*/
+/*.dropdown li{ list-style:none; padding:10px 12px; display:flex; align-items:center; gap:10px; }*/
+/*.dropdown li img { width:20px; }*/
+/*.dropdown .divider{ height:1px; background:#A6A6A6; margin:6px 0; opacity:0.35; }*/
+/* Navegación */
+/* ====== Encabezado ====== */
 header {
     display: flex;
     justify-content: flex-start; /* align items from the left like landing */
     align-items: center;
+    gap: 1.5rem;
     background: #FFF;
-    padding: 0.6rem 1.5rem;
-    border-bottom:1px solid #DDE1E6;
-    margin: 1rem 1.5rem;
-    border-radius: 8px;
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid #DDE1E6; /* same thickness as landing */
+    margin: 1rem 2rem; /* same outer margins as landing */
+    border-radius: 0; /* match landing: no rounded corners */
 }
 
-.logo img { height:45px; }
+.logo img {
+    height: 45px;
+    margin-left: 2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.1rem;
+}
 
 nav {
-    display:flex;
-    gap:2rem;
-    align-items:center;
-    flex:1;;
     margin-left: 65px;
+    display: flex;
+    gap: 2rem;
+    margin-right: auto; /* keep nav near the left, push profile menu to the right */
 }
 
 nav a {
-    color:#0868A8;
-    text-decoration:none;
-    font-weight:500;
-    font-family:'Roboto',sans-serif;
-    padding: 0.5rem 0.2rem;
-    position:relative;
-    display:inline-flex;
-    align-items:center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #0868A8;
+    text-decoration: none;
+    position: relative;
+    padding: 1rem 0.1rem; /* vertical rhythm similar to landing */
 }
 
-/* "Iniciar Test" debe verse activo: lo definimos con class .active */
+/* underline stroke only for the active section */
 nav a.active {
-    color:#FF5F57;
+    /* keep the text color, show stroke */
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 3px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
 }
 
-/* subrayado del item activo (como stroke en figma) */
-nav a:first-child { /* keep Vista General underlined as in dashboard example if needed */
-    /* no-op: first child styling handled by specific cases in HTML */
+/* remove forced underline from first item; hover keeps color only */
+nav a:hover {
+    opacity: 0.85;
 }
 
-/* profile menu */
-.profile-menu { position:relative; margin-left: 1rem; }
+/* Special color for "Iniciar Test" link */
+nav a.test-link {
+    color: #FF5F57;
+}
+
+/* ====== Menú contextual ====== */
+.profile-menu {
+    position: relative;
+}
+
 #profileButton {
-    background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
-#profileButton img{ width:35px; height:35px; border-radius:50%; }
 
-/* arrow */
-.arrow-down{
+#profileButton img {
+    width: 35px;
+    border-radius: 50%;
+}
+
+.arrow-down {
     border: solid #A6A6A6;
     border-width: 0 2px 2px 0;
-    padding:4px; transform:rotate(45deg); display:inline-block; transition:transform .2s;
+    display: inline-block;
+    padding: 4px;
+    margin-left: 6px;
+    transform: rotate(45deg);
+    transition: transform 0.2s;
 }
-.dropdown { position:absolute; right:0; top:52px; width:240px; background:#FFF; border:1px solid #DDE1E6; border-radius:8px; box-shadow:0 8px 24px rgba(8,20,40,0.08); display:none; z-index:50; }
-.dropdown.show{ display:block; }
-.dropdown li{ list-style:none; padding:10px 12px; display:flex; align-items:center; gap:10px; }
-.dropdown li img { width:20px; }
-.dropdown .divider{ height:1px; background:#A6A6A6; margin:6px 0; opacity:0.35; }
+
+.arrow-down.rotate {
+    transform: rotate(-135deg);
+}
+
+/* Dropdown */
+.dropdown {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: #FFF;
+    border: 1px solid #DDE1E6;
+    border-radius: 8px;
+    width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: none;
+    list-style: none;
+    z-index: 10;
+}
+
+.dropdown.show {
+    display: block;
+}
+
+.dropdown li {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+}
+
+.dropdown li img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.dropdown hr {
+    border: 0.5px solid #A6A6A6;
+    margin: 0;
+}
+
+.dropdown a {
+    color: #000;
+    text-decoration: none;
+}
+
+.dropdown .logout a {
+    color: #FF383C;
+}
 
 /* CONTAINER */
 .container { max-width:1200px; margin: 1rem auto; padding: 0 16px; }

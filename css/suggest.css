@@ -20,6 +20,128 @@ body {
 /* En esta página NO se muestra stroke en la navegación aunque algún link tuviera .active */
 nav a.active { background-image: none !important; }
 
+header {
+    display: flex;
+    justify-content: flex-start; /* align items from the left like landing */
+    align-items: center;
+    gap: 1.5rem;
+    background: #FFF;
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid #DDE1E6; /* same thickness as landing */
+    margin: 1rem 2rem; /* same outer margins as landing */
+    border-radius: 0; /* match landing: no rounded corners */
+}
+
+.logo img {
+    height: 45px;
+    margin-left: 2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.1rem;
+}
+
+nav {
+    margin-left: 65px;
+    display: flex;
+    gap: 2rem;
+    margin-right: auto; /* keep nav near the left, push profile menu to the right */
+}
+
+nav a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #0868A8;
+    text-decoration: none;
+    position: relative;
+    padding: 1rem 0.1rem; /* vertical rhythm similar to landing */
+}
+
+/* remove forced underline from first item; hover keeps color only */
+nav a:hover {
+    opacity: 0.85;
+}
+
+/* Special color for "Iniciar Test" link */
+nav a.test-link {
+    color: #FF5F57;
+}
+
+/* ====== Menú contextual ====== */
+.profile-menu {
+    position: relative;
+}
+
+#profileButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#profileButton img {
+    width: 35px;
+    border-radius: 50%;
+}
+
+.arrow-down {
+    border: solid #A6A6A6;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+    margin-left: 6px;
+    transform: rotate(45deg);
+    transition: transform 0.2s;
+}
+
+.arrow-down.rotate {
+    transform: rotate(-135deg);
+}
+
+/* Dropdown */
+.dropdown {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: #FFF;
+    border: 1px solid #DDE1E6;
+    border-radius: 8px;
+    width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: none;
+    list-style: none;
+    z-index: 10;
+}
+
+.dropdown.show {
+    display: block;
+}
+
+.dropdown li {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+}
+
+.dropdown li img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.dropdown hr {
+    border: 0.5px solid #A6A6A6;
+    margin: 0;
+}
+
+.dropdown a {
+    color: #000;
+    text-decoration: none;
+}
+
+.dropdown .logout a {
+    color: #FF383C;
+}
+
 /* Contenedor principal */
 .suggest-container {
     max-width: 1180px;
