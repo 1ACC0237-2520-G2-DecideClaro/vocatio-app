@@ -119,18 +119,21 @@ Librerías usadas:
     let chartInstance = null;
 
     const DOM = {
-        mainCareer: document.getElementById('mainCareer'),
-        otherCareersList: document.querySelector('.other-careers ul'),
-        summaryText: document.querySelector('.summary p'),
-        chartCanvas: document.getElementById('careerChart'),
-        favIcon: document.querySelector('.fav-toggle'),
-        deleteBtn: document.querySelector('.delete-btn'),
-        deleteModal: document.getElementById('deleteModal'),
-        confirmDelete: document.getElementById('confirmDelete'),
-        modalCancel: document.getElementById('modalCancel'),
-        profileButton: document.getElementById('profileButton'),
-        dropdownMenu: document.getElementById('dropdownMenu')
-    };
+    mainCareer: document.getElementById('mainCareer'),
+    otherCareersList: document.querySelector('.other-careers ul'),
+    summaryText: document.querySelector('.summary p'),
+    chartCanvas: document.getElementById('careerChart'),
+    favIcon: document.querySelector('.fav-toggle'),
+    deleteBtn: document.querySelector('.delete-btn'),
+    deleteModal: document.getElementById('deleteModal'),
+    confirmDelete: document.getElementById('confirmDelete'),
+    modalCancel: document.getElementById('modalCancel'),
+    profileButton: document.getElementById('profileButton'),
+    dropdownMenu: document.getElementById('dropdownMenu'),
+    downloadBtn: document.getElementById('downloadBtn'),
+    reportContainer: document.querySelector('.suggest-container')
+};
+
 
     // ========== ALGORITMO DE CÁLCULO DE AFINIDAD ==========
 
@@ -503,6 +506,63 @@ Librerías usadas:
         }
     }
 
+        /**Genera un PDF del informe completo y lo descarga*/
+    async function handleDownloadPdf() {
+        if (!DOM.reportContainer) return;
+
+        try {
+            // Tomar el contenedor principal del informe
+            const element = DOM.reportContainer;
+
+            // Capturar como imagen (más resolución con scale:2)
+            const canvas = await html2canvas(element, {
+                scale: 2,
+                useCORS: true,
+                scrollY: -window.scrollY
+            });
+
+            const imgData = canvas.toDataURL('image/png');
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+
+            // Ajustar la imagen para que quepa en una página manteniendo proporción
+            const imgWidthPx = canvas.width;
+            const imgHeightPx = canvas.height;
+
+            const ratio = Math.min(
+                pageWidth / imgWidthPx,
+                pageHeight / imgHeightPx
+            );
+
+            const pdfWidth = imgWidthPx * ratio;
+            const pdfHeight = imgHeightPx * ratio;
+
+            const marginX = (pageWidth - pdfWidth) / 2;
+            const marginY = (pageHeight - pdfHeight) / 2;
+
+            pdf.addImage(
+                imgData,
+                'PNG',
+                marginX,
+                marginY,
+                pdfWidth,
+                pdfHeight,
+                undefined,
+                'FAST'
+            );
+
+            const fileName = `vocatio_informe_${currentTestData?.id || 'test'}.pdf`;
+            pdf.save(fileName);
+        } catch (err) {
+            console.error('Error al generar el PDF:', err);
+            alert('Hubo un problema al generar el PDF. Intenta nuevamente.');
+        }
+    }
+
+
     // ========== INICIALIZACIÓN ==========
 
     /**
@@ -565,6 +625,28 @@ Librerías usadas:
             if (DOM.profileButton && DOM.dropdownMenu) {
                 DOM.profileButton.addEventListener('click', toggleProfileDropdown);
                 document.addEventListener('click', closeDropdownOutside);
+            }
+            if (DOM.downloadBtn) {
+                DOM.downloadBtn.addEventListener('click', handleDownloadPdf);
+                DOM.downloadBtn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleDownloadPdf();
+                    }
+                });
+            }
+            // Si venimos desde el historial con auto-descarga activada
+            const autoDownload = localStorage.getItem('vocatio_auto_download');
+            if (autoDownload === '1') {
+                // Limpiamos la bandera para no repetir en futuras visitas
+                localStorage.removeItem('vocatio_auto_download');
+
+                // Pequeño delay para asegurarnos de que todo se haya renderizado
+                setTimeout(() => {
+                    if (typeof handleDownloadPdf === 'function') {
+                        handleDownloadPdf();
+                    }
+                }, 400);
             }
 
             console.log('✅ Módulo de sugerencias inicializado');

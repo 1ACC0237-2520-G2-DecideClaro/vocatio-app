@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../css/suggest.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </head>
 <body>
 <header>
@@ -49,7 +52,7 @@
     <section class="result-header">
         <h1>Resultado del Test Vocacional #01</h1>
         <div class="icons">
-            <img src="../assets/img/descargar.png" alt="Descargar" class="icon-btn" role="button" tabindex="0" aria-label="Descargar resultados">
+            <img src="../assets/img/descargar.png" alt="Descargar" id="downloadBtn" class="icon-btn" role="button" tabindex="0" aria-label="Descargar resultados">
             <img src="../assets/img/nofav.png" alt="Favorito" class="icon-btn fav-toggle" role="button" aria-pressed="false" tabindex="0" aria-label="Marcar como favorito">
             <img src="../assets/img/papelera.png" alt="Borrar" class="icon-btn delete-btn" role="button" tabindex="0" aria-label="Eliminar evaluación">
         </div>
