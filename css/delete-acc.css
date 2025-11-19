@@ -1,150 +1,131 @@
-header {
-    background-color: white;
-    height: 60px;
+/* ==== HEADER ==== */
+
+header.nav {
     width: 100%;
-    top: 0;
-    left: 0;
+    height: 60px;
+    background: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
 }
 
-#logo{
-
-    width: 110px;
+#logo {
     height: 40px;
-    float: left;
-
-    position: absolute;
-    top: 9px;
-    left: 10px;
-
 }
 
-#perfilMini{
-
-    width: 50px;
+#perfilMini {
     height: 45px;
-    float: Right;
-
-    position: absolute;
-    top: 7px;
-    left: 1415px;
-
 }
 
-h5{
+.menu {
+    display: flex;
+    gap: 20px;
+}
 
+.menu a {
     color: #0868A8;
-    font-family: "Inter", sans-serif;
-
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    text-decoration: none;
 }
 
-#VistaGeneral{position: absolute; top: 0px; left: 210px;}
-#IniciarTest{position: absolute; top: 0px; left: 350px;}
-#RutaDeAprendizaje{position: absolute; top: 0px; left: 480px;}
-#Explorar{position: absolute; top: 0px; left: 670px;}
-#Informes{position: absolute; top: 0px; left: 770px;}
 
-h1{
-    font-weight: bold;
-    font-family: "Inter", sans-serif;
+/* ===== CONTENEDOR ===== */
 
-    position: absolute;
-    top: 120px;
-    left: 600px;
-
-}
-
-#parrafo1{
-
-    position: absolute;
-    top: 180px;
-    left: 600px;
-
+.contenedor {
+    max-width: 600px;
+    margin: 120px auto;
+    padding: 15px;
     text-align: center;
+    font-family: Inter, sans-serif;
 }
 
-.formulario1{
+h1 {
+    margin-bottom: 15px;
+}
 
-    width: 280px;
-    height: 35px;
-
-    color: black;
-
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
+.descripcion,
+.advertencia {
     font-size: 16px;
+    margin-bottom: 20px;
+}
 
-    border: 3px solid;
-    border-radius: 5px;
 
-    margin: 5px;
+/* ===== FORMULARIO ===== */
 
+.input {
+    width: 100%;
+    height: 38px;
+    margin: 8px 0;
     padding-left: 10px;
-
-}
-
-#ContraseñaActual{
-
-    position: absolute;
-    top: 285px;
-    left: 580px;
-}
-
-#ConfirmarContraseña{
-
-    position: absolute;
-    top: 355px;
-    left: 580px;
-}
-
-
-.formulario2{
-
-    width: 220px;
-    height: 50px;
-
-    color: black;
-
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
     font-size: 16px;
-
-    border: 3px solid;
+    border: 2px solid #000;
     border-radius: 5px;
+}
 
-    margin: 5px;
+.error {
+    font-size: 13px;
+    color: red;
+    display: block;
+    height: 18px;
+}
 
-    padding-left: 10px;
+
+
+.btn {
+    width: 100%;
+    height: 45px;
+    margin-top: 15px;
+    font-size: 16px;
+    border-radius: 7px;
+    border: 2px solid black;
     cursor: pointer;
-
 }
 
-#Regresar{
-
-    font-weight: bold;
+.gris {
     background-color: #8a8989;
-    position: absolute;
-    top: 430px;
-    left: 500px;
-
+    color: white;
 }
 
-#EliminarCuenta{
-
+.rojo {
     background-color: #FF1212;
-    color: #ffffff;
-    border-color: black;
-    position: absolute;
-    top: 430px;
-    left: 750px;
+    color: white;
 }
 
-#parrafo2{
 
-    position: absolute;
-    top: 490px;
-    left: 575px;
 
+/* ===== MODAL ===== */
+
+.modal.oculto {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-contenido {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 85%;
+    max-width: 350px;
     text-align: center;
+}
 
+
+/* ===== RESPONSIVE MENU ===== */
+
+@media (max-width: 780px) {
+    .menu {
+        display: none;
+    }
 }
