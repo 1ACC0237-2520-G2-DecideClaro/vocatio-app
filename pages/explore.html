@@ -3,56 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Explora carreras universitarias en Vocatio, descubre qué aprenderás, campos laborales y habilidades que desarrollarás." />
   <title>Vocatio | Explorar Carreras</title>
+
   <link rel="stylesheet" href="../css/explore.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script defer src="../js/carreras.js"></script>
+  <script defer src="../js/explore.js"></script>
 </head>
 <body>
-  <!-- ===== ENCABEZADO ===== -->
+
   <header>
-    <div class="logo">
-      <a href="../pages/dashboard.html"><img src="../assets/img/logo.png" alt="Vocatio logo" /></a>
-    </div>
+  <div class="logo">
+    <a href="../pages/dashboard.html">
+      <img src="../assets/img/logo.png" alt="Vocatio logo" />
+    </a>
+  </div>
 
-    <nav>
-      <a href="../pages/dashboard.html">Vista General</a>
-      <a href="../pages/test.html">Iniciar Test</a>
-      <a href="../pages/path.html">Ruta de Aprendizaje</a>
-      <a class="active" href="explore.html">Explorar</a>
-      <a href="../pages/reports.html">Informes</a>
-    </nav>
+  <button class="nav-toggle" aria-label="Abrir menú de navegación">
+    ☰
+  </button>
 
-    <div class="header-right">
-      <div class="profile">
-        <img src="../assets/img/user-icon.png" alt="Perfil" />
-        <div class="dropdown" role="menu" aria-hidden="true">
-          <a href="../pages/profile.html" id="user-name">Fernan</a>
-          <a href="../pages/favorites.html" id="favorites-link">Favoritos</a>
-          <a href="../pages/history.html" id="history-link">Historial</a>
-          <a href="../pages/settings.html" id="settings-link">Configuración</a>
-          <a href="../index.html" class="logout" id="logout-link">Cerrar sesión</a>
-        </div>
+  <nav>
+    <a href="../pages/dashboard.html">Vista General</a>
+    <a href="../pages/test.html" class="test-link">Iniciar Test</a>
+    <a href="../pages/materials.html">Ruta de Aprendizaje</a>
+    <a class="active"href="../pages/explore.html">Explorar</a>
+    <a href="../pages/reports.html">Informes</a>
+  </nav>
+
+  <div class="header-right">
+    <div class="profile">
+      <img src="../assets/img/user-icon.png" alt="Perfil" />
+      <div class="dropdown" role="menu" aria-hidden="true">
+        <a href="../pages/profile.html" id="user-name">Fernan</a>
+        <a href="../pages/favorites.html" id="favorites-link">Favoritos</a>
+        <a href="../pages/history.html" id="history-link">Historial</a>
+        <a href="../pages/settings.html" id="settings-link">Configuración</a>
+        <a href="../index.html" class="logout" id="logout-link">Cerrar sesión</a>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- ===== TÍTULO + BUSCADOR ===== -->
+
+
   <div class="header-search">
     <h1>Carreras disponibles</h1>
     <div class="search-wrap">
-      <input class="search-bar" id="search-input" type="text" placeholder="Buscar carrera..." />
+      <input
+        class="search-bar"
+        id="search-input"
+        type="text"
+        placeholder="Buscar carrera..."
+        aria-label="Buscar carrera"
+      />
     </div>
   </div>
 
-  <!-- ===== FILTROS ===== -->
   <div class="filters-row">
-    <button id="filter-btn" class="btn-filter">🔍 Filtrar</button>
+    <button id="filter-btn" class="btn-filter" type="button">
+      <span aria-hidden="true">🔍</span> Filtrar
+    </button>
 
     <div class="sort-box">
       <label for="sort-select">Ordenar por</label>
-      <select id="sort-select">
+      <select id="sort-select" aria-label="Ordenar carreras">
         <option value="popular">Más populares</option>
         <option value="valorados">Mejor valorados</option>
         <option value="recientes">Más recientes</option>
@@ -60,364 +78,111 @@
     </div>
   </div>
 
-  <!-- PANEL LATERAL DE FILTROS -->
-  <aside id="filter-panel" class="filter-panel">
+  <aside id="filter-panel" class="filter-panel" aria-label="Filtros de carreras">
     <div class="filter-header">
       <h2>Filtros</h2>
-      <span id="close-filter">&times;</span>
+      <span id="close-filter" aria-label="Cerrar filtros" role="button">&times;</span>
     </div>
 
     <div class="filter-section">
-      <h3>Valoraciones</h3>
-      <ul>
-        <li><input type="radio" name="rating"> ⭐⭐⭐⭐⭐ 4.5 o más (1,000)</li>
-        <li><input type="radio" name="rating"> ⭐⭐⭐⭐ 4.0 o más (1,000)</li>
-        <li><input type="radio" name="rating"> ⭐⭐⭐½ 3.5 o más (1,000)</li>
-        <li><input type="radio" name="rating"> ⭐⭐⭐ 3.0 o más (1,000)</li>
-      </ul>
-    </div>
+  <h3>Valoraciones</h3>
+  <ul>
+    <li>
+      <label>
+        <input type="radio" name="rating" value="all" checked>
+        Todas las valoraciones
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="radio" name="rating" value="4_5">
+        ⭐⭐⭐⭐⭐ 4.5 o más (1,000)
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="radio" name="rating" value="4_0">
+        ⭐⭐⭐⭐ 4.0 o más (1,000)
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="radio" name="rating" value="3_5">
+        ⭐⭐⭐½ 3.5 o más (1,000)
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="radio" name="rating" value="3_0">
+        ⭐⭐⭐ 3.0 o más (1,000)
+      </label>
+    </li>
+  </ul>
+</div>
+
 
     <div class="filter-section">
-      <h3>Tema</h3>
-      <ul>
-        <li><input type="radio" name="tema"> Medicina</li>
-        <li><input type="radio" name="tema"> Psicología</li>
-        <li><input type="radio" name="tema"> Informática</li>
-        <li><input type="radio" name="tema"> Leyes</li>
-        <li><input type="radio" name="tema"> Comunicaciones</li>
-        <li><input type="radio" name="tema"> Ingeniería</li>
-        <li><input type="radio" name="tema"> Ciencias</li>
-        <li><input type="radio" name="tema"> Artes</li>
-      </ul>
-    </div>
+  <h3>Tema</h3>
+  <ul>
+    <li>
+      <label>
+        <input type="radio" name="tema" value="all" checked>
+        Todos los temas
+      </label>
+    </li>
+    <li><label><input type="radio" name="tema" value="medicina"> Medicina</label></li>
+    <li><label><input type="radio" name="tema" value="psicologia"> Psicología</label></li>
+    <li><label><input type="radio" name="tema" value="informatica"> Informática</label></li>
+    <li><label><input type="radio" name="tema" value="leyes"> Leyes</label></li>
+    <li><label><input type="radio" name="tema" value="comunicaciones"> Comunicaciones</label></li>
+    <li><label><input type="radio" name="tema" value="ingenieria"> Ingeniería</label></li>
+    <li><label><input type="radio" name="tema" value="ciencias"> Ciencias</label></li>
+    <li><label><input type="radio" name="tema" value="artes"> Artes</label></li>
+  </ul>
+</div>
   </aside>
 
-  <!-- ===== GRID DE CARRERAS ===== -->
   <main>
     <section class="career-grid" id="career-grid">
-
-       <!-- ===== TARJETAS DE CARRERAS ===== -->
-
-       <!-- CIENCIAS DE LA COMPUTACIÓN -->
-       <article class="career-card" data-id="computacion">
-           <a href="#modal-computacion" class="card-link">
-               <img src="../assets/img/computacion.jpg" alt="Ciencias de la Computación" />
-               <div class="career-info">
-                   <h2>Ciencias de la Computación</h2>
-                   <p>Vive tu pasión por crear mundos digitales y ser el arquitecto del futuro tecnológico.</p>
-               </div>
-           </a>
-           <div class="card-actions">
-               <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
-               <button class="btn-start">Empieza Aquí</button>
-           </div>
-       </article>
-
-       <!-- MEDICINA -->
-       <article class="career-card" data-id="medicina">
-           <a href="#modal-medicina" class="card-link">
-               <img src="../assets/img/medicina.jpg" alt="Medicina" />
-               <div class="career-info">
-                   <h2>Medicina</h2>
-                   <p>Aprende a cuidar la vida con ciencia, vocación y compromiso humano.</p>
-               </div>
-           </a>
-           <div class="card-actions">
-               <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
-               <button class="btn-start">Empieza Aquí</button>
-           </div>
-       </article>
-
-       <!-- TRADUCCIÓN E INTERPRETACIÓN -->
-       <article class="career-card" data-id="traduccion">
-           <a href="#modal-traduccion" class="card-link">
-               <img src="../assets/img/traduccion.jpg" alt="Traducción e Interpretación Profesional" />
-               <div class="career-info">
-                   <h2>Traducción e Interpretación Profesional</h2>
-                   <p>Vive tu pasión por los idiomas a través de un intercambio cultural y comunicativo.</p>
-               </div>
-           </a>
-           <div class="card-actions">
-               <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
-               <button class="btn-start">Empieza Aquí</button>
-           </div>
-       </article>
-
-       <!-- MÚSICA -->
-       <article class="career-card" data-id="musica">
-           <a href="#modal-musica" class="card-link">
-               <img src="../assets/img/musica.jpg" alt="Música" />
-               <div class="career-info">
-                   <h2>Música</h2>
-                   <p>¡Atrévete a potenciar tu talento artístico y vive tu pasión en los escenarios!</p>
-               </div>
-           </a>
-           <div class="card-actions">
-               <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
-               <button class="btn-start">Empieza Aquí</button>
-           </div>
-       </article>
-
-       <!-- DERECHO -->
-       <article class="career-card" data-id="derecho">
-           <a href="#modal-derecho" class="card-link">
-               <img src="../assets/img/derecho.jpg" alt="Derecho" />
-               <div class="career-info">
-                   <h2>Derecho</h2>
-                   <p>Defiende la justicia y el orden social con ética, conocimiento y liderazgo.</p>
-               </div>
-           </a>
-           <div class="card-actions">
-               <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
-               <button class="btn-start">Empieza Aquí</button>
-           </div>
-       </article>
-
-       <!-- INGENIERÍA MECATRÓNICA -->
-       <article class="career-card" data-id="mecatronica">
-           <a href="#modal-mecatronica" class="card-link">
-               <img src="../assets/img/mecatronica.jpg" alt="Ingeniería Mecatrónica" />
-               <div class="career-info">
-                   <h2>Ingeniería Mecatrónica</h2>
-                   <p>Atrévete a cambiar el mundo con proyectos de ingeniería que mejoran la calidad de vida.</p>
-               </div>
-           </a>
-           <div class="card-actions">
-               <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
-               <button class="btn-start">Empieza Aquí</button>
-           </div>
-       </article>
-
     </section>
   </main>
 
-<!-- ===== MODAL COMPUTACIÓN ===== -->
-<div id="modal-computacion" class="modal">
-  <div class="modal-content">
-    <a href="#" class="close">&times;</a>
-    <img src="../assets/img/computacion.jpg" alt="Ciencias de la Computación" />
-    <h2>Ciencias de la Computación</h2>
-    <div class="career-details">
-      <p><strong>Duración:</strong> 5 años</p>
-      <p><strong>Modalidad:</strong> Presencial</p>
-      <p><strong>Descripción:</strong> Forma profesionales capaces de desarrollar software, crear soluciones tecnológicas e innovar con inteligencia artificial, big data y sistemas inteligentes.</p>
-    </div>
-    <div class="card-actions modal-buttons">
-      <button class="favorite-btn">♡</button>
-      <button class="btn-start">Empieza Aquí</button>
-    </div>
-  </div>
-</div>
-
-<!-- ===== MODAL MEDICINA ===== -->
-<div id="modal-medicina" class="modal">
-  <div class="modal-content">
-    <a href="#" class="close">&times;</a>
-    <img src="../assets/img/medicina.jpg" alt="Medicina" />
-    <h2>Medicina</h2>
-    <div class="career-details">
-      <p><strong>Duración:</strong> 7 años</p>
-      <p><strong>Modalidad:</strong> Presencial</p>
-      <p><strong>Descripción:</strong> La carrera de Medicina forma profesionales éticos y competentes en el cuidado de la salud, la investigación médica y la atención integral del paciente.</p>
-    </div>
-    <div class="card-actions modal-buttons">
-      <button class="favorite-btn">♡</button>
-      <button class="btn-start">Empieza Aquí</button>
-    </div>
-  </div>
-</div>
-
-<!-- ===== MODAL TRADUCCIÓN ===== -->
-<div id="modal-traduccion" class="modal">
-  <div class="modal-content">
-    <a href="#" class="close">&times;</a>
-    <img src="../assets/img/traduccion.jpg" alt="Traducción e Interpretación Profesional" />
-    <h2>Traducción e Interpretación Profesional</h2>
-    <div class="career-details">
-      <p><strong>Duración:</strong> 5 años</p>
-      <p><strong>Modalidad:</strong> Presencial o semipresencial</p>
-      <p><strong>Descripción:</strong> Desarrolla competencias lingüísticas, comunicativas y culturales para facilitar la comunicación global mediante la traducción e interpretación profesional.</p>
-    </div>
-    <div class="card-actions modal-buttons">
-      <button class="favorite-btn">♡</button>
-      <button class="btn-start">Empieza Aquí</button>
-    </div>
-  </div>
-</div>
-
-<!-- ===== MODAL MÚSICA ===== -->
-<div id="modal-musica" class="modal">
-  <div class="modal-content">
-    <a href="#" class="close">&times;</a>
-    <img src="../assets/img/musica.jpg" alt="Música" />
-    <h2>Música</h2>
-    <div class="career-details">
-      <p><strong>Duración:</strong> 5 años</p>
-      <p><strong>Modalidad:</strong> Presencial</p>
-      <p><strong>Descripción:</strong> Desarrolla tu talento artístico y técnico en composición, interpretación y producción musical, explorando distintos géneros y escenarios profesionales.</p>
-    </div>
-    <div class="card-actions modal-buttons">
-      <button class="favorite-btn">♡</button>
-      <button class="btn-start">Empieza Aquí</button>
-    </div>
-  </div>
-</div>
-
-<!-- ===== MODAL DERECHO ===== -->
-<div id="modal-derecho" class="modal">
-  <div class="modal-content">
-    <a href="#" class="close">&times;</a>
-    <img src="../assets/img/derecho.jpg" alt="Derecho" />
-    <h2>Derecho</h2>
-    <div class="career-details">
-      <p><strong>Duración:</strong> 5 años</p>
-      <p><strong>Modalidad:</strong> Presencial</p>
-      <p><strong>Descripción:</strong> La carrera de Derecho prepara profesionales con pensamiento crítico, sólidos conocimientos jurídicos y ética para la defensa de la justicia y los derechos humanos.</p>
-    </div>
-    <div class="card-actions modal-buttons">
-      <button class="favorite-btn">♡</button>
-      <button class="btn-start">Empieza Aquí</button>
-    </div>
-  </div>
-</div>
-
-<!-- ===== MODAL MECATRÓNICA ===== -->
-<div id="modal-mecatronica" class="modal">
-  <div class="modal-content">
-    <a href="#" class="close">&times;</a>
-    <img src="../assets/img/mecatronica.jpg" alt="Ingeniería Mecatrónica" />
-    <h2>Ingeniería Mecatrónica</h2>
-    <div class="career-details">
-      <p><strong>Duración:</strong> 5 años</p>
-      <p><strong>Modalidad:</strong> Presencial</p>
-      <p><strong>Descripción:</strong> Combina electrónica, mecánica e informática para diseñar sistemas automatizados e inteligentes que mejoren la productividad y la calidad de vida.</p>
-    </div>
-    <div class="card-actions modal-buttons">
-      <button class="favorite-btn">♡</button>
-      <button class="btn-start">Empieza Aquí</button>
-    </div>
-  </div>
-</div>
-
-
-
-<!--
-===== PIE DE PÁGINA =====
 <footer>
   <div class="footer-left">
-    <a href="#"><img src="../assets/img/logo-footer.png" alt="Vocatio logo"></a>
+    <a href="#">
+      <img class="footer-logo" 
+           src="../assets/img/logo-footer.png" 
+           alt="Vocatio logo pie de página" 
+           width="205" height="65">
+    </a>
   </div>
+
   <div class="footer-center">
     <p>© 2025 DecideClaro | All rights reserved</p>
   </div>
+
   <div class="footer-right">
-    <a href="https://www.facebook.com/zuck"><img src="../assets/img/facebook.png" alt="Facebook"></a>
-    <a href="https://www.youtube.com/@TheDaniRep"><img src="../assets/img/youtube.png" alt="YouTube"></a>
-    <a href="https://www.instagram.com/cristiano/"><img src="../assets/img/instagram.png" alt="Instagram"></a>
+    <a href="https://www.facebook.com/zuck">
+      <img class="footer-icon footer-icon-facebook"
+           src="../assets/img/facebook.png" 
+           alt="Facebook de Vocatio" 
+           width="34" height="34">
+    </a>
+    <a href="https://www.youtube.com/@TheDaniRep">
+      <img class="footer-icon"
+           src="../assets/img/youtube.png" 
+           alt="YouTube de Vocatio" 
+           width="34" height="34">
+    </a>
+    <a href="https://www.instagram.com/cristiano/">
+      <img class="footer-icon"
+           src="../assets/img/instagram.png" 
+           alt="Instagram de Vocatio" 
+           width="34" height="34">
+    </a>
   </div>
 </footer>
--->
 
-
-  <!-- ===== JS PRINCIPAL (Favoritos y buscador) ===== -->
-  <script>
-    (function () {
-      const STORAGE_KEY = 'vocatio_favorites_v1';
-      const getFavorites = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      const saveFavorites = (arr) => localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-
-      function initFavorites() {
-        const favs = getFavorites();
-        document.querySelectorAll('.career-card').forEach(card => {
-          const id = card.dataset.id;
-          const btn = card.querySelector('.favorite-btn');
-          if (favs.includes(id)) {
-            btn.classList.add('active');
-            btn.innerHTML = '<img src="../assets/img/heart-filled.png" alt="Favorito">';
-          } else {
-            btn.classList.remove('active');
-            btn.innerHTML = '<img src="../assets/img/heart-empty.png" alt="No favorito">';
-          }
-
-          btn.addEventListener('click', () => {
-            const current = getFavorites();
-            if (current.includes(id)) {
-              const idx = current.indexOf(id);
-              current.splice(idx, 1);
-              btn.classList.remove('active');
-              btn.innerHTML = '<img src="../assets/img/heart-filled.png" alt="Favorito">';
-            } else {
-              current.push(id);
-              btn.classList.add('active');
-              btn.innerHTML = '<img src="../assets/img/heart-empty.png" alt="No favorito">';
-            }
-            saveFavorites(current);
-          });
-        });
-      }
-
-      const searchInput = document.getElementById('search-input');
-      function initSearch() {
-        if (!searchInput) return;
-        searchInput.addEventListener('input', (e) => {
-          const q = e.target.value.trim().toLowerCase();
-          document.querySelectorAll('.career-card').forEach(card => {
-            const title = card.querySelector('h2').textContent.toLowerCase();
-            const desc = card.querySelector('p').textContent.toLowerCase();
-            const match = title.includes(q) || desc.includes(q);
-            card.style.display = match ? '' : 'none';
-          });
-        });
-      }
-
-      function initDropdownClose() {
-        const profile = document.querySelector('.profile');
-        if (!profile) return;
-        const dropdown = profile.querySelector('.dropdown');
-        document.addEventListener('click', (e) => {
-          if (!profile.contains(e.target)) {
-            dropdown.style.display = 'none';
-          } else if (e.target.closest('.profile')) {
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-          }
-        });
-      }
-
-      initFavorites();
-      initSearch();
-      initDropdownClose();
-    })();
-  </script>
-
-  <!-- ===== SCRIPT FILTRO LATERAL ===== -->
-  <script>
-    const filterBtn = document.getElementById('filter-btn');
-    const filterPanel = document.getElementById('filter-panel');
-    const closeFilter = document.getElementById('close-filter');
-
-    filterBtn.addEventListener('click', () => {
-      filterPanel.classList.toggle('active');
-    });
-
-    closeFilter.addEventListener('click', () => {
-      filterPanel.classList.remove('active');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!filterPanel.contains(e.target) && !filterBtn.contains(e.target)) {
-        filterPanel.classList.remove('active');
-      }
-    });
-  </script>
-
-  <!-- ===== REDIRECCIÓN DE "EMPIEZA AQUÍ" ===== -->
-<script>
-  document.querySelectorAll('.btn-start').forEach(button => {
-    button.addEventListener('click', () => {
-      window.location.href = '../pages/path.html';
-    });
-  });
-</script>
 
 </body>
 </html>

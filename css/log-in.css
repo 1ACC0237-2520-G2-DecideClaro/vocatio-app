@@ -31,8 +31,8 @@ body {
 **********************/
 
 .login {
-  display: flex;
-  min-height: 100vh;
+    display: flex;
+    min-height: 100vh;
 }
 
 .login_left {
@@ -67,9 +67,9 @@ body {
 }
 
 .login_logo img {
-  width: 140px;
-  height: auto;
-  display: block;
+    width: 140px;
+    height: auto;
+    display: block;
 }
 
 /**********************
@@ -90,11 +90,11 @@ body {
 **********************/
 
 .login_form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
-  max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 360px;
 }
 
 .form-field {
@@ -119,8 +119,8 @@ body {
 }
 
 .form-input:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 25%, transparent);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 25%, transparent);
 }
 
 /**********************
@@ -140,9 +140,9 @@ body {
 }
 
 .button-primary {
-  background: var(--color-primary);
-  color: #fff;
-  margin-top: 16px;
+    background: var(--color-primary);
+    color: #fff;
+    margin-top: 16px;
 }
 
 /**********************

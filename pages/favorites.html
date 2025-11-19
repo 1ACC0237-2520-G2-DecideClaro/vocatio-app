@@ -8,166 +8,104 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <script defer src="../js/material-recomendado.js"></script>
+  <script defer src="../js/favorites.js"></script>
 </head>
 
 <body>
 
-  <!-- ===== ENCABEZADO ===== -->
   <header>
-    <div class="logo">
-      <a href="../pages/dashboard.html"><img src="../assets/img/logo.png" alt="Vocatio logo" /></a>
-    </div>
-
-    <nav>
-      <a href="../pages/dashboard.html">Vista General</a>
-      <a href="../pages/test.html">Iniciar Test</a>
-      <a href="../pages/path.html">Ruta de Aprendizaje</a>
-      <a href="../pages/explore.html">Explorar</a>
-      <a class="active" href="../pages/favorites.html">Favoritos</a>
-      <a href="../pages/reports.html">Informes</a>
-    </nav>
-
-    <div class="header-right">
-      <div class="profile">
-        <img src="../assets/img/user-icon.png" alt="Perfil" />
-        <div class="dropdown" role="menu" aria-hidden="true">
-          <a href="../pages/profile.html" id="user-name">Fernan</a>
-          <a href="../pages/favorites.html" id="favorites-link">Favoritos</a>
-          <a href="../pages/history.html" id="history-link">Historial</a>
-          <a href="../pages/settings.html" id="settings-link">Configuración</a>
-          <a href="../index.html" class="logout" id="logout-link">Cerrar sesión</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ===== TÍTULO ===== -->
-  <div class="header-title">
-    <h1>Mis Carreras Favoritas</h1>
+  <div class="logo">
+    <a href="../pages/dashboard.html">
+      <img src="../assets/img/logo.png" alt="Vocatio logo" />
+    </a>
   </div>
 
-  <!-- ===== SECCIÓN DE FAVORITOS ===== -->
+  <!-- 🔹 BOTÓN HAMBURGUESA (NUEVO) -->
+  <button class="nav-toggle" aria-label="Abrir menú de navegación">
+    ☰
+  </button>
+
+  <nav>
+    <a href="../pages/dashboard.html">Vista General</a>
+    <a href="../pages/test.html" class="test-link">Iniciar Test</a>
+    <a href="../pages/materials.html">Ruta de Aprendizaje</a>
+    <a href="../pages/explore.html">Explorar</a>
+    <a href="../pages/reports.html">Informes</a>
+  </nav>
+
+  <div class="header-right">
+    <div class="profile">
+      <img src="../assets/img/user-icon.png" alt="Perfil" />
+      <div class="dropdown" role="menu" aria-hidden="true">
+        <a href="../pages/profile.html" id="user-name">Fernan</a>
+        <a href="../pages/favorites.html" id="favorites-link">Favoritos</a>
+        <a href="../pages/history.html" id="history-link">Historial</a>
+        <a href="../pages/settings.html" id="settings-link">Configuración</a>
+        <a href="../index.html" class="logout" id="logout-link">Cerrar sesión</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  <div class="header-title">
+    <h1>Mis Favoritos</h1>
+  </div>
+
   <main>
-    <section class="favorites-grid" id="favorites-grid">
-      <!-- Tarjetas generadas dinámicamente -->
-    </section>
+
+  <section class="favorites-section">
+    <h2 class="section-subtitle">Carreras favoritas</h2>
+    <section class="favorites-grid" id="favorites-careers-grid"></section>
+  </section>
+
+  <section class="favorites-section">
+    <h2 class="section-subtitle">Materiales favoritos</h2>
+    <section class="favorites-grid" id="favorites-materials-grid"></section>
+  </section>
+
   </main>
 
-  <!-- ===== SCRIPT FAVORITOS ===== -->
-  <script>
-  (function () {
-    const STORAGE_KEY = 'vocatio_favorites_v1';
-    const getFavorites = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    const saveFavorites = (arr) => localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
 
-    const careers = {
-      computacion: {
-        nombre: "Ciencias de la Computación",
-        img: "../assets/img/computacion.jpg",
-        duracion: "5 años",
-        modalidad: "Presencial",
-        descripcion: "Desarrolla software e innova con inteligencia artificial, big data y tecnología avanzada."
-      },
-      medicina: {
-        nombre: "Medicina",
-        img: "../assets/img/medicina.jpg",
-        duracion: "7 años",
-        modalidad: "Presencial",
-        descripcion: "Aprende a cuidar la vida con ciencia, vocación y compromiso humano."
-      },
-      traduccion: {
-        nombre: "Traducción e Interpretación Profesional",
-        img: "../assets/img/traduccion.jpg",
-        duracion: "5 años",
-        modalidad: "Presencial o semipresencial",
-        descripcion: "Vive tu pasión por los idiomas y la comunicación global."
-      },
-      musica: {
-        nombre: "Música",
-        img: "../assets/img/musica.jpg",
-        duracion: "5 años",
-        modalidad: "Presencial",
-        descripcion: "Desarrolla tu talento artístico y técnico en los escenarios."
-      },
-      derecho: {
-        nombre: "Derecho",
-        img: "../assets/img/derecho.jpg",
-        duracion: "5 años",
-        modalidad: "Presencial",
-        descripcion: "Defiende la justicia con ética, conocimiento y liderazgo."
-      },
-      mecatronica: {
-        nombre: "Ingeniería Mecatrónica",
-        img: "../assets/img/mecatronica.jpg",
-        duracion: "5 años",
-        modalidad: "Presencial",
-        descripcion: "Diseña sistemas automatizados e inteligentes que mejoran la calidad de vida."
-      }
-    };
+<footer>
+  <div class="footer-left">
+    <a href="#">
+      <img class="footer-logo" 
+           src="../assets/img/logo-footer.png" 
+           alt="Vocatio logo pie de página" 
+           width="205" height="65">
+    </a>
+  </div>
 
-    const grid = document.getElementById('favorites-grid');
-    const favs = getFavorites();
+  <div class="footer-center">
+    <p>© 2025 DecideClaro | All rights reserved</p>
+  </div>
 
-    // Siempre inicializamos el menú, incluso si no hay favoritos
-    initDropdown();
-
-    // Si no hay favoritos, mostramos mensaje
-    if (favs.length === 0) {
-      grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;margin-top:2rem;">No tienes carreras en favoritos aún.</p>`;
-      return;
-    }
-
-    // Si hay favoritos, renderizamos las tarjetas
-    favs.forEach(id => {
-      const c = careers[id];
-      if (!c) return;
-      const card = document.createElement('article');
-      card.className = 'career-card';
-      card.dataset.id = id;
-      card.innerHTML = `
-        <img src="${c.img}" alt="${c.nombre}">
-        <div class="career-info">
-          <h2>${c.nombre}</h2>
-          <p><strong>Duración:</strong> ${c.duracion}</p>
-          <p><strong>Modalidad:</strong> ${c.modalidad}</p>
-          <p>${c.descripcion}</p>
-        </div>
-        <div class="card-actions">
-          <button class="favorite-btn" aria-label="Quitar de favoritos">
-            <img src="../assets/img/heart-filled.png" alt="Favorito">
-          </button>
-          <button class="btn-start">Empieza Aquí</button>
-        </div>
-      `;
-      grid.appendChild(card);
-
-      // Quitar de favoritos
-      card.querySelector('.favorite-btn').addEventListener('click', () => {
-        let updated = getFavorites().filter(f => f !== id);
-        saveFavorites(updated);
-        card.remove();
-        if (updated.length === 0) {
-          grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;margin-top:2rem;">No tienes carreras en favoritos aún.</p>`;
-        }
-      });
-    });
-
-    // Función: Dropdown de usuario
-    function initDropdown() {
-      const profile = document.querySelector('.profile');
-      if (!profile) return;
-      const dropdown = profile.querySelector('.dropdown');
-      document.addEventListener('click', (e) => {
-        if (!profile.contains(e.target)) {
-          dropdown.style.display = 'none';
-        } else if (e.target.closest('.profile')) {
-          dropdown.style.display =
-            dropdown.style.display === 'block' ? 'none' : 'block';
-        }
-      });
-    }
-  })();
-  </script>
+  <div class="footer-right">
+    <a href="https://www.facebook.com/zuck">
+      <img class="footer-icon footer-icon-facebook"
+           src="../assets/img/facebook.png" 
+           alt="Facebook de Vocatio" 
+           width="34" height="34">
+    </a>
+    <a href="https://www.youtube.com/@TheDaniRep">
+      <img class="footer-icon"
+           src="../assets/img/youtube.png" 
+           alt="YouTube de Vocatio" 
+           width="34" height="34">
+    </a>
+    <a href="https://www.instagram.com/cristiano/">
+      <img class="footer-icon"
+           src="../assets/img/instagram.png" 
+           alt="Instagram de Vocatio" 
+           width="34" height="34">
+    </a>
+  </div>
+</footer>
 
 </body>
+
+
 </html>
