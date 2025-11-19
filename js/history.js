@@ -230,10 +230,8 @@ Librerías usadas:
         }
     }
 
-    // ========== DESCARGA DE EVALUACIÓN ==========
-
     /**
-     * Descarga una evaluación como archivo JSON
+     * Prepara la evaluación para descargar el PDF en suggest.html
      */
     function downloadEvaluation(entryId) {
         const entry = historyData.find(e => e.id === entryId);
@@ -243,33 +241,19 @@ Librerías usadas:
             return;
         }
 
-        // Crear objeto para descargar
-        const exportData = {
-            evaluacion: {
-                fecha: entry.dateFormatted,
-                carrera_principal: entry.mainCareer,
-                score: entry.mainScore,
-                otras_afinidades: entry.otherCareers,
-                tiempo_completado: `${Math.round(entry.timeSpent / 60000)} minutos`
-            },
-            resultados_detallados: entry.results,
-            respuestas: entry.answers
+        // Armar el objeto que suggest.html espera como "vocatio_current_test"
+        const testData = {
+            id: entry.id,
+            date: entry.date,
+            answers: entry.answers,
+            timeSpent: entry.timeSpent
         };
 
-        // Crear blob y descargar
-        const dataStr = JSON.stringify(exportData, null, 2);
-        const blob = new Blob([dataStr], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
+        localStorage.setItem('vocatio_current_test', JSON.stringify(testData));
 
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `vocatio_evaluacion_${entry.dateFormatted.replace(/\//g, '-')}.json`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-
-        console.log('📥 Evaluación descargada:', entryId);
+        // Bandera para que suggest genere el PDF automáticamente al cargar
+        localStorage.setItem('vocatio_auto_download', '1');
+        window.location.href = 'suggest.html';
     }
 
     // ========== ELIMINACIÓN DE EVALUACIONES ==========
