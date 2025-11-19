@@ -213,7 +213,6 @@ font-family: "Inter", sans-serif;
   color: #000;
 }
 
-<<<<<<< Updated upstream
 #Contraseña{position: absolute; top: 490px; left: 260px;}
 #NuevaContraseña{position: absolute; top: 560px; left: 260px;}
 #ConfirmarNuevaContraseña{position: absolute; top: 630px; left: 260px;}
@@ -226,10 +225,6 @@ hr{
     top: 470px;
     left: 530px;
 
-=======
-.formulario2 { max-width: 320px; height: 36px; }
-.formulario  { max-width: 420px; height: 44px; }
->>>>>>> Stashed changes
 
 .language-block h4{
   font-weight: 800;
