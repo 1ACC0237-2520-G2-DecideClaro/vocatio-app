@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparar resultados | Vocatio</title>
+    <link rel="stylesheet" href="../css/compare.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <a href="../pages/dashboard.html">
+            <img src="../assets/img/logo.png" alt="Vocatio logo">
+        </a>
+    </div>
+
+    <nav>
+        <a href="../pages/dashboard.html">Vista General</a>
+        <a href="../pages/test.html" class="test-link">Iniciar Test</a>
+        <a href="../pages/path.html">Ruta de Aprendizaje</a>
+        <a href="../pages/explore.html">Explorar</a>
+        <a href="../pages/reports.html">Informes</a>
+    </nav>
+
+    <div class="profile-menu">
+        <button id="profileButton" aria-haspopup="true" aria-expanded="false">
+            <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+            <span class="arrow-down"></span>
+        </button>
+
+        <ul class="dropdown" id="dropdownMenu" role="menu">
+            <li class="user-section">
+                <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+                <a href="../pages/profile.html">German Garmendia</a>
+            </li>
+            <hr>
+            <li><img src="../assets/img/favorites.png" alt="Favoritos"><a href="../pages/favorites.html">Favoritos</a></li>
+            <li><img src="../assets/img/history.png" alt="Historial"><a href="../pages/history.html">Historial</a></li>
+            <li><img src="../assets/img/settings-alt.png" alt="Configuración"><a href="../pages/settings.html">Configuración</a></li>
+            <hr>
+            <li class="logout"><img src="../assets/img/logout.png" alt="Cerrar sesión"><a href="../index.html">Cerrar sesión</a></li>
+        </ul>
+    </div>
+</header>
+
+<main class="compare-container">
+    <h1 class="page-title">Comparar resultados</h1>
+    <p class="page-subtitle">
+        Elige dos evaluaciones de tu historial para compararlas lado a lado.
+    </p>
+
+    <section class="compare-grid">
+        <!-- LADO IZQUIERDO -->
+        <article class="compare-column">
+            <header class="compare-header">
+                <h2>Evaluación A</h2>
+                <select id="selectLeft" class="compare-select">
+                    <!-- Opciones llenadas por JS -->
+                </select>
+            </header>
+
+            <section class="card card-chart">
+                <h3>Carreras más afines</h3>
+                <canvas id="chartLeft"></canvas>
+                <ul id="careersLeft" class="career-list"></ul>
+            </section>
+
+            <section class="card card-summary">
+                <h3>Respuestas influyentes</h3>
+                <p id="summaryLeft" class="summary-text">Selecciona una evaluación para ver el resumen.</p>
+            </section>
+
+            <section class="card card-answers">
+                <h3>Todas tus respuestas</h3>
+                <div id="answersLeft" class="answers-list">
+                    <!-- Llenado por JS -->
+                </div>
+            </section>
+        </article>
+
+        <!-- LADO DERECHO -->
+        <article class="compare-column">
+            <header class="compare-header">
+                <h2>Evaluación B</h2>
+                <select id="selectRight" class="compare-select">
+                    <!-- Opciones llenadas por JS -->
+                </select>
+            </header>
+
+            <section class="card card-chart">
+                <h3>Carreras más afines</h3>
+                <canvas id="chartRight"></canvas>
+                <ul id="careersRight" class="career-list"></ul>
+            </section>
+
+            <section class="card card-summary">
+                <h3>Respuestas influyentes</h3>
+                <p id="summaryRight" class="summary-text">Selecciona una evaluación para ver el resumen.</p>
+            </section>
+
+            <section class="card card-answers">
+                <h3>Todas tus respuestas</h3>
+                <div id="answersRight" class="answers-list">
+                    <!-- Llenado por JS -->
+                </div>
+            </section>
+        </article>
+    </section>
+</main>
+
+<script src="../js/compare.js"></script>
+</body>
+</html>

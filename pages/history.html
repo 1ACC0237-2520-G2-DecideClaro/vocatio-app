@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/history.css">
 </head>
 <body>
-<!-- Encabezado igual al del dashboard -->
 <header>
     <div class="logo">
         <a href="dashboard.html">
@@ -24,7 +23,6 @@
         <a href="../pages/reports.html" class="active">Informes</a>
     </nav>
 
-    <!-- Menú contextual -->
     <div class="profile-menu">
         <button id="profileButton">
             <img src="../assets/img/usuario-thumb.png" alt="Usuario">
@@ -85,7 +83,6 @@
                 <img src="../assets/img/papelera.png" class="icon-btn delete-btn" alt="Eliminar">
             </div>
         </article>
-        <!-- Más artículos podrán generarse dinámicamente en el futuro -->
     </section>
 
     <p id="emptyState" class="empty" hidden>No hay resultados que mostrar.</p>
@@ -102,120 +99,121 @@
     </div>
 </div>
 
-<script>
-    // Menú contextual
-    const profileButton = document.getElementById('profileButton');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const arrow = document.querySelector('.arrow-down');
-    profileButton.addEventListener('click', () => {
-        dropdownMenu.classList.toggle('show');
-        arrow.classList.toggle('rotate');
-    });
+<!--<script>-->
+<!--    // Menú contextual-->
+<!--    const profileButton = document.getElementById('profileButton');-->
+<!--    const dropdownMenu = document.getElementById('dropdownMenu');-->
+<!--    const arrow = document.querySelector('.arrow-down');-->
+<!--    profileButton.addEventListener('click', () => {-->
+<!--        dropdownMenu.classList.toggle('show');-->
+<!--        arrow.classList.toggle('rotate');-->
+<!--    });-->
 
-    // Favoritos hover y toggle
-    document.querySelectorAll('.fav-toggle').forEach(icon => {
-        let fav = false;
-        icon.addEventListener('mouseover', () => { if (!fav) icon.src = '../assets/img/fav.png'; });
-        icon.addEventListener('mouseout', () => { if (!fav) icon.src = '../assets/img/nofav.png'; });
-        icon.addEventListener('click', () => {
-            fav = !fav;
-            icon.src = fav ? '../assets/img/fav.png' : '../assets/img/nofav.png';
-        });
-    });
+<!--    // Favoritos hover y toggle-->
+<!--    document.querySelectorAll('.fav-toggle').forEach(icon => {-->
+<!--        let fav = false;-->
+<!--        icon.addEventListener('mouseover', () => { if (!fav) icon.src = '../assets/img/fav.png'; });-->
+<!--        icon.addEventListener('mouseout', () => { if (!fav) icon.src = '../assets/img/nofav.png'; });-->
+<!--        icon.addEventListener('click', () => {-->
+<!--            fav = !fav;-->
+<!--            icon.src = fav ? '../assets/img/fav.png' : '../assets/img/nofav.png';-->
+<!--        });-->
+<!--    });-->
 
-    // Eliminar tarjetas con modal
-    const modal = document.getElementById('deleteModal');
-    const btnCancel = document.getElementById('modalCancel');
-    const btnConfirm = document.getElementById('confirmDelete');
-    const cardsContainer = document.getElementById('cards');
-    const emptyState = document.getElementById('emptyState');
-    let targetCard = null;
+<!--    // Eliminar tarjetas con modal-->
+<!--    const modal = document.getElementById('deleteModal');-->
+<!--    const btnCancel = document.getElementById('modalCancel');-->
+<!--    const btnConfirm = document.getElementById('confirmDelete');-->
+<!--    const cardsContainer = document.getElementById('cards');-->
+<!--    const emptyState = document.getElementById('emptyState');-->
+<!--    let targetCard = null;-->
 
-    function updateEmptyState() {
-        const anyVisible = [...cardsContainer.querySelectorAll('.test-card')]
-            .some(card => card.style.display !== 'none');
-        emptyState.hidden = anyVisible;
-    }
+<!--    function updateEmptyState() {-->
+<!--        const anyVisible = [...cardsContainer.querySelectorAll('.test-card')]-->
+<!--            .some(card => card.style.display !== 'none');-->
+<!--        emptyState.hidden = anyVisible;-->
+<!--    }-->
 
-    cardsContainer.addEventListener('click', (e) => {
-        const del = e.target.closest('.delete-btn');
-        if (del) {
-            targetCard = e.target.closest('.test-card');
-            modal.style.display = 'flex';
-            modal.removeAttribute('hidden');
-        }
-    });
+<!--    cardsContainer.addEventListener('click', (e) => {-->
+<!--        const del = e.target.closest('.delete-btn');-->
+<!--        if (del) {-->
+<!--            targetCard = e.target.closest('.test-card');-->
+<!--            modal.style.display = 'flex';-->
+<!--            modal.removeAttribute('hidden');-->
+<!--        }-->
+<!--    });-->
 
-    btnCancel.addEventListener('click', () => {
-        modal.style.display = 'none';
-        modal.setAttribute('hidden', '');
-        targetCard = null;
-    });
+<!--    btnCancel.addEventListener('click', () => {-->
+<!--        modal.style.display = 'none';-->
+<!--        modal.setAttribute('hidden', '');-->
+<!--        targetCard = null;-->
+<!--    });-->
 
-    btnConfirm.addEventListener('click', () => {
-        if (targetCard) {
-            targetCard.remove();
-            targetCard = null;
-            updateEmptyState();
-        }
-        modal.style.display = 'none';
-        modal.setAttribute('hidden', '');
-    });
+<!--    btnConfirm.addEventListener('click', () => {-->
+<!--        if (targetCard) {-->
+<!--            targetCard.remove();-->
+<!--            targetCard = null;-->
+<!--            updateEmptyState();-->
+<!--        }-->
+<!--        modal.style.display = 'none';-->
+<!--        modal.setAttribute('hidden', '');-->
+<!--    });-->
 
-    // Navegación al hacer click en cualquier parte de la tarjeta (excepto iconos de acción)
-    cardsContainer.addEventListener('click', (e) => {
-        const card = e.target.closest('.test-card');
-        if (!card) return;
-        // No navegar si clickea en un control/icono (descargar, favorito, eliminar)
-        if (e.target.closest('.icon-btn')) return;
-        window.location.href = '../pages/suggest.html';
-    });
+<!--    // Navegación al hacer click en cualquier parte de la tarjeta (excepto iconos de acción)-->
+<!--    cardsContainer.addEventListener('click', (e) => {-->
+<!--        const card = e.target.closest('.test-card');-->
+<!--        if (!card) return;-->
+<!--        // No navegar si clickea en un control/icono (descargar, favorito, eliminar)-->
+<!--        if (e.target.closest('.icon-btn')) return;-->
+<!--        window.location.href = '../pages/suggest.html';-->
+<!--    });-->
 
-    // Permitir navegación con teclado (Enter o Espacio) cuando la tarjeta tiene foco
-    document.addEventListener('keydown', (e) => {
-        const active = document.activeElement;
-        if (!active) return;
-        if (active.classList && active.classList.contains('test-card') && (e.key === 'Enter' || e.key === ' ')) {
-            e.preventDefault();
-            window.location.href = '../pages/test.html';
-        }
-    });
+<!--    // Permitir navegación con teclado (Enter o Espacio) cuando la tarjeta tiene foco-->
+<!--    document.addEventListener('keydown', (e) => {-->
+<!--        const active = document.activeElement;-->
+<!--        if (!active) return;-->
+<!--        if (active.classList && active.classList.contains('test-card') && (e.key === 'Enter' || e.key === ' ')) {-->
+<!--            e.preventDefault();-->
+<!--            window.location.href = '../pages/test.html';-->
+<!--        }-->
+<!--    });-->
 
-    // Filtro por fecha
-    const form = document.getElementById('filterForm');
-    const dateFrom = document.getElementById('dateFrom');
-    const dateTo = document.getElementById('dateTo');
+<!--    // Filtro por fecha-->
+<!--    const form = document.getElementById('filterForm');-->
+<!--    const dateFrom = document.getElementById('dateFrom');-->
+<!--    const dateTo = document.getElementById('dateTo');-->
 
-    function applyFilter() {
-        const fromVal = dateFrom.value ? new Date(dateFrom.value) : null;
-        const toVal = dateTo.value ? new Date(dateTo.value) : null;
-        cardsContainer.querySelectorAll('.test-card').forEach(card => {
-            const d = new Date(card.getAttribute('data-date'));
-            let visible = true;
-            if (fromVal && d < fromVal) visible = false;
-            if (toVal) {
-                const toEnd = new Date(toVal);
-                toEnd.setHours(23,59,59,999);
-                if (d > toEnd) visible = false;
-            }
-            card.style.display = visible ? '' : 'none';
-        });
-        updateEmptyState();
-    }
+<!--    function applyFilter() {-->
+<!--        const fromVal = dateFrom.value ? new Date(dateFrom.value) : null;-->
+<!--        const toVal = dateTo.value ? new Date(dateTo.value) : null;-->
+<!--        cardsContainer.querySelectorAll('.test-card').forEach(card => {-->
+<!--            const d = new Date(card.getAttribute('data-date'));-->
+<!--            let visible = true;-->
+<!--            if (fromVal && d < fromVal) visible = false;-->
+<!--            if (toVal) {-->
+<!--                const toEnd = new Date(toVal);-->
+<!--                toEnd.setHours(23,59,59,999);-->
+<!--                if (d > toEnd) visible = false;-->
+<!--            }-->
+<!--            card.style.display = visible ? '' : 'none';-->
+<!--        });-->
+<!--        updateEmptyState();-->
+<!--    }-->
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        applyFilter();
-    });
+<!--    form.addEventListener('submit', (e) => {-->
+<!--        e.preventDefault();-->
+<!--        applyFilter();-->
+<!--    });-->
 
-    document.getElementById('clearFilter').addEventListener('click', () => {
-        dateFrom.value = '';
-        dateTo.value = '';
-        applyFilter();
-    });
+<!--    document.getElementById('clearFilter').addEventListener('click', () => {-->
+<!--        dateFrom.value = '';-->
+<!--        dateTo.value = '';-->
+<!--        applyFilter();-->
+<!--    });-->
 
-    // Inicializar estado vacío si aplica
-    updateEmptyState();
-</script>
+<!--    // Inicializar estado vacío si aplica-->
+<!--    updateEmptyState();-->
+<!--</script>-->
+<script src="../js/history.js"></script>
 </body>
 </html>
