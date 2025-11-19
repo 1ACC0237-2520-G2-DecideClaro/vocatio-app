@@ -1,57 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/profile.css">
-    <title>Profile</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile</title>
+  <link rel="stylesheet" href="../css/profile.css" />
 </head>
+
 <body>
-    
-    <header></header>
 
-    <img id="logo" src="../assets/img/VocatioLogo.jpg">
-    <img id="perfil" src="../assets/img/perfil.png">
-    <img id="perfilMini" src="../assets/img/perfilMini.png">
+  <header class="site-header">
+    <div class="header-left">
+      <img id="logo" src="../assets/img/VocatioLogo.jpg" alt="Logo Vocatio">
+    </div>
 
-    <h1>Usuario</h1>
-    
-    <h5 id="VistaGeneral">Vista General</h5>
-    <h5 id="IniciarTest">Iniciar Test</h5>
-    <h5 id="RutaDeAprendizaje">Ruta de Aprendizaje</h5>
-    <h5 id="Explorar">Explorar</h5>
-    <h5 id="Informes">Informes</h5>
+    <!-- BOTÓN MENÚ HAMBURGUESA -->
+    <div class="hamburger" id="hamburger">☰</div>
 
-    <hr>
+    <!-- MENÚ PRINCIPAL -->
+    <nav class="header-nav" role="navigation" aria-label="Menú principal">
+      <h5 id="VistaGeneral">Vista General</h5>
+      <h5 id="IniciarTest">Iniciar Test</h5>
+      <h5 id="RutaDeAprendizaje">Ruta de Aprendizaje</h5>
+      <h5 id="Explorar">Explorar</h5>
+      <h5 id="Informes">Informes</h5>
+    </nav>
 
-    <h3 id="edit">Editar información personal</h3>
-    <h3 id="cambiar">Cambiar contraseña</h3>
-    <h3 id="config">Configuración del Sistema</h3>
+    <div class="header-right">
+      <img id="perfilMini" src="../assets/img/perfilMini.png" alt="Perfil mini">
+    </div>
+  </header>
 
-    <h4>Idioma</h4>
+  <main class="main-content">
 
-    <p>Predeterminado del sistema <br>(Español (España))</br></p>
+    <section class="profile-section">
+      <img id="perfil" src="../assets/img/perfil.png" alt="Foto de perfil">
+      <h1>Usuario</h1>
+    </section>
 
-    
-    <form>
+    <section class="content-grid">
 
-    <input type="text" placeholder="Nombres" name="Nombre" class="formulario2" id="Nombre">
-    <br>
-    <input type="text" placeholder="Apellidos" name="Apellido" class="formulario2" id="Apellido">
-    <br>
+      <div class="col-left">
+        <h3 id="edit">Editar información personal</h3>
 
-    <input type="text" placeholder="Contraseña" name="Contraseña" class="formulario" id="Contraseña">
-    <br>
-    <input type="text" placeholder="Nueva Contraseña" name="NuevaContraseña" class="formulario" id="NuevaContraseña">
-    <br>
-    <input type="text" placeholder="Confirmar nueva Contraseña" name="ConfirmarNuevaContraseña" class="formulario" id="ConfirmarNuevaContraseña">
-    <br>
+        <form class="profile-form" novalidate>
+          <input type="text" placeholder="Nombres" name="Nombre" class="formulario2" id="Nombre" />
+          <input type="text" placeholder="Apellidos" name="Apellido" class="formulario2" id="Apellido" />
 
-    <input type="submit" value="ELIMINAR CUENTA" name="EliminarCuenta" id="EliminarCuenta">
+          <h3 id="cambiar">Cambiar contraseña</h3>
+          <input type="password" placeholder="Contraseña" name="Contraseña" class="formulario" id="Contraseña" />
+          <input type="password" placeholder="Nueva Contraseña" name="NuevaContraseña" class="formulario" id="NuevaContraseña" />
+          <input type="password" placeholder="Confirmar nueva Contraseña" name="ConfirmarNuevaContraseña" class="formulario" id="ConfirmarNuevaContraseña" />
+        </form>
+      </div>
 
-    </form>
+      <div class="separator" aria-hidden="true"></div>
 
-    
+      <div class="col-right">
+        <h3 id="config">Configuración del Sistema</h3>
+
+        <div class="language-block">
+          <h4>Idioma</h4>
+          <p>Predeterminado del sistema <br>
+            <span class="lang">(Español (España))</span>
+          </p>
+        </div>
+
+        <div class="delete-block">
+          <input type="submit" value="ELIMINAR CUENTA" name="EliminarCuenta" id="EliminarCuenta" />
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="../js/profile.js"></script>
 </body>
 </html>

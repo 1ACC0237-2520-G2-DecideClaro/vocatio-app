@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 header {
     background-color: white;
     height: 60px;            
@@ -5,10 +6,50 @@ header {
     top: 0;                  
     left: 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+=======
+/* -------------------------
+   Reset / base
+   ------------------------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: "Inter", Arial, sans-serif; color: #0b2540; background: #fff; }
+
+/* Variables */
+:root{
+  --primary-blue: #0868A8;
+  --accent-blue: #2073A1;
+  --danger: #FF1212;
+  --header-height: 60px;
+  --max-width: 1200px;
+  --gutter: 20px;
+>>>>>>> Stashed changes
 }
 
-#logo{
+/* -------------------------
+   Header
+   ------------------------- */
+.site-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  width: 100%;
+  padding: 0 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
+.header-left { display: flex; align-items: center; gap: 12px; }
+#logo{
+  width: 110px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+}
+
+<<<<<<< Updated upstream
 width: 110px;
 height: 40px;
 float: left;
@@ -16,10 +57,61 @@ float: left;
 position: absolute; 
 top: 9px; 
 left: 10px;
+=======
+.header-nav{
+  display: flex;
+  gap: 26px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
 
+.header-nav h5{
+  color: var(--primary-blue);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+>>>>>>> Stashed changes
+
+.header-right { display:flex; align-items:center; gap:8px; }
+#perfilMini{
+  width: 50px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* ---- BOTÓN HAMBURGUESA ---- */
+.hamburger {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  user-select: none;
+  color: var(--primary-blue);
+}
+
+/* -------------------------
+   Main content
+   ------------------------- */
+.main-content{
+  max-width: var(--max-width);
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.profile-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 #perfil{
+<<<<<<< Updated upstream
 
 width:140px;
 height: 130px;
@@ -47,14 +139,31 @@ h5{
 color: #0868A8;
 font-family: "Inter", sans-serif;
 
+=======
+  width: 140px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
-#VistaGeneral{position: absolute; top: 0px; left: 210px;}
-#IniciarTest{position: absolute; top: 0px; left: 350px;}
-#RutaDeAprendizaje{position: absolute; top: 0px; left: 480px;}
-#Explorar{position: absolute; top: 0px; left: 670px;}
-#Informes{position: absolute; top: 0px; left: 770px;}
+.profile-section h1{
+  font-size: 28px;
+  margin-top: 4px;
+}
 
+/* grid desktop */
+.content-grid{
+  display: grid;
+  grid-template-columns: 1fr 12px 360px;
+  gap: var(--gutter);
+  align-items: start;
+>>>>>>> Stashed changes
+}
+
+.col-left { display: flex; flex-direction: column; gap: 14px; }
+
+<<<<<<< Updated upstream
 h1{
 
 font-family: "Inter", sans-serif;
@@ -62,62 +171,49 @@ font-family: "Inter", sans-serif;
 position: absolute;
 top: 205px;
 left: 648px;
+=======
+.separator{
+  width: 1px;
+  background: #e6e6e6;
+  height: 100%;
+  justify-self: center;
+}
+>>>>>>> Stashed changes
 
+.col-right{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
 }
 
 h3{
+<<<<<<< Updated upstream
 
 font-family: "Inter", sans-serif;
 
+=======
+  font-size: 18px;
+  font-weight: 700;
+  color: #0b2540;
+>>>>>>> Stashed changes
 }
 
-#edit{position: absolute; top: 260px; left: 250px;}
-
-.formulario2{
-
-    width: 200px;
-    height: 30px;
-
-    color: black;
-
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-
-    border: 3px solid;
-
-    margin: 5px;
-
-    padding-left: 10px;
-
-}
-
-#Nombre{position: absolute; top: 315px; left: 260px;}
-#Apellido{position: absolute; top: 375px; left: 260px;}
-
-
-#cambiar{position: absolute; top: 440px; left: 290px;}
-
+.formulario2,
 .formulario{
-
-    width: 210px;
-    height: 40px;
-
-    color: black;
-
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-
-    border: 3px solid;
-
-
-    margin: 5px;
-
-    padding-left: 10px;
-
+  width: 100%;
+  max-width: 420px;
+  height: 40px;
+  padding: 8px 12px;
+  border: 2px solid #cfcfcf;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom: 6px;
+  background: #fff;
+  color: #000;
 }
 
+<<<<<<< Updated upstream
 #Contraseña{position: absolute; top: 490px; left: 260px;}
 #NuevaContraseña{position: absolute; top: 560px; left: 260px;}
 #ConfirmarNuevaContraseña{position: absolute; top: 630px; left: 260px;}
@@ -130,47 +226,115 @@ hr{
     top: 470px;
     left: 530px;
 
+=======
+.formulario2 { max-width: 320px; height: 36px; }
+.formulario  { max-width: 420px; height: 44px; }
+>>>>>>> Stashed changes
 
+.language-block h4{
+  font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 6px;
 }
 
-#config{position: absolute; top: 260px; left: 900px;}
-
-h4{
-    font-weight: 800;
-    font-family: "Inter", sans-serif;
-
-    position: absolute;
-    top: 320px;
-    left: 850px;
-}
-
-p{
-    color: #2073A1;
-    text-decoration: underline;
-    font-size: 16;
-
-    position: absolute;
-    top: 320px;
-    left: 1050px;
+.language-block p{
+  color: var(--accent-blue);
+  text-decoration: underline;
+  font-size: 16px;
+  line-height: 1.2;
 }
 
 #EliminarCuenta{
+  width: 200px;
+  height: 50px;
+  font-weight: 800;
+  color: #000;
+  background-color: var(--danger);
+  border: 4px solid rgba(0,0,0,0.05);
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-    width: 200px;
-    height: 50px;
+.delete-block { margin-top: 12px; }
 
-    font-weight: 800;
+/* -------------------------
+   RESPONSIVE
+   ------------------------- */
 
-    color: black;
-    background-color: #FF1212;
+@media (max-width: 1024px){
+  :root { --max-width: 980px; }
+  .content-grid { grid-template-columns: 1fr 10px 300px; }
+  #perfil { width: 160px; height: 150px; }
+}
 
-    border: 4px solid;
-    border-radius: 5px;
+@media (max-width: 768px){
 
-    position: absolute;
-    top: 560px;
-    left: 900px;
+  .site-header{
+    align-items: flex-start;
+    padding: 10px 12px;
+    gap: 10px;
+    height: auto;
+  }
 
-    cursor: pointer;
+  .hamburger {
+    display: block;
+    order: 2;
+    margin-left: auto;
+    padding: 4px 10px;
+  }
 
+  .header-nav{
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    background: #fff;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  }
+
+  .header-nav.show{
+    display: flex;
+  }
+
+  .header-left { order: 1; }
+  .header-right { order: 3; }
+
+  .header-nav h5 { padding-left: 12px; }
+
+  .content-grid{
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .separator { display: none; }
+
+  .col-left, .col-right { width: 100%; }
+
+  .formulario2, .formulario { max-width: 100%; }
+
+  .delete-block { display:flex; justify-content:center; }
+  #EliminarCuenta { width: 90%; max-width: 360px; }
+
+  #perfil { width: 140px; height: 130px; }
+}
+
+@media (min-width: 1400px){
+  :root { --max-width: 1200px; }
+  .content-grid { grid-template-columns: 1fr 12px 420px; }
+}
+
+/* ------ ESTILOS PARA ERRORES ------ */
+
+.input-error {
+  border-color: #ff4d4d !important;
+  background-color: #ffecec;
+}
+
+.error-msg {
+  font-size: 13px;
+  color: #ff0000;
+  margin-bottom: 6px;
+  padding-left: 4px;
 }
