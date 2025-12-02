@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informes | Vocatio</title>
+    <link rel="stylesheet" href="../css/reports.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <a href="../pages/dashboard.html">
+            <img src="../assets/img/logo.png" alt="Vocatio logo">
+        </a>
+    </div>
+
+    <nav>
+        <a href="../pages/dashboard.html">Vista General</a>
+        <a href="../pages/test.html">Iniciar Test</a>
+        <a href="../pages/path.html">Ruta de Aprendizaje</a>
+        <a href="../pages/explore.html">Explorar</a>
+        <a href="../pages/reports.html" class="reports-link">Informes</a>
+    </nav>
+
+    <div class="profile-menu">
+        <button id="profileButton" aria-haspopup="true" aria-expanded="false">
+            <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+            <span class="arrow-down"></span>
+        </button>
+
+        <ul class="dropdown" id="dropdownMenu" role="menu">
+            <li class="user-section">
+                <img src="../assets/img/usuario-thumb.png" alt="Usuario">
+                <a href="../pages/profile.html">German Garmendia</a>
+            </li>
+            <hr>
+            <li><img src="../assets/img/favorites.png" alt="Favoritos"><a href="../pages/favorites.html">Favoritos</a></li>
+            <li><img src="../assets/img/history.png" alt="Historial"><a href="../pages/history.html">Historial</a></li>
+            <li><img src="../assets/img/settings-alt.png" alt="Configuración"><a href="../pages/settings.html">Configuración</a></li>
+            <hr>
+            <li class="logout"><img src="../assets/img/logout.png" alt="Cerrar sesión"><a href="../index.html">Cerrar sesión</a></li>
+        </ul>
+    </div>
+</header>
+
+<main class="reports-container">
+    <!-- ====== Bloque 1: Reportes y recomendaciones ====== -->
+    <section class="section-block">
+        <h1 class="section-title">Reportes y recomendaciones</h1>
+
+        <div class="section-grid main-grid">
+            <!-- Promedio de carreras -->
+            <div class="card card-avg">
+                <div class="avg-chart-wrapper">
+                    <canvas id="avgCareerChart"></canvas>
+                </div>
+                <ul id="avgCareerList" class="avg-career-list">
+                    <!-- Llena JS: carrera + promedio % -->
+                </ul>
+            </div>
+
+            <aside class="card card-recommended">
+                <h2 class="subsection-title">Carreras recomendadas</h2>
+                <div id="recommendedCareers" class="recommended-list">
+                    <!-- Llena JS: top 3 carreras por promedio -->
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section class="section-block">
+    <h2 class="section-title">Comparar resultados</h2>
+
+    <div class="compare-button-wrapper">
+        <a href="../pages/compare.html" class="compare-btn">Comparar resultados</a>
+    </div>
+</section>
+
+
+    <section class="section-block">
+        <h2 class="section-title">Últimos tests realizados</h2>
+
+        <div class="card card-history">
+            <ul id="lastTestsList" class="tests-list">
+                <!-- Llena JS: últimos 3 tests -->
+            </ul>
+            <div class="history-footer">
+                <a href="../pages/history.html" class="history-btn">Ver historial completo</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="../js/reports.js"></script>
+</body>
+</html>

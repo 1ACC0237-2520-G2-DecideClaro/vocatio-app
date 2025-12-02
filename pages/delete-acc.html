@@ -1,55 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/delete-acc.css">
-    <title>Delete Account</title>
+    <title>Eliminar Cuenta</title>
 </head>
 
 <body>
-    
-    <header></header>
-    
-    <img id="logo" src="../assets/img/VocatioLogo.jpg">
-    <img id="perfilMini" src="../assets/img/perfilMini.png">
+
+<header class="nav">
+    <img id="logo" src="../assets/img/VocatioLogo.jpg" alt="Logo">
+    <nav class="menu">
+        <a href="#">Vista General</a>
+        <a href="#">Iniciar Test</a>
+        <a href="#">Ruta de Aprendizaje</a>
+        <a href="#">Explorar</a>
+        <a href="#">Informes</a>
+    </nav>
+    <img id="perfilMini" src="../assets/img/perfilMini.png" alt="Perfil">
+</header>
 
 
-    <h5 id="VistaGeneral">Vista General</h5>
-    <h5 id="IniciarTest">Iniciar Test</h5>
-    <h5 id="RutaDeAprendizaje">Ruta de Aprendizaje</h5>
-    <h5 id="Explorar">Explorar</h5>
-    <h5 id="Informes">Informes</h5>
-
+<main class="contenedor">
 
     <h1>¡Eliminar Cuenta!</h1>
 
-    <p id="parrafo1">
+    <p class="descripcion">
         ¿Estás seguro de que deseas eliminar tu<br>
-        cuenta? Esta acción es<b>
-        permanente</b>
-        y no<br>
-        podrás recuperar tu información ni tus<br> 
-        resultados de tests una vez completada.
+        cuenta? Esta acción es <b>permanente</b> y no podrás recuperar<br>
+        tu información.
     </p>
 
-    <form>
+    <form id="formEliminar">
+        <input type="password" placeholder="Contraseña actual" id="ContraseñaActual" class="input">
+        <span class="error" id="errorActual"></span>
 
-    <input type="text" placeholder="Contraseña actual" name="ContraseñaActual" class="formulario1" id="ContraseñaActual">
-    <br>
-    <input type="text" placeholder="Confirmar contraseña" name="ConfirmarContraseña" class="formulario1" id="ConfirmarContraseña">
-    <br>
+        <input type="password" placeholder="Confirmar contraseña" id="ConfirmarContraseña" class="input">
+        <span class="error" id="errorConfirmar"></span>
 
-    <input type="submit" value="Regresar" name="Regresar" class="formulario2" id="Regresar">
-    <input type="submit" value="Sí, deseo eliminar mi cuenta" name="EliminarCuenta" class="formulario2" id="EliminarCuenta">
-
+        <button type="button" id="Regresar" class="btn gris">Regresar</button>
+        <button type="button" id="EliminarCuenta" class="btn rojo">Sí, deseo eliminar mi cuenta</button>
     </form>
 
-    <p id="parrafo2">
+    <p class="advertencia">
         Perderás el acceso a tus resultados, historial de tests y<br>
-        recomendaciones personalizadas. Si tienes dudas, te<br>
-        recomendamos regresar.
+        recomendaciones personalizadas.
     </p>
+</main>
 
+
+<!-- MODAL DE CONFIRMACIÓN -->
+<div id="modal" class="modal oculto">
+    <div class="modal-contenido">
+        <h3>Confirmar Eliminación</h3>
+        <p>¿Estás seguro de eliminar tu cuenta? Esta acción no se puede revertir.</p>
+        <button id="cancelarModal" class="btn gris">Cancelar</button>
+        <button id="confirmarModal" class="btn rojo">Eliminar definitivamente</button>
+    </div>
+</div>
+
+<script src="../js/eliminateacc.js"></script>
 </body>
 </html>

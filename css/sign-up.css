@@ -1,141 +1,225 @@
-#decision{
+/**********************
+    AUTHENTICATION UI
+    (Login & Sign In)
+**********************/
 
-width: 560px;
-height: 710px;
-float: right;
-
+:root {
+  --color-primary: #f29723;
+  --color-text: #3a3a3a;
+  --color-muted: #51504f;
+  --color-bg: #ffffff;
+  --radius: 8px;
 }
 
-#logo{
-
-width: 90px;
-height: 40px;
-float: left;
-
+* { 
+  box-sizing: border-box; 
 }
 
-#bienvenida{
-
-    color: #f29723;
-    font-family: "Inter", sans-serif;
-
-    position: absolute;
-    top: 60px;
-    left: 250px;
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
-#parrafo{
-
-    color: rgb(58, 58, 58);
-    font-family: "Inter", sans-serif;
-
-    position: absolute;
-    top: 640px;
-    left: 300px;
-
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
-.formulario{
+/**********************
+      LAYOUT
+**********************/
 
-
-    width: 315px;
-    height: 40px;
-
-    color: rgb(81, 80, 79);
-
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-
-    border: 4px solid;
-    border-radius: 3px;
-
-    margin: 5px;
-
-    padding-left: 10px;
-
+.login {
+  display: flex;
+  min-height: 100vh;
 }
 
-#Nombre{
-
-    width: 135px;
-    height: 40px;
-
-    color: rgb(81, 80, 79);
-
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-
-    border: 4px solid;
-    border-radius: 3px;
-
-    margin: 5px;
-
-    padding-left: 10px;
-
-    position: absolute;
-    top: 150px;
-    left: 250px;
+.login_left {
+  position: relative;
+  flex: 1 1 520px;
+  max-width: 680px;
+  padding: 96px 32px 48px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
 }
 
-#Apellidos{
-
-    width: 135px;
-    height: 40px;
-
-    color: rgb(81, 80, 79);
-
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-
-    border: 4px solid;
-    border-radius: 3px;
-
-    margin: 5px;
-
-    padding-left: 10px;
-
-    position: absolute;
-    top: 150px;
-    left: 430px;
-
+.login_right {
+  flex: 1 1 560px;
+  background: #faf7f3;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
 }
 
-/*se llevan 90*/
-#FechaDeNacimiento{
+/**********************
+      LOGO
+**********************/
 
-    position: absolute;
-    top: 240px;
-    left: 250px;
-}
-#Email{
-
-    position: absolute;
-    top: 330px;
-    left: 250px;
+.login_logo {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  text-decoration: none;
 }
 
-#Password{
-
-    position: absolute;
-    top: 420px;
-    left: 250px;
+.login_logo img {
+  width: 140px;
+  height: auto;
+  display: block;
 }
 
-#ConfirmPassword{
-    position: absolute;
-    top: 510px;
-    left: 250px;
+/**********************
+      TITULOS
+**********************/
+
+.login_title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-primary);
+  text-align: center;
 }
-/* SUBMIT */
 
-#SignIn{
+/**********************
+      FORM
+**********************/
 
-    font-weight: bold;
-    position: absolute;
-    top: 600px;
-    left: 260px;
-    cursor: pointer;
+.login_form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #333;
+}
+
+.form-input {
+  height: 40px;
+  padding: 8px 12px;
+  font-size: 16px;
+  color: var(--color-muted);
+  border: 1px solid #d4d4d4;
+  border-radius: var(--radius);
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+
+/**********************
+      BUTTONS
+**********************/
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button-primary {
+  background: var(--color-primary);
+  color: #fff;
+  margin-top: 16px;
+}
+
+/**********************
+      FOOTER TEXT
+**********************/
+
+.login_signup {
+  font-size: 14px;
+  text-align: center;
+}
+
+.link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/**********************
+      IMAGE RIGHT
+**********************/
+
+.login_illustration {
+  height: 100vh;
+  width: auto;
+  max-height: 100vh;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/**********************
+      RESPONSIVE
+**********************/
+
+@media (max-width: 900px) {
+  .login {
+    flex-direction: column;
+  }
+
+  .login_right {
+    display: none;
+  }
+
+  .login_left {
+    max-width: none;
+    padding-top: 120px;
+  }
+
+  .login_title {
+    font-size: 28px;
+  }
+
+  .login_form {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login_left {
+    padding: 140px 20px 40px 20px;
+  }
+
+  .login_title {
+    font-size: 24px;
+  }
+
+  .form-input {
+    height: 38px;
+    font-size: 15px;
+  }
+
+  .button {
+    height: 42px;
+  }
 }

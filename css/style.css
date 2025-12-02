@@ -43,31 +43,31 @@ header .logo img {
     margin-bottom: 0.1rem;
 }
 
-/*header nav a {*/
-/*    color: #0868A8;*/
-/*    font-weight: bold;*/
-/*    letter-spacing: 0.03em;*/
-/*    font-family: 'Roboto', sans-serif;*/
+header nav a {
+    color: #0868A8;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    font-family: 'Roboto', sans-serif;
 
-/*    !* Make the whole pill clickable like a normal button *!*/
-/*    display: inline-flex;*/
-/*    align-items: center;*/
-/*    gap: 0.35rem;*/
-/*    padding: 1rem 0.05rem;*/
-/*    border-radius: 1px; !* pill shape; change to 6px if you prefer squared corners *!*/
-/*    cursor: pointer;*/
-/*    position: relative;*/
-/*    margin-bottom: 0.5rem;*/
+    /* Make the whole pill clickable like a normal button */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 1rem 0.05rem;
+    border-radius: 1px; /* pill shape; change to 6px if you prefer squared corners */
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 0.5rem;
 
-/*    !* 2px stroke under the button in the same color as the label *!*/
-/*    background-image: linear-gradient(currentColor, currentColor);*/
-/*    background-size: 100% 3px;*/
-/*    background-position: bottom left;*/
-/*    background-repeat: no-repeat;*/
+    /* 2px stroke under the button in the same color as the label */
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 3px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
 
-/*    !* Preserve existing spacing to the right *!*/
-/*    margin-right: 70rem;*/
-/*}*/
+    /* Preserve existing spacing to the right */
+    margin-right: 70rem;
+}
 
 /* Hover and focus styles for the header nav button */
 header nav a:focus-visible {
@@ -454,22 +454,22 @@ footer img {
 
 
 @media (max-width: 480px) {
-  header { padding: 0.5rem 0.75rem; margin: 0.5rem; }
-  .card { padding: 1rem; }
-  .intro h1 { font-size: 1.6rem; }
-  .intro p { font-size: 0.95rem; }
-  .btn-start { padding: 0.75rem 1rem; }
-  .features-right ul { font-size: 0.95rem; }
+    header { padding: 0.5rem 0.75rem; margin: 0.5rem; }
+    .card { padding: 1rem; }
+    .intro h1 { font-size: 1.6rem; }
+    .intro p { font-size: 0.95rem; }
+    .btn-start { padding: 0.75rem 1rem; }
+    .features-right ul { font-size: 0.95rem; }
 }
 
 
 /* Desktop explicit grid placement for first-row cards */
 @media (min-width: 769px) {
-  .intro { grid-column: 1; }
-  .icons {
-    grid-column: 2;
-    justify-self: stretch; /* fill the grid track horizontally */
-    align-self: stretch;   /* fill the grid track vertically if heights differ */
-    width: 100%;
-  }
+    .intro { grid-column: 1; }
+    .icons {
+        grid-column: 2;
+        justify-self: stretch; /* fill the grid track horizontally */
+        align-self: stretch;   /* fill the grid track vertically if heights differ */
+        width: 100%;
+    }
 }

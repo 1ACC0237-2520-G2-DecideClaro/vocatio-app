@@ -1,43 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/log-in.css" />
     <title>Iniciar sesión</title>
 </head>
 <body>
     <main class="login" role="main">
+        <!-- LADO IZQUIERDO -->
         <section class="login_left">
-            <a href="../index.html" class="login_logo" aria-label="Ir al inicio">
-                <img src="../assets/img/vocatiologo-signin.png" alt="Vocatio" />
+            <a href="../pages/sign-up.html" class="login_logo" aria-label="Ir al inicio">
+                <img src="../assets/img/VocatioLogo.jpg" alt="Vocatio" />
             </a>
 
             <h1 class="login_title">¡Bienvenido a Vocatio!</h1>
 
-            <form class="login_form" action="#" method="post" novalidate>
+            <form class="login_form" id="formLogin" novalidate>
                 <div class="form-field">
-                    <label class="form-label" for="email">Correo electrónico</label>
-                    <input class="form-input" type="email" id="email" name="email" placeholder="tu@correo.com" autocomplete="email" required />
+                    <label class="form-label" for="Email">Correo electrónico</label>
+                    <input
+                        class="form-input"
+                        type="email"
+                        placeholder="tu@correo.com"
+                        id="Email"
+                        name="Email"
+                        required
+                    />
+                    <small class="error-msg" id="EmailError"></small>
                 </div>
 
                 <div class="form-field">
-                    <label class="form-label" for="password">Contraseña</label>
-                    <input class="form-input" type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required />
+                    <label class="form-label" for="Password">Contraseña</label>
+                    <input
+                        class="form-input"
+                        type="password"
+                        placeholder="••••••••"
+                        id="Password"
+                        name="Password"
+                        required
+                    />
+                    <small class="error-msg" id="PasswordError"></small>
                 </div>
 
-                <a class="button button-primary" href="../pages/dashboard.html" role="button">Iniciar sesión</a>
+                <button class="button button-primary" id="LogIn" type="submit">
+                    Iniciar sesión
+                </button>
             </form>
 
-            <p class="login_signup">¿Aún no tienes una cuenta? <a class="link" href="sign-up.html">Regístrate</a></p>
+            <p class="login_signup">
+                ¿Aún no tienes una cuenta?
+                <a class="link" href="../pages/sign-up.html">Regístrate</a>
+            </p>
         </section>
 
+        <!-- LADO DERECHO -->
         <aside class="login_right" aria-hidden="true">
             <img class="login_illustration" src="../assets/img/caminos.png" alt="" />
         </aside>
     </main>
+
+    <script src="../js/login.js"></script>
+
 </body>
 </html>
+
