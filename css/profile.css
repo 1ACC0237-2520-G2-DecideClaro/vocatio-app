@@ -1,265 +1,214 @@
+/* ===========================
+   ESTILOS BASE (ESCRITORIO)
+   =========================== */
+
+body {
+    background: #F2F4F8;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+}
+
+/* ==== HEADER (igual al Dashboard) ==== */
+
 header {
-    background-color: white;
-    height: 60px;
-    width: 100%;
-    top: 0;
-    left: 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+    background: #FFF;
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid #DDE1E6;
+    margin: 1rem 2rem;
+    border-radius: 0;
 }
 
-/* -------------------------
-   Header
-   ------------------------- */
-.site-header{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: var(--header-height);
-  width: 100%;
-  padding: 0 16px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-  background: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.header-left { display: flex; align-items: center; gap: 12px; }
-#logo{
-  width: 110px;
-  height: 40px;
-  object-fit: contain;
-  display: block;
-}
-
-width: 110px;
-height: 40px;
-float: left;
-
-position: absolute; 
-top: 9px; 
-left: 10px;
-
-.header-right { display:flex; align-items:center; gap:8px; }
-#perfilMini{
-  width: 50px;
-  height: 45px;
-  object-fit: cover;
-  border-radius: 6px;
-  display: block;
-}
-
-/* ---- BOTÓN HAMBURGUESA ---- */
-.hamburger {
-  display: none;
-  font-size: 30px;
-  cursor: pointer;
-  user-select: none;
-  color: var(--primary-blue);
-}
-
-/* -------------------------
-   Main content
-   ------------------------- */
-.main-content{
-  max-width: var(--max-width);
-  margin: 24px auto;
-  padding: 0 16px;
-}
-
-.profile-section{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-#perfil{
-
-    width:140px;
-    height: 130px;
-
-    position: absolute;
-    top: 90px;
-    left: 640px;
-
-}
-
-#perfilMini{
-
-    width: 50px;
+.logo img {
     height: 45px;
-    float: Right;
-
-    position: absolute;
-    top: 7px;
-    left: 1415px;
-
+    margin-left: 2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.1rem;
 }
 
-h5{
+nav {
+    margin-left: 65px;
+    display: flex;
+    gap: 2rem;
+    margin-right: auto;
+}
 
+nav a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.03em;
     color: #0868A8;
-    font-family: "Inter", sans-serif;
-
+    text-decoration: none;
+    padding: 1rem 0.1rem;
 }
 
-.col-left { display: flex; flex-direction: column; gap: 14px; }
-
-h1{
-
-    font-family: "Inter", sans-serif;
-
-position: absolute;
-top: 205px;
-  left: 648px;
+nav a:hover {
+    opacity: 0.85;
 }
 
-.col-right{
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  align-items: flex-start;
+/* ---------------- PERFIL ---------------- */
+
+.main-content {
+    padding: 40px 0;
 }
 
-h3{
+.profile-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
 
-    font-family: "Inter", sans-serif;
+#perfil {
+    width: 140px;
+    height: 130px;
+}
 
+h1 {
+    margin-top: 20px;
+}
+
+/* ---------------- GRID PRINCIPAL ---------------- */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 10px 1fr;
+    gap: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .formulario2,
-.formulario{
-  width: 100%;
-  max-width: 420px;
-  height: 40px;
-  padding: 8px 12px;
-  border: 2px solid #cfcfcf;
-  border-radius: 6px;
-  font-size: 16px;
-  margin-bottom: 6px;
-  background: #fff;
-  color: #000;
+.formulario {
+    width: 250px;
+    max-width: 100%;
+    height: 40px;
+    color: black;
+    font-size: 16px;
+    border: 3px solid;
+    padding-left: 10px;
 }
 
-#Contraseña{position: absolute; top: 490px; left: 260px;}
-#NuevaContraseña{position: absolute; top: 560px; left: 260px;}
-#ConfirmarNuevaContraseña{position: absolute; top: 630px; left: 260px;}
-
-hr{
-    width: 360px;
-    transform: rotate(90deg);
-
-    position: absolute;
-    top: 470px;
-    left: 530px;
-
-
-.language-block h4{
-  font-weight: 800;
-  font-size: 16px;
-  margin-bottom: 6px;
+/* Separador vertical */
+.separator {
+    background-color: #d2d2d2;
+    width: 2px;
 }
 
-.language-block p{
-  color: var(--accent-blue);
-  text-decoration: underline;
-  font-size: 16px;
-  line-height: 1.2;
+/* Columna derecha */
+.col-right {
+    padding-left: 30px;
 }
 
-#EliminarCuenta{
-  width: 200px;
-  height: 50px;
-  font-weight: 800;
-  color: #000;
-  background-color: var(--danger);
-  border: 4px solid rgba(0,0,0,0.05);
-  border-radius: 5px;
-  cursor: pointer;
+#config {
+    font-size: 20px;
+    margin-bottom: 25px;
 }
 
-.delete-block { margin-top: 12px; }
-
-/* -------------------------
-   RESPONSIVE
-   ------------------------- */
-
-@media (max-width: 1024px){
-  :root { --max-width: 980px; }
-  .content-grid { grid-template-columns: 1fr 10px 300px; }
-  #perfil { width: 160px; height: 150px; }
+p {
+    color: #2073A1;
+    text-decoration: underline;
+    font-size: 16px;
 }
 
-@media (max-width: 768px){
-
-  .site-header{
-    align-items: flex-start;
-    padding: 10px 12px;
-    gap: 10px;
-    height: auto;
-  }
-
-  .hamburger {
-    display: block;
-    order: 2;
-    margin-left: auto;
-    padding: 4px 10px;
-  }
-
-  .header-nav{
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-    background: #fff;
-    padding: 10px 0;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  }
-
-  .header-nav.show{
-    display: flex;
-  }
-
-  .header-left { order: 1; }
-  .header-right { order: 3; }
-
-  .header-nav h5 { padding-left: 12px; }
-
-  .content-grid{
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .separator { display: none; }
-
-  .col-left, .col-right { width: 100%; }
-
-  .formulario2, .formulario { max-width: 100%; }
-
-  .delete-block { display:flex; justify-content:center; }
-  #EliminarCuenta { width: 90%; max-width: 360px; }
-
-  #perfil { width: 140px; height: 130px; }
+/* Botón eliminar cuenta */
+#EliminarCuenta {
+    width: 220px;
+    height: 50px;
+    font-weight: 800;
+    color: black;
+    background-color: #FF1212;
+    border: 4px solid;
+    border-radius: 5px;
+    margin-top: 40px;
+    cursor: pointer;
 }
 
-@media (min-width: 1400px){
-  :root { --max-width: 1200px; }
-  .content-grid { grid-template-columns: 1fr 12px 420px; }
+/* =============================================
+   RESPONSIVE REAL PARA PROFILE
+   ============================================= */
+
+/* --- Tablets (<= 992px) --- */
+@media (max-width: 992px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .col-right {
+        padding-left: 0;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    nav {
+        margin-left: 20px;
+        gap: 1rem;
+    }
 }
 
-/* ------ ESTILOS PARA ERRORES ------ */
+/* --- Móviles (<= 768px) --- */
+@media (max-width: 768px) {
+    header {
+        margin: 0.5rem 1rem;
+        padding: 0.5rem 1rem;
+        flex-wrap: wrap;
+    }
 
-.input-error {
-  border-color: #ff4d4d !important;
-  background-color: #ffecec;
+    .logo img {
+        margin-left: 0;
+        height: 40px;
+    }
+
+    nav {
+        width: 100%;
+        gap: 0.8rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    nav a {
+        padding: 0.6rem 0.4rem;
+    }
+
+    .content-grid {
+        width: 95%;
+    }
+
+    .formulario, .formulario2 {
+        width: 100%;
+    }
+
+    #EliminarCuenta {
+        width: 100%;
+    }
 }
 
-.error-msg {
-  font-size: 13px;
-  color: #ff0000;
-  margin-bottom: 6px;
-  padding-left: 4px;
+/* --- Móviles pequeños (<= 480px) --- */
+@media (max-width: 480px) {
+    nav a {
+        padding: 0.5rem 0.3rem;
+        font-size: 14px;
+    }
+
+    .content-grid {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
 }
