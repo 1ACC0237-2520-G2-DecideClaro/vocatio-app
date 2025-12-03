@@ -1,190 +1,122 @@
-// --------------------
-// MENÚ HAMBURGUESA
-// --------------------
-const btnHamburger = document.getElementById("hamburger");
-const menuNav = document.querySelector(".header-nav");
+// ==============================
+//  CARGA DE DATOS AL INICIAR
+// ==============================
 
-btnHamburger.addEventListener("click", () => {
-  menuNav.classList.toggle("show");
+document.addEventListener("DOMContentLoaded", () => {
+    const userData = localStorage.getItem("VocatioUser");
+
+    if (userData) {
+        const user = JSON.parse(userData);
+
+        const nombreCompleto = `${user.firstName} ${user.lastName}`;
+        document.getElementById("nombreUsuario").textContent = nombreCompleto;
+    }
 });
 
 
-// --------------------
-// VALIDACIÓN DEL FORMULARIO
-// --------------------
+// ==============================
+//  ELEMENTOS DEL DOM
+// ==============================
 
-// Selección de campos
-const form = document.querySelector(".profile-form");
+const nombreInput = document.getElementById("Nombre");
+const apellidoInput = document.getElementById("Apellido");
 
-const campoNombre = document.getElementById("Nombre");
-const campoApellido = document.getElementById("Apellido");
-const campoContrasena = document.getElementById("Contraseña");
-const campoNueva = document.getElementById("NuevaContraseña");
-const campoConfirmar = document.getElementById("ConfirmarNuevaContraseña");
+const passActualInput = document.getElementById("Contraseña");
+const passNuevaInput = document.getElementById("NuevaContraseña");
+const passConfirmInput = document.getElementById("ConfirmarNuevaContraseña");
 
-// Función para crear mensaje de error
-function mostrarError(input, mensaje) {
-  limpiarError(input);
+const btnEliminar = document.getElementById("EliminarCuenta");
 
-  const error = document.createElement("p");
-  error.classList.add("error-msg");
-  error.textContent = mensaje;
 
-  input.classList.add("input-error");
-  input.insertAdjacentElement("afterend", error);
-}
+// ==============================
+//  VALIDACIÓN Y GUARDADO GENERAL
+// ==============================
 
-// Limpia mensaje de error
-function limpiarError(input) {
-  input.classList.remove("input-error");
+function guardarCambios() {
+    const storedUser = JSON.parse(localStorage.getItem("userData")) || {};
 
-  const siguiente = input.nextElementSibling;
-  if (siguiente && siguiente.classList.contains("error-msg")) {
-    siguiente.remove();
-  }
-}
+    // -------- VALIDACIONES --------
+    if (nombreInput.value.trim() === "" || apellidoInput.value.trim() === "") {
+        alert("Por favor completa nombre y apellido.");
+        return;
+    }
 
-// Validación del nombre
-function validarNombre() {
-  const valor = campoNombre.value.trim();
+    // Validación de contraseña si el usuario intenta cambiarla
+    if (passActualInput.value || passNuevaInput.value || passConfirmInput.value) {
 
-  if (valor === "") {
-    mostrarError(campoNombre, "El nombre es obligatorio.");
-    return false;
-  }
-  if (valor.length < 2) {
-    mostrarError(campoNombre, "Debe tener al menos 2 caracteres.");
-    return false;
-  }
-  if (/\d/.test(valor)) {
-    mostrarError(campoNombre, "No debe contener números.");
-    return false;
-  }
+        if (!storedUser.password) {
+            alert("No hay contraseña registrada.");
+            return;
+        }
 
-  limpiarError(campoNombre);
-  return true;
-}
+        if (passActualInput.value !== storedUser.password) {
+            alert("La contraseña actual no es correcta.");
+            return;
+        }
 
-// Validación de apellidos
-function validarApellido() {
-  const valor = campoApellido.value.trim();
+        if (passNuevaInput.value.length < 6) {
+            alert("La nueva contraseña debe tener al menos 6 caracteres.");
+            return;
+        }
 
-  if (valor === "") {
-    mostrarError(campoApellido, "El apellido es obligatorio.");
-    return false;
-  }
-  if (valor.length < 2) {
-    mostrarError(campoApellido, "Debe tener al menos 2 caracteres.");
-    return false;
-  }
-  if (/\d/.test(valor)) {
-    mostrarError(campoApellido, "No debe contener números.");
-    return false;
-  }
+        if (passNuevaInput.value !== passConfirmInput.value) {
+            alert("Las contraseñas nuevas no coinciden.");
+            return;
+        }
 
-  limpiarError(campoApellido);
-  return true;
-}
+        // Asignar nueva contraseña
+        storedUser.password = passNuevaInput.value;
+    }
 
-// Validación de contraseña actual
-function validarContrasenaActual() {
-  const valor = campoContrasena.value.trim();
+    // Guardar nombres
+    storedUser.firstName = nombreInput.value.trim();
+    storedUser.lastName = apellidoInput.value.trim();
 
-  if (valor === "") {
-    mostrarError(campoContrasena, "Ingresa tu contraseña actual.");
-    return false;
-  }
+    // Guardar en almacenamiento local
+    localStorage.setItem("userData", JSON.stringify(storedUser));
 
-  limpiarError(campoContrasena);
-  return true;
-}
+    alert("Datos actualizados correctamente 🎉");
 
-// Validación nueva contraseña
-function validarNuevaContrasena() {
-  const valor = campoNueva.value.trim();
-
-  if (valor.length < 6) {
-    mostrarError(campoNueva, "Debe tener al menos 6 caracteres.");
-    return false;
-  }
-
-  limpiarError(campoNueva);
-  return true;
-}
-
-// Confirmación de nueva contraseña
-function validarConfirmacion() {
-  if (campoConfirmar.value.trim() !== campoNueva.value.trim()) {
-    mostrarError(campoConfirmar, "Las contraseñas no coinciden.");
-    return false;
-  }
-
-  limpiarError(campoConfirmar);
-  return true;
+    // Refrescar el nombre mostrado en el h1
+    const h1 = document.querySelector("h1");
+    if (h1) h1.textContent = storedUser.firstName;
 }
 
 
-// --------------------
-// EVENTOS EN LOS INPUTS
-// --------------------
-campoNombre.addEventListener("input", validarNombre);
-campoApellido.addEventListener("input", validarApellido);
-campoContrasena.addEventListener("input", validarContrasenaActual);
-campoNueva.addEventListener("input", validarNuevaContrasena);
-campoConfirmar.addEventListener("input", validarConfirmacion);
+// ==============================
+//  EVENTOS
+// ==============================
+
+// Guardar automáticamente al cambiar un campo
+nombreInput.addEventListener("change", guardarCambios);
+apellidoInput.addEventListener("change", guardarCambios);
+
+// Guardar al modificar contraseñas
+passConfirmInput.addEventListener("change", guardarCambios);
 
 
-// --------------------
-// ENVÍO DEL FORMULARIO
-// --------------------
-form.addEventListener("submit", function (e) {
-  e.preventDefault(); // Previene recarga
+// ==============================
+//  BOTÓN DE ELIMINAR CUENTA
+// ==============================
 
-  const v1 = validarNombre();
-  const v2 = validarApellido();
-  const v3 = validarContrasenaActual();
-  const v4 = validarNuevaContrasena();
-  const v5 = validarConfirmacion();
-
-  if (v1 && v2 && v3 && v4 && v5) {
-    alert("¡Datos actualizados correctamente!");
-    form.reset();
-  }
+btnEliminar.addEventListener("click", () => {
+    window.location.href = "delete-acc.html";  // Redirección
 });
 
-  // ==============
-  // ELIMINAR CUENTA
-  // ==============
-  const btnEliminar = document.getElementById("EliminarCuenta");
+// ====== NAVEGACIÓN DEL MENÚ SUPERIOR ======
 
-  btnEliminar.addEventListener("click", (e) => {
-    e.preventDefault(); // evita recarga accidental
+document.getElementById("VistaGeneral")?.addEventListener("click", () => {
+    window.location.href = "dashboard.html";
+});
 
-    // Paso 1: Confirmación inicial
-    const confirmacion = confirm("⚠ ¿Seguro que deseas eliminar tu cuenta? Esta acción es irreversible.");
+document.getElementById("IniciarTest")?.addEventListener("click", () => {
+    window.location.href = "test.html";
+});
 
-    if (!confirmacion) return;
+document.getElementById("Explorar")?.addEventListener("click", () => {
+    window.location.href = "explore.html";
+});
 
-    // Paso 2: Obtener contraseña actual escrita en el formulario
-    const passActual = document.getElementById("Contraseña").value.trim();
-
-    if (passActual === "") {
-      alert("Por favor ingresa tu contraseña actual antes de continuar.");
-      return;
-    }
-
-    // Paso 3: Solicitar confirmación adicional al usuario
-    const passIngresada = prompt("Para continuar, escribe tu contraseña actual:");
-
-    // Si cancela el prompt:
-    if (passIngresada === null) return;
-
-    // Paso 4: Validar coincidencia
-    if (passIngresada === passActual) {
-      alert("✅ Tu cuenta ha sido eliminada correctamente.");
-      // Ejemplo de redirección:
-      // window.location.href = "login.html";
-    } else {
-      alert("❌ Contraseña incorrecta. No se pudo eliminar tu cuenta.");
-    }
-  });
+document.getElementById("Informes")?.addEventListener("click", () => {
+    window.location.href = "reports.html";
+});

@@ -46,15 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- EVENTOS EN TIEMPO REAL ---
-    firstName.addEventListener("input", () => clearError(firstName));
-    lastName.addEventListener("input", () => clearError(lastName));
-    birthdate.addEventListener("change", () => clearError(birthdate));
-    email.addEventListener("input", () => clearError(email));
-    password.addEventListener("input", () => clearError(password));
-    confirmPassword.addEventListener("input", () => clearError(confirmPassword));
+    fields.forEach(field => {
+        field.addEventListener("input", () => clearError(field));
+    });
 
     // --- VALIDACIÓN DEL FORMULARIO ---
     form.addEventListener("submit", (e) => {
+        e.preventDefault(); // Evitar recarga inmediata
+
         let valid = true;
 
         if (firstName.value.trim() === "") {
@@ -87,8 +86,25 @@ document.addEventListener("DOMContentLoaded", () => {
             valid = false;
         }
 
-        if (!valid) {
-            e.preventDefault();
-        }
+        if (!valid) return;
+
+        // ---------------------------------------------
+        // GUARDAR EN LOCALSTORAGE
+        // ---------------------------------------------
+        const userData = {
+            firstName: firstName.value.trim(),
+            lastName: lastName.value.trim(),
+            birthdate: birthdate.value,
+            email: email.value.trim(),
+            password: password.value, // OJO: aquí guardas la contraseña en texto plano
+        };
+
+        localStorage.setItem("VocatioUser", JSON.stringify(userData));
+        localStorage.setItem("VocatioIsLoggedIn", "true");
+
+        // ---------------------------------------------
+        // REDIRIGIR AL DASHBOARD
+        // ---------------------------------------------
+        window.location.href = "../pages/dashboard.html";
     });
 });
