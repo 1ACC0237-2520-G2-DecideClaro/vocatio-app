@@ -400,9 +400,11 @@ Librerías usadas:
         // Obtener historial existente
         const history = JSON.parse(localStorage.getItem('vocatio_history') || '[]');
 
-        // Crear entrada de historial
-        const entry = {
-            id: testData.id,
+        // Buscar si ya existe una evaluación con el mismo ID para evitar duplicados
+        const existingIndex = history.findIndex(e => e.id === testData.id);
+
+        // Datos comunes calculados
+        const computed = {
             date: testData.date,
             dateFormatted: formatDate(new Date(testData.date)),
             mainCareer: results[0].name,
@@ -410,22 +412,59 @@ Librerías usadas:
             otherCareers: results.slice(1, 4).map(r => r.name),
             answers: testData.answers,
             results: results,
-            timeSpent: testData.timeSpent,
-            isFavorite: false
+            timeSpent: testData.timeSpent
         };
 
-        // Agregar al inicio del array
-        history.unshift(entry);
+        if (existingIndex !== -1) {
+            // Ya existe: actualizar datos sin duplicar y respetando el estado de favorito
+            const prev = history[existingIndex];
+            history[existingIndex] = {
+                ...prev,
+                ...computed
+            };
 
-        // Limitar a 50 evaluaciones máximo
-        if (history.length > 50) {
-            history.pop();
+            // Si por compatibilidad aún no tiene secuencia asignada, intente asignarla ahora
+            if (history[existingIndex].seq == null) {
+                // Buscar el máximo seq existente y asignar el siguiente
+                const maxSeq = history.reduce((max, e) => (typeof e.seq === 'number' && e.seq > max ? e.seq : max), 0);
+                history[existingIndex].seq = maxSeq + 1;
+
+                // Actualizar contador global si es menor que el nuevo seq
+                const currentCounter = parseInt(localStorage.getItem('vocatio_test_counter') || '0', 10);
+                if (history[existingIndex].seq > currentCounter) {
+                    localStorage.setItem('vocatio_test_counter', String(history[existingIndex].seq));
+                }
+            }
+
+            console.log('ℹ️ Evaluación ya existía, actualizada sin duplicar:', testData.id);
+        } else {
+            // No existe: crear nueva entrada al inicio
+            const entry = {
+                id: testData.id,
+                isFavorite: false,
+                // Asignar número de secuencia estable (#X)
+                seq: (function() {
+                    const currentCounter = parseInt(localStorage.getItem('vocatio_test_counter') || '0', 10);
+                    const next = currentCounter + 1;
+                    // Persistir el nuevo contador global
+                    localStorage.setItem('vocatio_test_counter', String(next));
+                    return next;
+                })(),
+                ...computed
+            };
+
+            history.unshift(entry);
+
+            // Limitar a 50 evaluaciones máximo
+            if (history.length > 50) {
+                history.pop();
+            }
+
+            console.log('✅ Evaluación guardada en historial:', entry.id);
         }
 
         // Guardar
         localStorage.setItem('vocatio_history', JSON.stringify(history));
-
-        console.log('✅ Evaluación guardada en historial:', entry.id);
     }
 
     /**
