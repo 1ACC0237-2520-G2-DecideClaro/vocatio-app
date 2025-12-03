@@ -82,6 +82,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderCareerCards(careersList) {
     grid.innerHTML = "";
 
+    const noResults = document.getElementById("no-results-message");
+
+    if (!careersList || careersList.length === 0) {
+        if (noResults) noResults.style.display = "block";
+        return; 
+    }
+
+    if (noResults) noResults.style.display = "none";
+
     const list = careersList || CAREERS_DATA.carreras;
 
     list.forEach((c, index) => {

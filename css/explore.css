@@ -791,3 +791,11 @@ footer {
         text-align: center;
     }
 }
+
+.no-results {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 2rem 0;
+    color: #777;
+    font-style: italic;
+}

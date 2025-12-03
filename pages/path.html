@@ -3,19 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vocatio | Materiales de Aprendizaje</title>
+
+  <title>Vocatio | Ruta de Aprendizaje</title>
+
   <link rel="stylesheet" href="../css/materials.css" />
+  <link rel="stylesheet" href="../css/path.css" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
 
-  <script defer src="../js/material-recomendado.js"></script>
-  <script defer src="../js/materials.js"></script>
-  
+  <script src="../js/path-data.js"></script>
+  <script defer src="../js/path.js"></script>
+
 </head>
+
 <body>
 
-  <header>
+<header>
   <div class="logo">
     <a href="../pages/dashboard.html">
       <img src="../assets/img/logo.png" alt="Vocatio logo" />
@@ -29,8 +37,8 @@
   <nav>
     <a href="../pages/dashboard.html">Vista General</a>
     <a href="../pages/test.html" class="test-link">Iniciar Test</a>
-    <a href="../pages/path.html">Ruta de Aprendizaje</a>
-    <a class="active" href="../pages/explore.html">Explorar</a>
+    <a class="active" href="../pages/path.html">Ruta de Aprendizaje</a>
+    <a href="../pages/explore.html">Explorar</a>
     <a href="../pages/reports.html">Informes</a>
   </nav>
 
@@ -48,62 +56,20 @@
   </div>
 </header>
 
+<div class="header-search">
+    <h1>Ruta de Aprendizaje</h1>
+    <div></div>
+</div>
 
-  <div class="header-search">
-    <h1>Materiales sugeridos</h1>
-    <div class="search-wrap">
-      <input class="search-bar" id="search-input" type="text" placeholder="Buscar material..." />
-    </div>
-  </div>
+<main>
+    <section class="path-section">
+        <p class="path-intro">
+            Basado en tus intereses y resultados, estas rutas te ayudarán a desarrollar habilidades en áreas clave para tu futuro profesional.
+        </p>
 
-  <main>
-
-  <div class="filters-row">
-    <div class="sort-box">
-      <label for="career-filter">Filtrar por carrera o área:</label>
-      <select id="career-filter">
-        <option value="todos">Todas las áreas</option>
-        <option value="computacion">Ciencias de la Computación</option>
-        <option value="robotica">Robótica</option>
-        <option value="marketing">Marketing</option>
-        <option value="etica">Ética y Humanidades</option>
-        <option value="idiomas">Idiomas</option>
-      </select>
-    </div>
-  </div>
-
-
-  <section class="material-section">
-    <h2 class="section-title">📘 Documentos recomendados</h2>
-    <div class="career-grid" id="docs-grid"></div>
-    <p id="no-docs" class="no-results" style="display:none;">
-  No se encontraron documentos con ese nombre.
-</p>
-
-  </section>
-
-  <section class="material-section">
-    <h2 class="section-title">🎥 Videos sugeridos</h2>
-    <div class="career-grid" id="videos-grid"></div>
-    <p id="no-videos" class="no-results" style="display:none;">
-  No se encontraron videos con ese nombre.
-</p>
-
-  </section>
-
-  <section class="material-section">
-    <h2 class="section-title">💻 Cursos por carrera</h2>
-    <div class="career-grid" id="cursos-grid"></div>
-    <p id="no-cursos" class="no-results" style="display:none;">
-  No se encontraron cursos con ese nombre.
-</p>
-
-  </section>
-
+        <div class="path-grid" id="path-grid"></div>
+    </section>
 </main>
-
-
-</body>
 
 <footer>
   <div class="footer-left">
@@ -141,6 +107,5 @@
   </div>
 </footer>
 
-
-<script src="../js/breadcrumbs.js"></script>
+</body>
 </html>
