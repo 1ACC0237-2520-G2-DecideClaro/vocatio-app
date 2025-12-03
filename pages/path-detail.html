@@ -1,0 +1,104 @@
+<!doctype html>
+<script src="../js/path-data.js"></script>
+<script src="../js/path-detail.js" defer></script>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Vocatio | Detalle de Ruta</title>
+
+  <link rel="stylesheet" href="../css/materials.css">
+  <link rel="stylesheet" href="../css/path.css">
+
+  <script defer src="../js/path-detail.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <a href="../pages/dashboard.html">
+      <img src="../assets/img/logo.png" alt="Vocatio logo" />
+    </a>
+  </div>
+
+  <button class="nav-toggle" aria-label="Abrir menú">
+    ☰
+  </button>
+
+  <nav>
+    <a href="../pages/dashboard.html">Vista General</a>
+    <a href="../pages/test.html" class="test-link">Iniciar Test</a>
+    <a href="../pages/path.html" class="active">Ruta de Aprendizaje</a>
+    <a href="../pages/explore.html">Explorar</a>
+    <a href="../pages/reports.html">Informes</a>
+  </nav>
+
+  <div class="header-right">
+    <div class="profile">
+      <img src="../assets/img/user-icon.png" alt="Perfil" />
+      <div class="dropdown">
+        <a href="../pages/profile.html">Perfil</a>
+        <a href="../pages/favorites.html">Favoritos</a>
+        <a href="../pages/history.html">Historial</a>
+        <a href="../pages/settings.html">Configuración</a>
+        <a href="../index.html">Cerrar sesión</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="header-search">
+  <h1 id="curso-titulo">Cargando...</h1>
+  <div></div>
+</div>
+
+<main class="path-section">
+
+  <p id="curso-descripcion" class="path-intro">Cargando descripción...</p>
+
+  <!-- PROGRESO -->
+  <div class="progress-container" style="margin-bottom: 1.5rem;">
+    <div id="progress-bar" class="progress-bar" style="width: 0%;"></div>
+  </div>
+
+  <h2 style="color:#0868A8; margin-bottom:1rem;">Módulos del Curso</h2>
+
+  <div id="modulos-list" class="modulos-list"></div>
+
+  <button onclick="history.back()" 
+          style="margin-top:2rem; padding:0.7rem 1.2rem; 
+                 background:#0868A8; color:white; border:none;
+                 border-radius:6px; cursor:pointer; font-weight:700;">
+    ⬅ Volver
+  </button>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <img class="footer-logo" src="../assets/img/logo-footer.png" alt="logo" />
+  </div>
+
+  <div class="footer-center">
+    <p>© 2025 DecideClaro | All rights reserved</p>
+  </div>
+
+  <div class="footer-right">
+    <a href="#"><img class="footer-icon" src="../assets/img/facebook.png"></a>
+    <a href="#"><img class="footer-icon" src="../assets/img/youtube.png"></a>
+    <a href="#"><img class="footer-icon" src="../assets/img/instagram.png"></a>
+  </div>
+</footer>
+
+</body>
+</html>

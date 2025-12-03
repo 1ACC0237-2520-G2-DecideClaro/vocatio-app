@@ -701,3 +701,10 @@ footer {
     border-left: 5px solid #F29723;
     padding-left: 10px;
 }
+.no-results {
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 1.5rem 0;
+    color: #777;
+    font-style: italic;
+}

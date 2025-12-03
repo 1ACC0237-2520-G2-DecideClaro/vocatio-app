@@ -149,7 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const id = card.dataset.id;
         const material = MATERIALS_DATA.materiales.find((m) => m.id === id);
         if (material && material.url) {
-          window.open(material.url, "_blank");
+          if (material.tipo === "curso") {
+            window.location.href = `../pages/path.html?curso=${material.id}`;
+                } else {
+                    window.open(material.url, "_blank");
+                }
+
         } else if (material && material.modalId) {
           window.location.hash = `#${material.modalId}`;
         }
@@ -163,33 +168,55 @@ document.addEventListener("DOMContentLoaded", () => {
         const id = btn.dataset.id;
         const material = MATERIALS_DATA.materiales.find((m) => m.id === id);
         if (material && material.url) {
-          window.open(material.url, "_blank");
+         if (material.tipo === "curso") {
+            window.location.href = `../pages/path.html?curso=${material.id}`;
+                  } else {
+                      window.open(material.url, "_blank");
+                  }
+
         }
       });
     });
   }
 
-  function initSearch() {
-    const searchInput = document.getElementById("search-input");
-    if (!searchInput) return;
+ function initSearch() {
+  const searchInput = document.getElementById("search-input");
+  if (!searchInput) return;
 
-    searchInput.addEventListener("input", (e) => {
-      const q = e.target.value.trim().toLowerCase();
+  searchInput.addEventListener("input", (e) => {
+    const q = e.target.value.trim().toLowerCase();
 
-      document.querySelectorAll(".career-card").forEach((card) => {
-        const title = card.querySelector("h2").textContent.toLowerCase();
-        const desc = card.querySelector("p").textContent.toLowerCase();
-        const matchesText = title.includes(q) || desc.includes(q);
+    let docsCount = 0;
+    let videosCount = 0;
+    let cursosCount = 0;
 
-        const careerFilter = document.getElementById("career-filter");
-        const selected = careerFilter ? careerFilter.value : "todos";
-        const area = card.dataset.area;
-        const matchesArea = selected === "todos" || area === selected;
+    document.querySelectorAll(".career-card").forEach((card) => {
+      const title = card.querySelector("h2").textContent.toLowerCase();
+      const desc = card.querySelector("p").textContent.toLowerCase();
+      const matches = title.includes(q) || desc.includes(q);
 
-        card.style.display = matchesText && matchesArea ? "" : "none";
-      });
+      card.style.display = matches ? "" : "none";
+
+      const area = card.dataset.area;
+      const tipo = card.closest(".material-section")?.querySelector("h2")?.textContent;
+
+      if (matches) {
+        if (tipo?.includes("Documentos")) docsCount++;
+        if (tipo?.includes("Videos")) videosCount++;
+        if (tipo?.includes("Cursos")) cursosCount++;
+      }
     });
-  }
+
+    document.getElementById("no-docs").style.display =
+      docsCount === 0 ? "block" : "none";
+
+    document.getElementById("no-videos").style.display =
+      videosCount === 0 ? "block" : "none";
+
+    document.getElementById("no-cursos").style.display =
+      cursosCount === 0 ? "block" : "none";
+  });
+}
 
   function initCareerFilter() {
     const careerFilter = document.getElementById("career-filter");
@@ -239,9 +266,11 @@ function initResponsiveNav() {
   const nav = document.querySelector("header nav");
   if (!toggle || !nav) return;
 
-  toggle.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
+ toggle.addEventListener("click", (e) => {
+  e.stopPropagation(); // evita que el clic pase al body
+  nav.classList.toggle("open");
+});
+
 }
 
 

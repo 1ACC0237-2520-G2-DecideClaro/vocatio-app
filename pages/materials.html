@@ -22,7 +22,6 @@
     </a>
   </div>
 
-  <!-- 🔹 BOTÓN HAMBURGUESA (NUEVO) -->
   <button class="nav-toggle" aria-label="Abrir menú de navegación">
     ☰
   </button>
@@ -30,7 +29,7 @@
   <nav>
     <a href="../pages/dashboard.html">Vista General</a>
     <a href="../pages/test.html" class="test-link">Iniciar Test</a>
-    <a href="../pages/materials.html">Ruta de Aprendizaje</a>
+    <a href="../pages/path.html">Ruta de Aprendizaje</a>
     <a class="active" href="../pages/explore.html">Explorar</a>
     <a href="../pages/reports.html">Informes</a>
   </nav>
@@ -77,16 +76,28 @@
   <section class="material-section">
     <h2 class="section-title">📘 Documentos recomendados</h2>
     <div class="career-grid" id="docs-grid"></div>
+    <p id="no-docs" class="no-results" style="display:none;">
+  No se encontraron documentos con ese nombre.
+</p>
+
   </section>
 
   <section class="material-section">
     <h2 class="section-title">🎥 Videos sugeridos</h2>
     <div class="career-grid" id="videos-grid"></div>
+    <p id="no-videos" class="no-results" style="display:none;">
+  No se encontraron videos con ese nombre.
+</p>
+
   </section>
 
   <section class="material-section">
     <h2 class="section-title">💻 Cursos por carrera</h2>
     <div class="career-grid" id="cursos-grid"></div>
+    <p id="no-cursos" class="no-results" style="display:none;">
+  No se encontraron cursos con ese nombre.
+</p>
+
   </section>
 
 </main>

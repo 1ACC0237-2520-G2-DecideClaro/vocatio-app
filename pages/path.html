@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Vocatio | Ruta de Aprendizaje</title>
+
+  <link rel="stylesheet" href="../css/materials.css" />
+  <link rel="stylesheet" href="../css/path.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <script src="../js/path-data.js"></script>
+  <script defer src="../js/path.js"></script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <a href="../pages/dashboard.html">
+      <img src="../assets/img/logo.png" alt="Vocatio logo" />
+    </a>
+  </div>
+
+  <button class="nav-toggle" aria-label="Abrir menú de navegación">
+    ☰
+  </button>
+
+  <nav>
+    <a href="../pages/dashboard.html">Vista General</a>
+    <a href="../pages/test.html" class="test-link">Iniciar Test</a>
+    <a class="active" href="../pages/path.html">Ruta de Aprendizaje</a>
+    <a href="../pages/explore.html">Explorar</a>
+    <a href="../pages/reports.html">Informes</a>
+  </nav>
+
+  <div class="header-right">
+    <div class="profile">
+      <img src="../assets/img/user-icon.png" alt="Perfil" />
+      <div class="dropdown" role="menu" aria-hidden="true">
+        <a href="../pages/profile.html" id="user-name">Fernan</a>
+        <a href="../pages/favorites.html" id="favorites-link">Favoritos</a>
+        <a href="../pages/history.html" id="history-link">Historial</a>
+        <a href="../pages/settings.html" id="settings-link">Configuración</a>
+        <a href="../index.html" class="logout" id="logout-link">Cerrar sesión</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="header-search">
+    <h1>Ruta de Aprendizaje</h1>
+    <div></div>
+</div>
+
+<main>
+    <section class="path-section">
+        <p class="path-intro">
+            Basado en tus intereses y resultados, estas rutas te ayudarán a desarrollar habilidades en áreas clave para tu futuro profesional.
+        </p>
+
+        <div class="path-grid" id="path-grid"></div>
+    </section>
+</main>
+
+<footer>
+  <div class="footer-left">
+    <a href="#">
+      <img class="footer-logo" 
+           src="../assets/img/logo-footer.png" 
+           alt="Vocatio logo pie de página" 
+           width="205" height="65">
+    </a>
+  </div>
+
+  <div class="footer-center">
+    <p>© 2025 DecideClaro | All rights reserved</p>
+  </div>
+
+  <div class="footer-right">
+    <a href="https://www.facebook.com/zuck">
+      <img class="footer-icon footer-icon-facebook"
+           src="../assets/img/facebook.png" 
+           alt="Facebook de Vocatio" 
+           width="34" height="34">
+    </a>
+    <a href="https://www.youtube.com/@TheDaniRep">
+      <img class="footer-icon"
+           src="../assets/img/youtube.png" 
+           alt="YouTube de Vocatio" 
+           width="34" height="34">
+    </a>
+    <a href="https://www.instagram.com/cristiano/">
+      <img class="footer-icon"
+           src="../assets/img/instagram.png" 
+           alt="Instagram de Vocatio" 
+           width="34" height="34">
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
