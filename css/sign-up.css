@@ -60,16 +60,23 @@ body {
 **********************/
 
 .login_logo {
-  position: absolute;
-  top: 24px;
-  left: 24px;
+  position: static;          /* Se vuelve parte del flujo normal */
   text-decoration: none;
+  margin-bottom: 8px;        /* Espacio entre el logo y el título */
+  display: flex;
+  justify-content: center;   /* Centra el logo */
 }
 
 .login_logo img {
   width: 140px;
   height: auto;
   display: block;
+}
+
+@media (max-width: 480px) {
+  .login_logo img {
+    width: 120px;            /* Ajuste para pantallas pequeñas */
+  }
 }
 
 /**********************

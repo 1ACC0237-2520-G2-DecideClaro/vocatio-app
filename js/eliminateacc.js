@@ -56,10 +56,38 @@ cancelarModal.addEventListener("click", () => {
 confirmarModal.addEventListener("click", () => {
     modal.classList.add("oculto");
 
-    // Simulación de eliminación REAL
+    // ============================
+    // ELIMINAR DEL LOCALSTORAGE
+    // ============================
+    localStorage.removeItem("VocatioUser");
+    localStorage.removeItem("VocatioIsLoggedIn");
+
     alert("Tu cuenta ha sido eliminada correctamente.");
-    console.log("Cuenta eliminada en servidor (simulado)");
 
     // Redirigir a inicio
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
+
+});
+
+// ====== NAVEGACIÓN DEL MENÚ SUPERIOR ======
+
+document.getElementById("VistaGeneral")?.addEventListener("click", () => {
+    window.location.href = "dashboard.html";
+});
+
+document.getElementById("IniciarTest")?.addEventListener("click", () => {
+    window.location.href = "test.html";
+});
+
+document.getElementById("Explorar")?.addEventListener("click", () => {
+    window.location.href = "explore.html";
+});
+
+document.getElementById("Informes")?.addEventListener("click", () => {
+    window.location.href = "reports.html";
+});
+
+// ====== BOTÓN REGRESAR ======
+document.getElementById("Regresar").addEventListener("click", () => {
+    window.location.href = "profile.html"; 
 });
